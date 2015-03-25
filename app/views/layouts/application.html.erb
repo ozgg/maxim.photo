@@ -10,15 +10,12 @@
 </head>
 <body>
 <header>
-  <div class="logo">mjk</div>
-  <div class="languages">
-    <div>ru</div>
-    <div>en</div>
-  </div>
+  <div class="logo">/mj</div>
+  <%= render 'common/languages' %>
   <%= render 'common/main_navigation' %>
 </header>
 
-<section id="main"><%= yield %></section>
+<div id="main"><%= yield %></div>
 
 <footer>
   <div class="copyright">&copy; 2008–2015 Maxim Khan-Magomedov</div>

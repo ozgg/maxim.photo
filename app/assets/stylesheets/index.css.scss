@@ -1,0 +1,30 @@
+article.about {
+  min-height: 420px;
+  max-width: 720px;
+  margin: 15px;
+
+  figure {
+    margin: 0;
+    padding: 0;
+    float: right;
+    position: relative;
+
+    img {
+      max-width: 100%;
+    }
+
+    figcaption {
+      position: absolute;
+      z-index: 1;
+      bottom: 15px;
+      left: 0;
+      padding: 7px 15px 7px 30px;
+      background: rgba(255, 255, 255, 0.7);
+      font-size: 0.9em;
+    }
+  }
+
+  ul {
+    margin: 0;
+  }
+}
