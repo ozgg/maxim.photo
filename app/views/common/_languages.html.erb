@@ -1,4 +1,4 @@
 <div class="languages">
-  <div>ru</div>
-  <div>en</div>
+  <div><%= link_to 'ru', url_for(locale: nil), title: t('.russian') %></div>
+  <div><%= link_to 'en', url_for(locale: :en), title: t('.english') %></div>
 </div>

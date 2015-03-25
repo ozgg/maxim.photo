@@ -2,6 +2,9 @@ ru:
   common:
     main_navigation:
       about: "Обо мне"
+    languages:
+      russian: "Версия на русском"
+      english: "Версия на английском"
   index:
     about:
       title: "Обо мне"

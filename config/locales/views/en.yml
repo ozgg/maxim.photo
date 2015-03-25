@@ -2,6 +2,9 @@ en:
   common:
     main_navigation:
       about: "About me"
+    languages:
+      russian: "Russian version"
+      english: "English version"
   index:
     about:
       title: "About me"
