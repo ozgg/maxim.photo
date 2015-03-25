@@ -15,6 +15,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Get current user from session
+  #
+  # @return [User]
   def current_user
     @current_user ||= User.find_by(id: session[:user_id]) unless session[:user_id].nil?
   end
