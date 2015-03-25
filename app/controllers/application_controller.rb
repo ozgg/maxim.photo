@@ -5,12 +5,18 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  helper_method :current_user
+
   def default_url_options(options = {})
     if I18n.locale == I18n.default_locale
       { locale: nil }.merge options
     else
       { locale: I18n.locale }.merge options
     end
+  end
+
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id]) unless session[:user_id].nil?
   end
 
   protected
