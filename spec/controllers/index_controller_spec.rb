@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe IndexController, type: :controller do
+  before(:each) { expect(controller).to receive(:set_locale) }
 
   describe "GET #index" do
     it "returns http success" do
