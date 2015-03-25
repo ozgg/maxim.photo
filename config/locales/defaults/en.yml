@@ -1,3 +1,4 @@
 en:
-
   already_logged_in: "You are already logged in"
+  invalid_credentials: "Invalid credentials"
+  logged_in_successfully: "Logged in successfully"

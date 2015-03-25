@@ -15,7 +15,13 @@
   <%= render 'common/main_navigation' %>
 </header>
 
-<div id="main"><%= yield %></div>
+<div id="main">
+  <% unless flash[:notice].nil? %>
+      <div id="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+  <%= yield %>
+</div>
 
 <footer>
   <div class="copyright">&copy; 2008–2015 Maxim Khan-Magomedov</div>

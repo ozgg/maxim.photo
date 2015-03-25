@@ -44,11 +44,43 @@ RSpec.describe SessionsController, type: :controller, wip: true do
   end
 
   describe 'POST create' do
-    pending
+    context 'when user is logged in' do
+      before(:each) { allow(controller).to receive(:current_user).and_return(user) }
+
+      it 'redirects to root path' do
+        post :create, login: user.login, password: 'secret'
+        expect(response).to redirect_to(root_path)
+      end
+    end
+
+    context 'when user is not logged in' do
+      before(:each) { allow(controller).to receive(:current_user).and_return(nil) }
+
+      context 'when credentials are valid' do
+        before(:each) { post :create, login: user.login, password: 'secret' }
+
+        it 'sets user_id in session' do
+          expect(session[:user_id]).to eq(user.id)
+        end
+
+        it 'redirects to root path' do
+          expect(response).to redirect_to(root_path)
+        end
+      end
+
+      context 'when credentials are invalid' do
+        before(:each) { post :create, login: user.login, password: 'invalid' }
+
+        it 'renders template new' do
+          expect(response).to render_template(:new)
+        end
+      end
+    end
   end
 
   describe 'DELETE destroy' do
-    pending
+    it 'sets user_id in session to nil'
+    it 'redirects to root path'
   end
 
   describe '#redirect_authorized_user' do
