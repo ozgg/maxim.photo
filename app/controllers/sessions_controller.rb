@@ -13,6 +13,12 @@ class SessionsController < ApplicationController
     end
   end
 
+  # delete /logout
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_path
+  end
+
   protected
 
   def redirect_authorized_user

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SessionsController, type: :controller, wip: true do
+RSpec.describe SessionsController, type: :controller do
   let(:user) { create :user }
   before(:each) { allow(controller).to receive(:set_locale) }
 
@@ -79,8 +79,18 @@ RSpec.describe SessionsController, type: :controller, wip: true do
   end
 
   describe 'DELETE destroy' do
-    it 'sets user_id in session to nil'
-    it 'redirects to root path'
+    before :each do
+      session[:user_id] = 42
+      delete :destroy
+    end
+
+    it 'sets user_id in session to nil' do
+      expect(session[:user_id]).to be_nil
+    end
+
+    it 'redirects to root path' do
+      expect(response).to redirect_to(root_path)
+    end
   end
 
   describe '#redirect_authorized_user' do
