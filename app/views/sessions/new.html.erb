@@ -1,0 +1,20 @@
+<% content_for :title, t('.title') %>
+<% content_for :description, t('.description') %>
+<%= render 'common/footer' %>
+
+<section class="login">
+  <h1><%= t('.title') %></h1>
+  <%= form_tag login_path do %>
+      <div>
+        <%= label_tag :login, t('.login') %>
+        <%= text_field_tag :login, '', required: true, size: 30 %>
+      </div>
+      <div>
+        <%= label_tag :password, t('.password') %>
+        <%= password_field_tag :password, '', required: true, size: 30 %>
+      </div>
+      <div>
+        <%= button_tag t('.enter'), type: :submit %>
+      </div>
+  <% end %>
+</section>

@@ -15,3 +15,10 @@ en:
       landscape_and_macro: "I also love nature and I take a lot of photos of landscapes and macro. Many of work can be purchased as prints, including canvas."
       equipment: "My choice of Camera ans lenses is Canon (EOS-5D Mark II, L-series of lenses)."
       contacts: "How to reach me"
+  sessions:
+    new:
+      title: "Logging in"
+      description: "Page with logging in form for the site."
+      enter: "Enter"
+      login: "Login"
+      password: "Password"
