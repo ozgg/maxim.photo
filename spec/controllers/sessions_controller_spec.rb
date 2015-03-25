@@ -25,7 +25,7 @@ RSpec.describe SessionsController, type: :controller, wip: true do
   describe 'GET new' do
     context 'when user is not logged in' do
       before :each do
-        session[:user_id] = nil
+        allow(controller).to receive(:current_user).and_return(nil)
         get :new
       end
 
@@ -35,7 +35,7 @@ RSpec.describe SessionsController, type: :controller, wip: true do
 
     context 'when user is logged in' do
       before :each do
-        session[:user_id] = user.id
+        allow(controller).to receive(:current_user).and_return(user)
         get :new
       end
 
@@ -52,13 +52,9 @@ RSpec.describe SessionsController, type: :controller, wip: true do
   end
 
   describe '#redirect_authorized_user' do
-    context 'when user is logged in' do
-      before(:each) { session[:user_id] = user.id }
-
-      it 'redirects to root path' do
-        expect(controller).to receive(:redirect_to).with(root_path)
-        controller.send(:redirect_authorized_user)
-      end
+    it 'redirects to root path' do
+      expect(controller).to receive(:redirect_to).with(root_path)
+      controller.send(:redirect_authorized_user)
     end
   end
 end

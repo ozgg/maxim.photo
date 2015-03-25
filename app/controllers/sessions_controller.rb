@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   # get /login
   def new
-    redirect_authorized_user unless session[:user_id].nil?
+    redirect_authorized_user unless current_user.nil?
   end
 
   protected

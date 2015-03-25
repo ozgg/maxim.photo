@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ApplicationController, type: :controller, wip: true do
+RSpec.describe ApplicationController, type: :controller do
   describe '#current_user' do
     context 'when user is logged in' do
       let!(:user) { create :user }
