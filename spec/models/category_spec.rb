@@ -51,4 +51,24 @@ RSpec.describe Category, type: :model do
       expect(category).to be_valid
     end
   end
+
+  describe '#name' do
+    let(:category) { create :category }
+
+    it 'returns name_ru for Russian locale' do
+      expect(category.name :ru).to eq(category.name_ru)
+    end
+
+    it 'returns name_en for English locale' do
+      expect(category.name :en).to eq(category.name_en)
+    end
+
+    it 'returns name_es for Spanish locale' do
+      expect(category.name :es).to eq(category.name_es)
+    end
+
+    it 'returns slug for unknown locale' do
+      expect(category.name :no).to eq(category.slug)
+    end
+  end
 end

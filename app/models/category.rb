@@ -4,4 +4,16 @@ class Category < ActiveRecord::Base
 
   enum visibility: [:hidden, :visible, :main]
 
+  def name(locale)
+    case locale.to_sym
+      when :ru
+        name_ru
+      when :en
+        name_en
+      when :es
+        name_es
+      else
+        slug
+    end
+  end
 end
