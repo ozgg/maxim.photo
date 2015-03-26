@@ -4,16 +4,12 @@ class Category < ActiveRecord::Base
 
   enum visibility: [:hidden, :visible, :main]
 
+  # Get localized name of category
+  # 
+  # @param [Symbol] locale
+  # @return [String]
   def name(locale)
-    case locale.to_sym
-      when :ru
-        name_ru
-      when :en
-        name_en
-      when :es
-        name_es
-      else
-        slug
-    end
+    method_name = "name_#{locale}"
+    respond_to?(method_name) ? send(method_name) : slug
   end
 end
