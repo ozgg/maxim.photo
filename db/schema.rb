@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150325235112) do
     t.integer  "photo_count",    default: 0, null: false
     t.integer  "priority",       default: 0, null: false
     t.string   "image"
+    t.string   "slug",                       null: false
     t.string   "name_ru",                    null: false
     t.string   "name_en",                    null: false
     t.string   "name_es",                    null: false

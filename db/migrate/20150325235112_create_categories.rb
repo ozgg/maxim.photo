@@ -5,6 +5,7 @@ class CreateCategories < ActiveRecord::Migration
       t.integer :photo_count, null: false, default: 0
       t.integer :priority, null: false, default: 0
       t.string :image
+      t.string :slug, null: false
       t.string :name_ru, null: false
       t.string :name_en, null: false
       t.string :name_es, null: false

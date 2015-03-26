@@ -1,15 +1,9 @@
 FactoryGirl.define do
   factory :category do
     visibility 1
-photo_count 1
-priority 1
-image "MyString"
-name_ru "MyString"
-name_en "MyString"
-name_es "MyString"
-description_ru "MyText"
-description_en "MyText"
-description_es "MyText"
+    sequence(:slug) { |n| "category-#{n}" }
+    sequence(:name_ru) { |n| "Категория #{n}" }
+    sequence(:name_en) { |n| "Category #{n}" }
+    sequence(:name_es) { |n| "Categoría #{n}" }
   end
-
 end
