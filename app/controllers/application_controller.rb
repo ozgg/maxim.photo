@@ -27,4 +27,11 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
+
+  def allow_authorized_only
+    if current_user.nil?
+      flash[:notice] = t(:please_log_in)
+      redirect_to login_path
+    end
+  end
 end

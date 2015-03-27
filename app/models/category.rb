@@ -5,7 +5,7 @@ class Category < ActiveRecord::Base
   enum visibility: [:hidden, :visible, :main]
 
   # Get localized name of category
-  # 
+  #
   # @param [Symbol] locale
   # @return [String]
   def name(locale)

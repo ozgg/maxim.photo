@@ -2,3 +2,4 @@ ru:
   already_logged_in: "Вы уже вошли"
   invalid_credentials: "Неправильный логин или пароль"
   logged_in_successfully: "Вы успешно вошли"
+  please_log_in: "Пожалуйста, авторизуйтесь"
