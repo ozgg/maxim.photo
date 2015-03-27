@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CategoriesController, type: :controller, wip: true do
+RSpec.describe CategoriesController, type: :controller do
   let(:user) { create :user }
   let!(:main_category) { create :category }
   let!(:visible_category) { create :visible_category }
@@ -112,15 +112,50 @@ RSpec.describe CategoriesController, type: :controller, wip: true do
   end
 
   describe 'PATCH update' do
-    it 'assigns category to @category'
-    it 'checks user authorization'
-    it 'updates category'
-    it 'redirects to category path'
+    let(:category) { create(:category) }
+
+    before(:each) { patch :update, id: category.id, category: { priority: 5 } }
+
+    it 'assigns category to @category' do
+      expect(assigns[:category]).to eq(category)
+    end
+
+    it 'checks user authorization' do
+      expect(controller).to have_received(:allow_authorized_only)
+    end
+
+    it 'updates category' do
+      category.reload
+      expect(category.priority).to eq(5)
+    end
+
+    it 'redirects to category path' do
+      expect(response).to redirect_to(category)
+    end
   end
 
   describe 'DELETE destroy' do
-    it 'assigns category to @category'
-    it 'checks user authorization'
-    it 'deletes category'
+    let!(:category) { create :category }
+
+    let(:action) { -> { delete :destroy, id: category.id } }
+
+    it 'assigns category to @category' do
+      action.call
+      expect(assigns[:category]).to eq(category)
+    end
+
+    it 'checks user authorization' do
+      action.call
+      expect(controller).to have_received(:allow_authorized_only)
+    end
+
+    it 'deletes category' do
+      expect(action).to change(Category, :count).by(-1)
+    end
+
+    it 'redirects to categories path' do
+      action.call
+      expect(response).to redirect_to(categories_path)
+    end
   end
 end

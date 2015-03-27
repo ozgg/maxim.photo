@@ -5,3 +5,5 @@ en:
   please_log_in: "Please log in"
   category:
     created: "Category has been created"
+    updated: "Category has been updated"
+    deleted: "Category has been deleted"

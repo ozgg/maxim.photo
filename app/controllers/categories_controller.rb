@@ -36,11 +36,19 @@ class CategoriesController < ApplicationController
 
   # patch /categories/:id
   def update
-    render :edit
+    if @category.update(category_parameters)
+      flash[:notice] = t('category.updated')
+      redirect_to @category
+    else
+      render :edit
+    end
   end
 
   # delete /categories/:id
   def destroy
+    if @category.destroy
+      flash[:notice] = t('category.deleted')
+    end
     redirect_to categories_path
   end
 
