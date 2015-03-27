@@ -29,7 +29,9 @@ RSpec.describe CategoriesController, type: :controller, wip: true do
         get :index
       end
 
-      it 'does not include hidden categories in @categories'
+      it 'does not include hidden categories in @categories' do
+        expect(assigns[:categories]).not_to include(hidden_category)
+      end
     end
 
     context 'when user is logged in' do
@@ -38,12 +40,21 @@ RSpec.describe CategoriesController, type: :controller, wip: true do
         get :index
       end
 
-      it 'includes hidden categories in @categories'
+      it 'includes hidden categories in @categories' do
+        expect(assigns[:categories]).to include(hidden_category)
+      end
     end
 
     context 'when session does not matter' do
-      it 'includes visible categories in @categories'
-      it 'includes main categories in @categories'
+      before(:each) { get :index }
+
+      it 'includes visible categories in @categories' do
+        expect(assigns[:categories]).to include(visible_category)
+      end
+
+      it 'includes main categories in @categories' do
+        expect(assigns[:categories]).to include(main_category)
+      end
     end
   end
 

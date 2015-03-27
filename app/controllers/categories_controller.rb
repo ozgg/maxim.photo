@@ -4,7 +4,8 @@ class CategoriesController < ApplicationController
 
   # get /categories
   def index
-
+    selection   = current_user ? Category : Category.for_anonymous
+    @categories = selection.order('priority desc').all
   end
 
   # get /categories/new

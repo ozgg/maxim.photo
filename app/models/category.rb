@@ -4,6 +4,10 @@ class Category < ActiveRecord::Base
 
   enum visibility: [:hidden, :visible, :main]
 
+  def self.for_anonymous
+    where(visibility: [Category.visibilities[:visible], Category.visibilities[:main]])
+  end
+
   # Get localized name of category
   #
   # @param [Symbol] locale
