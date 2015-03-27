@@ -24,13 +24,19 @@ RSpec.describe CategoriesController, type: :controller, wip: true do
 
   describe 'GET index' do
     context 'when user is not logged in' do
-      before(:each) { session[:user_id] = nil }
+      before :each do
+        session[:user_id] = nil
+        get :index
+      end
 
       it 'does not include hidden categories in @categories'
     end
 
     context 'when user is logged in' do
-      before(:each) { session[:user_id] = user.id }
+      before :each do
+        session[:user_id] = user.id
+        get :index
+      end
 
       it 'includes hidden categories in @categories'
     end
@@ -65,6 +71,8 @@ RSpec.describe CategoriesController, type: :controller, wip: true do
   end
 
   describe 'GET show' do
+    before(:each) { get :show, id: main_category }
+
     it_should_behave_like 'category setter'
   end
 
@@ -80,7 +88,7 @@ RSpec.describe CategoriesController, type: :controller, wip: true do
 
   describe 'PATCH update' do
     it 'assigns category to @category'
-    it 'chacks user authorization'
+    it 'checks user authorization'
     it 'updates category'
     it 'redirects to category path'
   end
