@@ -15,7 +15,13 @@ class CategoriesController < ApplicationController
 
   # post /categories
   def create
-    render :new
+    @category = Category.new category_parameters
+    if @category.save
+      flash[:notice] = t('category.created')
+      redirect_to @category
+    else
+      render :new
+    end
   end
 
   # get /categories/:id
@@ -48,5 +54,13 @@ class CategoriesController < ApplicationController
       @category = Category.find_by slug: id
       redirect_to categories_path unless @category.is_a? Category
     end
+  end
+
+  def category_parameters
+    allowed = [
+        :image, :priority, :visibility, :slug,
+        :name_ru, :name_en, :name_es, :description_ru, :description_en, :description_es
+    ]
+    params.require(:category).permit(allowed)
   end
 end

@@ -3,3 +3,5 @@ ru:
   invalid_credentials: "Неправильный логин или пароль"
   logged_in_successfully: "Вы успешно вошли"
   please_log_in: "Пожалуйста, авторизуйтесь"
+  category:
+    created: "Категория создана"

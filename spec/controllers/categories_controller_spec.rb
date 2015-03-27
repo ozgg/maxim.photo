@@ -69,16 +69,30 @@ RSpec.describe CategoriesController, type: :controller, wip: true do
   end
 
   describe 'POST create' do
-    let(:parameters) { { category: attributes_for(:category) } }
+    let(:action) { -> { post :create, category: attributes_for(:category, visibility: 'main') } }
 
     before :each do
       session[:user_id] = user.id
     end
 
-    it 'checks user authorization'
-    it 'assigns new instance of Category to @category'
-    it 'creates new record in categories table'
-    it 'redirects to created category'
+    it 'checks user authorization' do
+      action.call
+      expect(controller).to have_received(:allow_authorized_only)
+    end
+
+    it 'assigns new instance of Category to @category' do
+      action.call
+      expect(assigns[:category]).to be_instance_of(Category)
+    end
+
+    it 'creates new record in categories table' do
+      expect(action).to change(Category, :count).by(1)
+    end
+
+    it 'redirects to created category' do
+      action.call
+      expect(response).to redirect_to(Category.last)
+    end
   end
 
   describe 'GET show' do

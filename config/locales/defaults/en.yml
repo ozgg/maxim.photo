@@ -3,3 +3,5 @@ en:
   invalid_credentials: "Invalid credentials"
   logged_in_successfully: "Logged in successfully"
   please_log_in: "Please log in"
+  category:
+    created: "Category has been created"
