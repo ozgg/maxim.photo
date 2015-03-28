@@ -71,4 +71,24 @@ RSpec.describe Category, type: :model do
       expect(category.name :no).to eq(category.slug)
     end
   end
+
+  describe '#description' do
+    let(:category) { create :category_with_descriptions }
+
+    it 'returns description_ru for Russian locale' do
+      expect(category.description :ru).to eq(category.description_ru)
+    end
+
+    it 'returns description_en for English locale' do
+      expect(category.description :en).to eq(category.description_en)
+    end
+
+    it 'returns description_es for Spanish locale' do
+      expect(category.description :es).to eq(category.description_es)
+    end
+
+    it 'returns nil for unknown locale' do
+      expect(category.description :no).to be_nil
+    end
+  end
 end

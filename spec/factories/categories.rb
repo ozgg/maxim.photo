@@ -13,5 +13,11 @@ FactoryGirl.define do
     factory :hidden_category do
       visibility 0
     end
+
+    factory :category_with_descriptions do
+      description_ru 'Описание'
+      description_en 'Description'
+      description_es 'Descriptión'
+    end
   end
 end
