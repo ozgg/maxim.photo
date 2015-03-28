@@ -14,9 +14,14 @@ en:
     one: "%{count} error"
     other: "%{count} errors"
   submit: "Submit"
+  list: "List"
   edit: "Edit"
   view: "View"
   photo:
     zero: "No photos"
     one: "%{count} photo"
     other: "%{count} photos"
+  album:
+    created: "Album has been created"
+    updated: "Album has been updated"
+    deleted: "Album has been deleted"

@@ -1,0 +1,12 @@
+<% content_for :title, t('.title') %>
+
+<section class="album">
+  <h1><%= t('.title') %></h1>
+  <nav>
+    <ul>
+      <li><%= link_to t(:list), albums_path %></li>
+    </ul>
+  </nav>
+
+  <%= render 'form' %>
+</section>

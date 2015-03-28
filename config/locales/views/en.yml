@@ -31,4 +31,11 @@ en:
       title: "Create category"
     edit:
       title: "Edit category"
-  list: "List"
+  categories:
+    index:
+      title: "Photo-albums"
+      description: "Page with list of photo-albums that Maxim Khan-Magomedov shoots."
+    new:
+      title: "Create album"
+    edit:
+      title: "Edit album"

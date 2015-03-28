@@ -16,6 +16,7 @@ ru:
     many: "%{count} ошибок"
     other: "%{count} ошибок"
   submit: "Отправить"
+  list: "Список"
   edit: "Редактировать"
   view: "В просмотр"
   photo:
@@ -24,3 +25,7 @@ ru:
     few: "%{count} фотографии"
     many: "%{count} фотографий"
     other: "%{count} фотографий"
+  album:
+    created: "Альбом создан"
+    updated: "Альбом обновлён"
+    deleted: "Альбом удалён"

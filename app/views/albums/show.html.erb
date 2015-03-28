@@ -1,0 +1,21 @@
+<% content_for :title, @album.name(locale) %>
+<% content_for :description, @album.description(locale) %>
+<% if @album.image %>
+    <% content_for :header_image, @album.image.url %>
+<% end %>
+<%= render 'common/footer' %>
+
+<article class="album">
+  <h1><%= @album.name locale %></h1>
+  <% if current_user %>
+  <nav>
+    <ul>
+      <li><%= link_to t(:list), albums_path %></li>
+      <li><%= link_to t(:edit), edit_album_path(@album) %></li>
+    </ul>
+  </nav>
+  <% end %>
+  <div class="description">
+    <%= simple_format @album.description(locale) %>
+  </div>
+</article>
