@@ -2,7 +2,7 @@
   <ul>
     <li><%= link_to t('.home'), root_path, accesskey: '0' %></li>
     <% Category.main.each do |category| %>
-        <li><%= link_to category.name(locale), category %></li>
+        <li><%= category_by_slug category %></li>
     <% end %>
     <li><%= link_to t('.about'), about_path, accesskey: 'a' %></li>
   </ul>

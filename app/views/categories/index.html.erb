@@ -18,9 +18,10 @@
           <% if category.image %>
           <%= image_tag category.image.medium.url, alt: category.name(locale) %>
           <% end %>
-          <figcaption><%= category.name locale %></figcaption>
+          <figcaption><%= category_by_slug category %></figcaption>
         </figure>
         <div><%= simple_format category.description(locale) %></div>
+        <div><%= t(:photo, count: category.photo_count) %></div>
       </div>
       <% end %>
   <% else %>

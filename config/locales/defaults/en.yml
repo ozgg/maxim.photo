@@ -16,3 +16,7 @@ en:
   submit: "Submit"
   edit: "Edit"
   view: "View"
+  photo:
+    zero: "No photos"
+    one: "%{count} photo"
+    other: "%{count} photos"

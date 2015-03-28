@@ -1,15 +1,12 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the CategoriesHelper. For example:
-#
-# describe CategoriesHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe CategoriesHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#category_by_slug' do
+    let(:category) { create :category }
+
+    it 'returns link with category slug as id' do
+      expected_link = link_to category.name(I18n.locale), category_path(id: category.slug)
+      expect(helper.category_by_slug(category)).to eq(expected_link)
+    end
+  end
 end
