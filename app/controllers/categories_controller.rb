@@ -26,12 +26,10 @@ class CategoriesController < ApplicationController
 
   # get /categories/:id
   def show
-
   end
 
   # get /categories/:id/edit
   def edit
-
   end
 
   # patch /categories/:id
