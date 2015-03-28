@@ -7,3 +7,5 @@ en:
     created: "Category has been created"
     updated: "Category has been updated"
     deleted: "Category has been deleted"
+  create: "Create"
+  nothing_found: "Nothing found"

@@ -22,3 +22,10 @@ en:
       enter: "Enter"
       login: "Login"
       password: "Password"
+  categories:
+    index:
+      title: "Categories of photos"
+      description: "Page with list of categories of photos that Maxim Khan-Magomedov shoots."
+    new:
+      title: "Create category"
+  list: "List"
