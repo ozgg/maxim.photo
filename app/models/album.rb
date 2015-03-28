@@ -1,6 +1,8 @@
 class Album < ActiveRecord::Base
   include TranslatableNames
 
+  has_many :photos, dependent: :nullify
+
   validates_presence_of :slug, :name_ru, :name_en, :name_es
   validates_uniqueness_of :slug, :name_ru, :name_en, :name_es
 
