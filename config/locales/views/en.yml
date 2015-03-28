@@ -28,4 +28,6 @@ en:
       description: "Page with list of categories of photos that Maxim Khan-Magomedov shoots."
     new:
       title: "Create category"
+    edit:
+      title: "Edit category"
   list: "List"

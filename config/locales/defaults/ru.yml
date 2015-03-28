@@ -9,3 +9,12 @@ ru:
     deleted: "Категория удалена"
   create: "Создать"
   nothing_found: "Ничего не найдено"
+  error:
+    zero: "нет ошибок"
+    one: "%{count} ошибка"
+    few: "%{count} ошибки"
+    many: "%{count} ошибок"
+    other: "%{count} ошибок"
+  submit: "Отправить"
+  edit: "Редактировать"
+  view: "В просмотр"

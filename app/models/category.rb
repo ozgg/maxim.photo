@@ -18,4 +18,9 @@ class Category < ActiveRecord::Base
     method_name = "name_#{locale}"
     respond_to?(method_name) ? send(method_name) : slug
   end
+
+  def description(locale)
+    method_name = "description_#{locale}"
+    respond_to?(method_name) ? send(method_name) : nil
+  end
 end

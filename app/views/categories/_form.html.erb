@@ -1,0 +1,47 @@
+<%= form_for @category do |f| %>
+    <%= render partial: 'common/errors_list', locals: { entity: @category } %>
+
+    <div>
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+    </div>
+    <div>
+      <%= f.label :slug %>
+      <%= f.text_field :slug, required: true %>
+    </div>
+    <div>
+      <%= f.label :visibility %>
+      <%= f.select :visibility, Category.visibilities.keys.to_a.map { |e| [t("activerecord.attributes.category.visibilities.#{e}"), e] } %>
+    </div>
+    <div>
+      <%= f.label :priority %>
+      <%= f.number_field :priority, min: 0, max: 100, required: true %>
+    </div>
+    <div>
+      <%= f.label :name_ru %>
+      <%= f.text_field :name_ru, required: true %>
+    </div>
+    <div>
+      <%= f.label :name_en %>
+      <%= f.text_field :name_en, required: true %>
+    </div>
+    <div>
+      <%= f.label :name_es %>
+      <%= f.text_field :name_es, required: true %>
+    </div>
+    <div>
+      <%= f.label :description_ru %><br />
+      <%= f.text_area :description_ru, cols: 80, rows: 10 %>
+    </div>
+    <div>
+      <%= f.label :description_en %><br />
+      <%= f.text_area :description_en, cols: 80, rows: 10 %>
+    </div>
+    <div>
+      <%= f.label :description_es %><br />
+      <%= f.text_area :description_es, cols: 80, rows: 10 %>
+    </div>
+    <div>
+      <%= f.button t(:submit), type: :submit %>
+    </div>
+<% end %>

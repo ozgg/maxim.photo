@@ -1,0 +1,15 @@
+<%= content_for :title, @category.name(locale) %>
+<%= content_for :description, @category.description(locale) %>
+<%= render 'common/footer' %>
+
+<article class="category">
+  <h1><%= @category.name locale %></h1>
+  <% if current_user %>
+  <nav>
+    <ul>
+      <li><%= link_to t(:list), categories_path %></li>
+      <li><%= link_to t(:edit), edit_category_path(@category) %></li>
+    </ul>
+  </nav>
+  <% end %>
+</article>

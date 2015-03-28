@@ -9,3 +9,10 @@ en:
     deleted: "Category has been deleted"
   create: "Create"
   nothing_found: "Nothing found"
+  error:
+    zero: "no errors"
+    one: "%{count} error"
+    other: "%{count} errors"
+  submit: "Submit"
+  edit: "Edit"
+  view: "View"
