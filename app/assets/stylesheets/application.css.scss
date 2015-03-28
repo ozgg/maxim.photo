@@ -36,6 +36,24 @@ body {
       position: absolute;
       bottom: 0;
       left: 0;
+
+      a:link, a:visited {
+        color: #8080ff;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+
+        li {
+          margin: 0 15px 0 0;
+          padding: 5px 15px;
+          list-style: none;
+          display: inline-block;
+          background: rgba(255, 255, 255, 0.5);
+          font-size: 1.2em;
+        }
+      }
     }
   }
 

@@ -2,6 +2,7 @@ ru:
   common:
     main_navigation:
       about: "Обо мне"
+      home: "На главную"
     languages:
       russian: "Версия на русском"
       english: "Версия на английском"

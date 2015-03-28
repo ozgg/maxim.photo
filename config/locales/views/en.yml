@@ -2,6 +2,7 @@ en:
   common:
     main_navigation:
       about: "About me"
+      home: "Home"
     languages:
       russian: "Russian version"
       english: "English version"

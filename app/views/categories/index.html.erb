@@ -12,6 +12,17 @@
       </nav>
   <% end %>
   <% if @categories.any? %>
+      <% @categories.each do |category| %>
+      <div class="category">
+        <figure>
+          <% if category.image %>
+          <%= image_tag category.image.medium.url, alt: category.name(locale) %>
+          <% end %>
+          <figcaption><%= category.name locale %></figcaption>
+        </figure>
+        <div><%= simple_format category.description(locale) %></div>
+      </div>
+      <% end %>
   <% else %>
       <%= render 'common/nothing_found' %>
   <% end %>
