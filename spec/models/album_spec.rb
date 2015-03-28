@@ -1,16 +1,55 @@
 require 'rails_helper'
 
-RSpec.describe Album, type: :model, wip: true do
+RSpec.describe Album, type: :model do
   context 'validating' do
-    it 'passes with valid attributes'
-    it 'fails without slug'
-    it 'fails without Russian name'
-    it 'fails without English name'
-    it 'fails without Spanish name'
-    it 'fails with non-unique slug'
-    it 'fails with non-unique Russian name'
-    it 'fails with non-unique English name'
-    it 'fails with non-unique Spanish name'
+    it 'passes with valid attributes' do
+      album = build :album
+      expect(album).to be_valid
+    end
+
+    it 'fails without slug' do
+      album = build :album, slug: ''
+      expect(album).not_to be_valid
+    end
+
+    it 'fails without Russian name' do
+      album = build :album, name_ru: ''
+      expect(album).not_to be_valid
+    end
+
+    it 'fails without English name' do
+      album = build :album, name_en: ''
+      expect(album).not_to be_valid
+    end
+
+    it 'fails without Spanish name' do
+      album = build :album, name_es: ''
+      expect(album).not_to be_valid
+    end
+
+    it 'fails with non-unique slug' do
+      existing_album = create :album
+      album = build :album, slug: existing_album.slug
+      expect(album).not_to be_valid
+    end
+
+    it 'fails with non-unique Russian name' do
+      existing_album = create :album
+      album = build :album, name_ru: existing_album.name_ru
+      expect(album).not_to be_valid
+    end
+
+    it 'fails with non-unique English name' do
+      existing_album = create :album
+      album = build :album, name_en: existing_album.name_en
+      expect(album).not_to be_valid
+    end
+
+    it 'fails with non-unique Spanish name' do
+      existing_album = create :album
+      album = build :album, name_es: existing_album.name_es
+      expect(album).not_to be_valid
+    end
   end
   
   describe '#name' do
