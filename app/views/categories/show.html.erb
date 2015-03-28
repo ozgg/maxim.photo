@@ -1,5 +1,8 @@
-<%= content_for :title, @category.name(locale) %>
-<%= content_for :description, @category.description(locale) %>
+<% content_for :title, @category.name(locale) %>
+<% content_for :description, @category.description(locale) %>
+<% if @category.image %>
+    <% content_for :header_image, @category.image.url %>
+<% end %>
 <%= render 'common/footer' %>
 
 <article class="category">
@@ -12,4 +15,7 @@
     </ul>
   </nav>
   <% end %>
+  <div class="description">
+    <%= simple_format @category.description(locale) %>
+  </div>
 </article>
