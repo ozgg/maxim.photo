@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'index#index'
 
   scope '(:locale)', locale: /ru|en/ do
-    resources :categories
+    resources :categories, :albums
 
     controller :index do
       get 'about' => :about
