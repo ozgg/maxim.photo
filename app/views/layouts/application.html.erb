@@ -11,7 +11,7 @@
   <% end %>
 </head>
 <body>
-<header <%= content_for?(:header_image) ? raw("style=\"background-image:url('#{yield(:header_image)}')\"") : '' %>>
+<header style="background-image: url('<%= content_for?(:header_image) ? yield(:header_image) : image_path('header_background.jpg') %>')">
   <div class="logo">/mj</div>
   <%= render 'common/languages' %>
   <%= render 'common/main_navigation' %>
