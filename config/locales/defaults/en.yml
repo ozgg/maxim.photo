@@ -21,6 +21,9 @@ en:
     zero: "No photos"
     one: "%{count} photo"
     other: "%{count} photos"
+    created: "Photo has been created"
+    updated: "Photo has been updated"
+    deleted: "Photo has beed deleted"
   album:
     created: "Album has been created"
     updated: "Album has been updated"
