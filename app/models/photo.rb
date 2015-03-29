@@ -3,6 +3,8 @@ class Photo < ActiveRecord::Base
 
   validates_presence_of :image
 
+  mount_uploader :image, PhotoUploader
+
   def name(locale)
     method_name, result = "name_#{locale}", ''
     if respond_to? method_name
