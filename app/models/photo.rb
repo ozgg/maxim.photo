@@ -1,5 +1,7 @@
 class Photo < ActiveRecord::Base
   belongs_to :album, counter_cache: true
+  has_many :photo_categories, dependent: :destroy
+  has_many :categories, through: :photo_categories
 
   validates_presence_of :image
 

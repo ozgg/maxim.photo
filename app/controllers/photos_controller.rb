@@ -5,6 +5,8 @@ class PhotosController < ApplicationController
   def index
     if current_user
       @photos = Photo.order('id desc').page(params[:page] || 1).per(10)
+    else
+      redirect_to root_path
     end
   end
 
