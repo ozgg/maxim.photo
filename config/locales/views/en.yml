@@ -39,3 +39,7 @@ en:
       title: "Create album"
     edit:
       title: "Edit album"
+  photos:
+    index:
+      title: "Photos, page %{page}"
+      header: "Photos"

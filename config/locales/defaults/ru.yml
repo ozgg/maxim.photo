@@ -33,3 +33,4 @@ ru:
     updated: "Альбом обновлён"
     deleted: "Альбом удалён"
   untitled: "Без названия"
+  page_number: "Страница %{page}"

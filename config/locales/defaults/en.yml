@@ -29,3 +29,4 @@ en:
     updated: "Album has been updated"
     deleted: "Album has been deleted"
   untitled: "Untitled"
+  page_number: "Page %{page}"

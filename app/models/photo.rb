@@ -15,4 +15,8 @@ class Photo < ActiveRecord::Base
 
     result.blank? ? I18n.t(:untitled) : result
   end
+
+  def category_ids=(ids)
+
+  end
 end
