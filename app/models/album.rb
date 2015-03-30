@@ -15,4 +15,10 @@ class Album < ActiveRecord::Base
       order('priority desc').all
     end
   end
+
+  def self.list_for_photo_form
+    albums = [[I18n.t(:not_set), '']]
+    self.order('slug asc').each { |album| albums << [album.slug, album.id] }
+    albums
+  end
 end

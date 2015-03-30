@@ -7,6 +7,10 @@ class PhotoCategory < ActiveRecord::Base
   after_create :increment_photo_count
   before_destroy :decrement_photo_count
 
+  def self.by_pair(photo, category)
+    find_by photo: photo, category: category
+  end
+
   private
 
   def increment_photo_count

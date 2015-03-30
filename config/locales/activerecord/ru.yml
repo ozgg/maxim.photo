@@ -29,3 +29,13 @@ ru:
         description_ru: "описание на русском"
         description_en: "описание на английском"
         description_es: "описание на испанском"
+      photo:
+        image: "картинка"
+        album_id: "альбом"
+        category: "категория"
+        name_ru: "название на русском"
+        name_en: "название на английском"
+        name_es: "название на испанском"
+        description_ru: "описание на русском"
+        description_en: "описание на английском"
+        description_es: "описание на испанском"

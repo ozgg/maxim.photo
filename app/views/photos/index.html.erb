@@ -14,8 +14,8 @@
       <%= paginate @photos %>
       <% @photos.each do |photo| %>
           <figure>
-            <%= image_tag photo.image.small.url, alt: image.name %>
-            <figcaption><%= link_to photo.name, photo %></figcaption>
+            <%= image_tag photo.image.small.url, alt: photo.name(locale) %>
+            <figcaption><%= link_to photo.name(locale), photo %></figcaption>
           </figure>
       <% end %>
       <%= paginate @photos %>

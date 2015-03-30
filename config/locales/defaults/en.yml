@@ -30,3 +30,4 @@ en:
     deleted: "Album has been deleted"
   untitled: "Untitled"
   page_number: "Page %{page}"
+  not_set: "Not set"

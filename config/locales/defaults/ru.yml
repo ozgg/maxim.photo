@@ -34,3 +34,4 @@ ru:
     deleted: "Альбом удалён"
   untitled: "Без названия"
   page_number: "Страница %{page}"
+  not_set: "Не задано"

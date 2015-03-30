@@ -19,4 +19,8 @@ class Photo < ActiveRecord::Base
   def category_ids=(ids)
 
   end
+
+  def has_category?(category)
+    !PhotoCategory.by_pair(self, category).nil?
+  end
 end
