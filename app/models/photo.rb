@@ -16,8 +16,20 @@ class Photo < ActiveRecord::Base
     result.blank? ? I18n.t(:untitled) : result
   end
 
-  def category_ids=(ids)
+  def description(locale)
+    method_name, result = "description_#{locale}", ''
+    if respond_to? method_name
+      result = send(method_name)
+    end
 
+    result.blank? ? nil : result
+  end
+
+  def category_ids=(ids)
+    Category.all.each do |category|
+      linked = ids.include? category.id.to_s
+      PhotoCategory.set_link id, category.id, linked
+    end
   end
 
   def has_category?(category)

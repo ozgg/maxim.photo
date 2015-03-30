@@ -11,6 +11,15 @@ class PhotoCategory < ActiveRecord::Base
     find_by photo: photo, category: category
   end
 
+  def self.set_link(photo_id, category_id, linked)
+    link = find_by photo_id: photo_id, category_id: category_id
+    if linked
+      create!(photo_id: photo_id, category_id: category_id) if link.nil?
+    else
+      link.destroy unless link.nil?
+    end
+  end
+
   private
 
   def increment_photo_count

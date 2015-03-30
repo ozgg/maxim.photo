@@ -1,0 +1,16 @@
+<% content_for :title, @photo.name(locale) %>
+<% content_for :description, @photo.description(locale) %>
+<%= render 'common/footer' %>
+
+<article class="photo">
+  <h1><%= @photo.name(locale) %></h1>
+  <figure>
+    <%= image_tag @photo.image.medium.url %>
+  </figure>
+  <div><%= simple_format @photo.description(locale) %></div>
+  <div>
+    <% @photo.categories.each do |category| %>
+        <%= link_to category.name(locale), category_by_slug(category) %>
+    <% end %>
+        </div>
+</article>
