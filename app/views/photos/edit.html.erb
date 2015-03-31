@@ -1,0 +1,17 @@
+<% content_for :title, t('.title') %>
+
+<section class="photo-form">
+  <h1><%= t('.title') %></h1>
+  <nav>
+    <ul>
+      <li><%= link_to t(:list), photos_path %></li>
+      <li><%= link_to t(:view), @photo %></li>
+    </ul>
+  </nav>
+
+  <figure>
+    <%= image_tag @photo.image.small.url %>
+  </figure>
+
+  <%= render 'form' %>
+</section>

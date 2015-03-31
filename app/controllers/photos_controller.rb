@@ -17,6 +17,7 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_parameters)
     if @photo.save
+      set_categories
       flash[:notice] = t('photo.created')
       redirect_to @photo
     else
@@ -34,6 +35,7 @@ class PhotosController < ApplicationController
 
   def update
     if @photo.update(photo_parameters)
+      set_categories
       flash[:notice] = t('photo.updated')
       redirect_to @photo
     else
@@ -56,9 +58,15 @@ class PhotosController < ApplicationController
 
   def photo_parameters
     allowed = [
-        :album_id, :category_ids, :image, :name_ru, :name_en, :name_es,
+        :album_id, :image, :name_ru, :name_en, :name_es,
         :description_ru, :description_en, :description_es
     ]
     params.require(:photo).permit(allowed)
+  end
+
+  def set_categories
+    if params[:photo][:category_ids]
+      @photo.category_ids = params[:photo][:category_ids]
+    end
   end
 end

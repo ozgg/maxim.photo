@@ -45,3 +45,5 @@ en:
       header: "Photos"
     new:
       title: "Add photo"
+    edit:
+      title: "Editing photo"

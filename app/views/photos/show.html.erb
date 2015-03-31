@@ -4,13 +4,21 @@
 
 <article class="photo">
   <h1><%= @photo.name(locale) %></h1>
+  <% if current_user %>
+      <ul>
+        <li><%= link_to t(:list), photos_path %></li>
+        <li><%= link_to t(:edit), edit_photo_path(@photo) %></li>
+      </ul>
+  <% end %>
   <figure>
     <%= image_tag @photo.image.medium.url %>
   </figure>
   <div><%= simple_format @photo.description(locale) %></div>
-  <div>
-    <% @photo.categories.each do |category| %>
-        <%= link_to category.name(locale), category_by_slug(category) %>
-    <% end %>
-        </div>
+  <% if @photo.categories.any? %>
+      <ul class="categories" aria-label="<%= t('activerecord.attributes.photo.category') %>">
+        <% @photo.categories.each do |category| %>
+            <li><%= category_by_slug(category, rel: 'tag') %></li>
+        <% end %>
+      </ul>
+  <% end %>
 </article>
