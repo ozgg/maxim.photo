@@ -1,18 +1,18 @@
-<%= content_for :title, t('.title') %>
-
-<section class="category">
-  <h1><%= t('.title') %></h1>
-  <nav>
+<% content_for :title, t('.title') %>
+<% content_for :administrative_links do %>
     <ul>
       <li><%= link_to t(:list), categories_path %></li>
       <li><%= link_to t(:view), category_path(@category) %></li>
     </ul>
-  </nav>
+<% end %>
+
+<section class="category">
+  <h1><%= t('.title') %></h1>
 
   <% if @category.image.url %>
-  <figure>
-    <%= image_tag @category.image.medium.url, alt: t('activerecord.attributes.category.image') %>
-  </figure>
+      <figure>
+        <%= image_tag @category.image.medium.url, alt: t('activerecord.attributes.category.image') %>
+      </figure>
   <% end %>
 
   <%= render 'form' %>

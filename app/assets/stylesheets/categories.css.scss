@@ -1,5 +1,20 @@
-section.categories {
+section.categories, .category {
   padding: 15px;
+
+  > figure {
+    margin: 0;
+    padding: 0;
+  }
+
+  > form {
+    padding: 1em 0;
+    max-width: 640px;
+
+    textarea {
+      width: 100%;
+      max-width: 630px;
+    }
+  }
 }
 
 div.category {
@@ -8,8 +23,6 @@ div.category {
   max-width: 640px;
 
   > figure {
-    margin: 0;
-    padding: 0;
     position: relative;
     min-height: 30px;
 
@@ -37,4 +50,8 @@ div.category {
     color: #444444;
     font-style: italic;
   }
+}
+
+article.category > section > div {
+
 }

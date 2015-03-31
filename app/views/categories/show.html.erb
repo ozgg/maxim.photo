@@ -5,17 +5,20 @@
 <% end %>
 <%= render 'common/footer' %>
 
-<article class="category">
-  <h1><%= @category.name locale %></h1>
-  <% if current_user %>
-  <nav>
+<% content_for :administrative_links do %>
     <ul>
       <li><%= link_to t(:list), categories_path %></li>
       <li><%= link_to t(:edit), edit_category_path(@category) %></li>
     </ul>
-  </nav>
-  <% end %>
+<% end %>
+
+<article class="category">
+  <h1><%= @category.name locale %></h1>
   <div class="description">
     <%= simple_format @category.description(locale) %>
   </div>
+  <section>
+    <h1><%= t('.photos') %></h1>
+    <div class="photos-container"><%= render @category.photos %></div>
+  </section>
 </article>

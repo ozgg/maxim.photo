@@ -34,6 +34,8 @@ en:
       title: "Create category"
     edit:
       title: "Edit category"
+    show:
+      photos: "Photos"
   categories:
     index:
       title: "Photo-albums"
