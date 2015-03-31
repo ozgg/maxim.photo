@@ -74,3 +74,18 @@ a:link, a:visited {
 a:hover {
   color: #ff4040;
 }
+
+div#main {
+  position: relative;
+
+  > aside {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 360px;
+  }
+}
+
+div#content {
+  margin-right: 360px;
+}

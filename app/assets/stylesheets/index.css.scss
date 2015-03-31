@@ -28,3 +28,16 @@ article.about {
     margin: 0;
   }
 }
+
+div.photos-container {
+  margin-right: 360px;
+
+  > div {
+    display: inline-block;
+    padding: 15px;
+
+    &:hover {
+      background: #f0f0f0;
+    }
+  }
+}

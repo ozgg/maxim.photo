@@ -21,15 +21,12 @@
   <% unless flash[:notice].nil? %>
       <div id="notice"><%= flash[:notice] %></div>
   <% end %>
-  <% if current_user %>
-  <ul>
-    <li><%= link_to t('categories.index.title'), categories_path %></li>
-    <li><%= link_to t('albums.index.title'), albums_path %></li>
-    <li><%= link_to t('photos.index.header'), photos_path %></li>
-  </ul>
-  <% end %>
 
-  <%= yield %>
+  <div id="content">
+    <%= yield %>
+  </div>
+
+  <%= render 'common/sidebar' %>
 </div>
 
 <footer>

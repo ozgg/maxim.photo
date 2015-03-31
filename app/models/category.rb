@@ -14,4 +14,13 @@ class Category < ActiveRecord::Base
   def self.for_anonymous
     where(visibility: [visibilities[:visible], visibilities[:main]])
   end
+
+  def self.recent_photos
+    photos = []
+    self.for_anonymous.each do |category|
+      photo = category.photos.last
+      photos << photo unless photo.nil?
+    end
+    photos
+  end
 end
