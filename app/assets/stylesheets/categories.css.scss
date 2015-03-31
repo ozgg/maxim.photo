@@ -1,0 +1,40 @@
+section.categories {
+  padding: 15px;
+}
+
+div.category {
+  border-bottom: dotted 1px;
+  padding: 15px;
+  max-width: 640px;
+
+  > figure {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-height: 30px;
+
+    > figcaption {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 6px 15px;
+      font-weight: bold;
+    }
+  }
+
+  p {
+    margin: 0.5em 0 0 0;
+  }
+
+  div {
+    max-width: 640px;
+  }
+
+  div.count {
+    padding: 0.5em 0.5em 0 0.5em;
+    font-size: 0.9em;
+    color: #444444;
+    font-style: italic;
+  }
+}
