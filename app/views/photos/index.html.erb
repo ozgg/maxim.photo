@@ -1,24 +1,39 @@
 <% content_for :title, t('.title', page: selected_page) %>
+<% content_for :administrative_links do %>
+    <ul>
+      <li><%= link_to t(:create), new_photo_path %></li>
+    </ul>
+<% end %>
 
 <section class="list-of-photos">
   <h1><%= t('.header') %></h1>
 
   <h2><%= page_number %></h2>
-  <nav>
-    <ul>
-      <li><%= link_to t(:create), new_photo_path %></li>
-    </ul>
-  </nav>
 
   <% if @photos.any? %>
-      <%= paginate @photos %>
-      <% @photos.each do |photo| %>
-          <figure>
-            <%= image_tag photo.image.small.url, alt: photo.name(locale) %>
-            <figcaption><%= link_to photo.name(locale), photo %></figcaption>
-          </figure>
-      <% end %>
-      <%= paginate @photos %>
+      <table>
+        <thead>
+        <tr>
+          <th colspan="2"><%= paginate @photos %></th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+          <th colspan="2"><%= paginate @photos %></th>
+        </tr>
+        </tfoot>
+        <tbody>
+        <% @photos.each do |photo| %>
+            <tr>
+              <th><%= image_tag photo.image.small.url, alt: photo.name(locale) %></th>
+              <td>
+                <div><%= link_to photo.name(locale), photo %></div>
+                <div><%= photo.description(locale) %></div>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
   <% else %>
       <%= render 'common/nothing_found' %>
   <% end %>
