@@ -21,4 +21,13 @@ class Album < ActiveRecord::Base
     self.order('slug asc').each { |album| albums << [album.slug, album.id] }
     albums
   end
+
+  def self.recent_photos
+    photos = []
+    where(hidden: false).each do |album|
+      photo = album.photos.last
+      photos << photo unless photo.nil?
+    end
+    photos
+  end
 end
