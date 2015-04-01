@@ -52,6 +52,19 @@ div.category {
   }
 }
 
-article.category > section > div {
+ul.categories {
+  margin: 0;
+  padding: 0;
 
+  li {
+    display: inline-block;
+    list-style: none;
+    padding: 5px 15px;
+    border: outset 1px;
+    border-radius: 8px;
+
+    &:before {
+      content: "📓"
+    }
+  }
 }
