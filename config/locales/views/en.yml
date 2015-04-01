@@ -52,3 +52,6 @@ en:
       title: "Add photo"
     edit:
       title: "Editing photo"
+  albums:
+    show:
+      photos: "Photos in album"

@@ -18,11 +18,10 @@
 </header>
 
 <div id="main">
-  <% unless flash[:notice].nil? %>
-      <div id="notice"><%= flash[:notice] %></div>
-  <% end %>
-
   <div id="content">
+    <% unless flash[:notice].nil? %>
+        <div id="notice"><%= flash[:notice] %></div>
+    <% end %>
     <%= yield %>
   </div>
 

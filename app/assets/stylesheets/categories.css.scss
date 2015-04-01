@@ -1,4 +1,4 @@
-section.categories, .category {
+section.categories, .category, section.albums, .album {
   padding: 15px;
 
   > figure {
@@ -17,7 +17,7 @@ section.categories, .category {
   }
 }
 
-div.category {
+div.category, div.album {
   border-bottom: dotted 1px;
   padding: 15px;
   max-width: 640px;

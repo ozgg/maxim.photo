@@ -1,29 +1,17 @@
 <% content_for :title, t('.title') %>
 <% content_for :description, t('.description') %>
+<% content_for :administrative_links do %>
+    <ul>
+      <li><%= link_to t(:create), new_album_path %></li>
+    </ul>
+<% end %>
 <%= render 'common/footer' %>
 
 <section class="albums">
   <h1><%= t('.title') %></h1>
-  <% if current_user %>
-      <nav>
-        <ul>
-          <li><%= link_to t(:create), new_album_path %></li>
-        </ul>
-      </nav>
-  <% end %>
+
   <% if @albums.any? %>
-      <% @albums.each do |album| %>
-      <div class="album">
-        <figure>
-          <% if album.image %>
-          <%= image_tag album.image.medium.url, alt: album.name(locale) %>
-          <% end %>
-          <figcaption><%= album_by_slug album %></figcaption>
-        </figure>
-        <div><%= simple_format album.description(locale) %></div>
-        <div><%= t(:photo, count: album.photos_count) %></div>
-      </div>
-      <% end %>
+      <%= render @albums %>
   <% else %>
       <%= render 'common/nothing_found' %>
   <% end %>

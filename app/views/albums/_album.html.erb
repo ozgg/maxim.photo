@@ -1,0 +1,10 @@
+<div class="album">
+  <figure>
+    <% if album.image.url %>
+        <%= image_tag album.image.medium.url, alt: album.name(locale) %>
+    <% end %>
+    <figcaption><%= album_by_slug album %></figcaption>
+  </figure>
+  <div><%= simple_format album.description(locale) %></div>
+  <div class="count"><%= t(:photo, count: album.photos_count) %></div>
+</div>

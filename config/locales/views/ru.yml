@@ -44,6 +44,8 @@ ru:
       title: "Добавить альбом"
     edit:
       title: "Редактировать альбом"
+    show:
+      photos: "Фотографии альбома"
   photos:
     index:
       title: "Фотографии, страница %{page}"
