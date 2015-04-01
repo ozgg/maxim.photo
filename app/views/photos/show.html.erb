@@ -12,7 +12,7 @@
   <h1><%= @photo.name(locale) %></h1>
 
   <figure>
-    <%= image_tag @photo.image.medium.url %>
+    <%= link_to image_tag(@photo.image.medium.url), @photo.image.large.url %>
   </figure>
   <div><%= simple_format @photo.description(locale) %></div>
   <% if @photo.categories.any? %>
