@@ -1,36 +1,14 @@
 <!DOCTYPE html>
-<html lang="<%= locale %>">
+<html>
 <head>
-  <title><%= yield :title %> :: maxim.photo</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
+  <title>MaximPhoto</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <meta charset="UTF-8" />
-  <% if content_for? :description %>
-  <meta name="description" content="<%= yield :description %>" />
-  <% end %>
 </head>
 <body>
-<header style="background-image: url('<%= content_for?(:header_image) ? yield(:header_image) : image_path('header_background.jpg') %>')">
-  <div class="logo">/mj</div>
-  <%= render 'common/languages' %>
-  <%= render 'common/main_navigation' %>
-</header>
 
-<div id="main">
-  <div id="content">
-    <% unless flash[:notice].nil? %>
-        <div id="notice"><%= flash[:notice] %></div>
-    <% end %>
-    <%= yield %>
-  </div>
+<%= yield %>
 
-  <%= render 'common/sidebar' %>
-</div>
-
-<footer>
-  <div class="copyright">&copy; 2008–2015 Maxim Khan-Magomedov</div>
-  <%= yield :footer %>
-</footer>
 </body>
 </html>
