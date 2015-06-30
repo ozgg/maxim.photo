@@ -1,0 +1,15 @@
+ru:
+  activerecord:
+    attributes:
+      language:
+        code: "код"
+        slug: "локализация"
+      user:
+        login: "логин"
+        password: "пароль"
+        password_confirmation: "подтверждение пароля"
+      photo:
+        visible: "показывать"
+        name: "название"
+        image: "картинка"
+        description: "описание"

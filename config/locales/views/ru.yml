@@ -1,0 +1,23 @@
+ru:
+  index:
+    index:
+      title: "Главная страница"
+    about:
+      title: "Обо мне"
+  photos:
+    index:
+      title: "Фотографии, страница %{page}"
+      header: "Фотографии"
+    show:
+      title: "Фотография «%{name}»"
+    new:
+      title: "Добавление фотографии"
+    edit:
+      title: "Редактирование фотографии"
+  views:
+    pagination:
+      first: "⇤"
+      last: "⇥"
+      previous: "←"
+      next: "→"
+      truncate: "..."
