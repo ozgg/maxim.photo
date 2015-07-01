@@ -5,7 +5,7 @@ require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 
 set :domain, 'maxim.photo'
 set :deploy_to, '/var/www/maxim.photo'
-set :repository, 'git://git@github.com:ozgg/maxim.photo.git'
+set :repository, 'git@github.com:ozgg/maxim.photo.git'
 set :branch, 'master'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
