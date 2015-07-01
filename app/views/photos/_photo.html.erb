@@ -1,0 +1,15 @@
+<article class="photo">
+  <h1><%= photo.name %></h1>
+  <% if current_user %>
+      <nav class="actions">
+        <ul>
+          <li><%= link_to t(:edit), edit_photo_path(photo) %></li>
+          <li><%= link_to t(:create), new_photo_path %></li>
+        </ul>
+      </nav>
+  <% end %>
+  <figure class="big">
+    <%= link_to image_tag(photo.image.big.url, alt: photo.name), photo.image.big.url %>
+    <figcaption><%= photo.description %></figcaption>
+  </figure>
+</article>

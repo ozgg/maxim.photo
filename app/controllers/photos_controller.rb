@@ -3,7 +3,11 @@ class PhotosController < ApplicationController
   before_action :set_entity, only: [:show, :edit, :update, :destroy]
 
   def index
-    @collection = Photo.visible.order('id desc').page(current_page).per(9)
+    if current_user
+      @collection = Photo.visible.order('id desc').page(current_page).per(9)
+    else
+      @collection = Photo.visible.order('id desc').page(current_page).per(9)
+    end
   end
 
   def new

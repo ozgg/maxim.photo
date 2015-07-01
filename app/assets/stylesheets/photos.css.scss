@@ -9,6 +9,23 @@
         max-height: 180px;
       }
     }
+
+    &.big {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+
+      img {
+        max-width: 640px;
+        max-height: 360px;
+      }
+
+      figcaption {
+        border: solid #f7f7f7 1px;
+        text-align: left;
+        padding: 15px;
+      }
+    }
   }
 
   form {
