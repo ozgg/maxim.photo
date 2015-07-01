@@ -10,6 +10,8 @@
       </nav>
   <% end %>
 
+  <%= paginate @collection %>
+
   <% if @collection.any? %>
       <% @collection.each do |entity| %>
         <%= render partial: 'photos/preview', locals: { photo: entity } %>
