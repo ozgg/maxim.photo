@@ -7,7 +7,7 @@ class Photo < ActiveRecord::Base
 
   def adjacent
     {
-        previous: Photo.visible.where('id < ?', self.id).first,
+        previous: Photo.visible.where('id < ?', self.id).last,
         next: Photo.visible.where('id > ?', self.id).first,
     }
   end
