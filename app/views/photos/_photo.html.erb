@@ -13,4 +13,6 @@
     <%= link_to image_tag(photo.image.big.url, alt: photo.name), photo.image.big.url %>
     <figcaption><%= photo.description %></figcaption>
   </figure>
+
+  <%= render partial: 'adjacent', locals: { photos: photo.adjacent } %>
 </article>

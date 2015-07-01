@@ -1,0 +1,8 @@
+<nav class="adjacent">
+  <% unless photos[:previous].nil? %>
+      <div class="previous"><%= link_to_photo photos[:previous], rel: :prev %></div>
+  <% end %>
+  <% unless photos[:next].nil? %>
+      <div class="next"><%= link_to_photo photos[:next], rel: :next %></div>
+  <% end %>
+</nav>

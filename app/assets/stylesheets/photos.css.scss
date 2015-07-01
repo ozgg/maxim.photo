@@ -71,3 +71,31 @@
     }
   }
 }
+
+nav.adjacent {
+  width: 640px;
+  height: 75px;
+  margin: 15px auto 0;
+
+  img {
+    width: 75px;
+    height: 75px;
+  }
+
+  .previous {
+    float: left;
+    line-height: 75px;
+
+    &:before {
+      content: '← ';
+    }
+  }
+
+  .next {
+    float: right;
+
+    &:after {
+      content: ' →';
+    }
+  }
+}

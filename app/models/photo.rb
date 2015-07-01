@@ -4,4 +4,11 @@ class Photo < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   scope :visible, -> { where(visible: true) }
+
+  def adjacent
+    {
+        previous: Photo.visible.where('id < ?', self.id).first,
+        next: Photo.visible.where('id > ?', self.id).first,
+    }
+  end
 end
