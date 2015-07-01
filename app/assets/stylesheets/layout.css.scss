@@ -101,3 +101,20 @@ nav.actions {
     }
   }
 }
+
+.errors {
+  border: solid #fff0f0 1px;
+  background: #fff7f7;
+  margin: 15px;
+  padding: 10px;
+  color: #200000;
+
+  ol {
+    margin: 0 15px;
+    padding: 0 15px;
+
+    li:first-letter {
+      text-transform: uppercase;
+    }
+  }
+}

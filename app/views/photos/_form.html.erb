@@ -1,0 +1,30 @@
+<%= form_for entity do |f| %>
+    <%= render partial: 'shared/errors_list', locals: { entity: entity } %>
+
+    <figure class="medium">
+      <% unless entity.image.blank? %>
+          <%= image_tag entity.image.medium.url, alt: t('.current_image') %>
+      <% end %>
+
+      <div><%= f.label :image %></div>
+      <div><%= f.file_field :image, accept: 'image/jpeg' %></div>
+    </figure>
+
+    <div>
+      <div><%= f.label :name %></div>
+      <div><%= f.text_field :name, required: true %></div>
+    </div>
+
+    <div>
+      <div><%= f.label :description %></div>
+      <div><%= f.text_area :description, cols: 80, rows: 10 %></div>
+    </div>
+
+    <div>
+      <%= f.check_box :visible %><%= f.label :visible %>
+    </div>
+
+    <div>
+      <%= f.button t(:submit), type: :submit %>
+    </div>
+<% end %>

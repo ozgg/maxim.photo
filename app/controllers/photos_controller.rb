@@ -6,6 +6,10 @@ class PhotosController < ApplicationController
     @collection = Photo.visible.order('id desc').page(current_page).per(9)
   end
 
+  def new
+    @entity = Photo.new
+  end
+
   def create
     @entity = Photo.new entity_parameters
     @entity.save ? redirect_to(@entity) : render(:new)

@@ -15,3 +15,6 @@ ru:
   submit: "Отправить"
   are_you_sure: "Вы уверены?"
   logout: "Выйти"
+  photos:
+    form:
+      current_image: "Текущая картинка"

@@ -1,0 +1,18 @@
+form {
+  margin: 0;
+  padding: 0 15px;
+
+  .field_with_errors {
+    background: #fff7f7;
+    border-left: solid #ff0000 1px;
+    padding: 0 0 0 5px;
+  }
+
+  label {
+    display: inline-block;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+}

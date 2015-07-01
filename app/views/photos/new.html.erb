@@ -1,0 +1,12 @@
+<% content_for :meta_title, t('.title') %>
+
+<article class="photo">
+  <h1><%= t('.title') %></h1>
+  <nav class="actions">
+    <ul>
+      <li><%= link_to t(:list), photos_path %></li>
+    </ul>
+  </nav>
+
+  <%= render partial: 'photos/form', locals: { entity: @entity } %>
+</article>
