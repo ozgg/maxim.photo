@@ -2,6 +2,8 @@ ru:
   index:
     index:
       title: "Главная страница"
+      recent_photos: "Недавние фотографии"
+      view_all: "Смотреть все"
     about:
       title: "Обо мне"
   photos:

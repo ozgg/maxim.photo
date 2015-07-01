@@ -1,3 +1,15 @@
 <% content_for :meta_title, t('.title') %>
 
-Index/index
+<article>
+  <h1><%= t('.recent_photos') %></h1>
+
+  <% if @photos.any? %>
+      <% @photos.each do |photo| %>
+          <%= render partial: 'photos/preview', locals: { photo: photo } %>
+      <% end %>
+
+      <p><%= link_to t('.view_all'), photos_path %></p>
+  <% else %>
+      <%= render 'shared/nothing_found' %>
+  <% end %>
+</article>
