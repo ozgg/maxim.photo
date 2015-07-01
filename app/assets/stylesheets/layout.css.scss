@@ -71,3 +71,33 @@ a:hover {
 #main {
   padding: 15px;
 }
+
+div.notice {
+  margin: 15px;
+  padding: 15px;
+  border: solid #f0f0f0 1px;
+  background: #F7F7F7;
+  text-align: center;
+}
+
+nav.actions {
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style: none;
+      display: inline-block;
+      margin: 0;
+      padding: 0 5px;
+
+      &:before {
+        content: '[ ';
+      }
+
+      &:after {
+        content: ' ]';
+      }
+    }
+  }
+}
