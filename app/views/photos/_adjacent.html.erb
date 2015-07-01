@@ -1,8 +1,16 @@
 <nav class="adjacent">
-  <% unless photos[:previous].nil? %>
-      <div class="previous"><%= link_to_photo photos[:previous], rel: :prev %></div>
+  <% if photos[:previous].any? %>
+      <div class="previous">
+        <% photos[:previous].each do |photo| %>
+            <div class="image"><%= link_to_photo photo %></div>
+        <% end %>
+      </div>
   <% end %>
-  <% unless photos[:next].nil? %>
-      <div class="next"><%= link_to_photo photos[:next], rel: :next %></div>
+  <% if photos[:next].any? %>
+      <div class="next">
+        <% photos[:next].each do |photo| %>
+            <div class="image"><%= link_to_photo photo %></div>
+        <% end %>
+      </div>
   <% end %>
 </nav>
