@@ -1,3 +1,26 @@
 <% content_for :meta_title, t('.title') %>
 
-Index/about
+<article class="about">
+  <h1><%= t('.title') %></h1>
+  <figure>
+    <%= image_tag 'maxim.jpg', alt: t('.maxim') %>
+  </figure>
+
+  <p>Меня зовут Максим Хан-Магомедов. Я родился в июле 1983 года, фотографий стал увлекаться достаточно давно,
+    в 2008 году решил, что пора заниматься ей уже серьёзно.</p>
+
+  <p>Фотографирую людей и животных, делаю репортажи, занимаюсь предметной съёмкой и различными фотоэкспериментами.</p>
+  <p>Люблю природу, поэтому снимаю очень много пейзажей и макро, многие из работ можно приобрести в напечатанном виде,
+    в том числе на холсте.</p>
+  <p>В работе я использую камеру и оптику Canon (EOS-5D Mark II, объективы L-серии).</p>
+
+  <section class="contact">
+    <h1>Способы связи</h1>
+    <ul>
+      <li>E-mail: maxim.km@gmail.com</li>
+      <li>Facebook: <%= link_to 'Maxim Khan-Magomedov', 'https://www.facebook.com/maxim.khanmagomedov' %></li>
+      <li>Skype: dr_von_ozgg</li>
+      <li>+7 910 420-64-42</li>
+    </ul>
+  </section>
+</article>

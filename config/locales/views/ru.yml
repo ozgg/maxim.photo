@@ -6,6 +6,7 @@ ru:
       view_all: "Смотреть все"
     about:
       title: "Обо мне"
+      maxim: "Максим Хан-Магомедов"
   photos:
     index:
       title: "Фотографии, страница %{page}"
