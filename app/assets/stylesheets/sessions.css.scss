@@ -1,0 +1,20 @@
+.login {
+  form {
+    width: 300px;
+    font-size: 16px;
+
+    input[type=text], input[type=password] {
+      font-size: 16px;
+      width: 100%;
+    }
+
+    button {
+      font-size: 16px;
+      padding: 5px 15px;
+    }
+
+    div.button {
+      text-align: center;
+    }
+  }
+}

@@ -1,6 +1,4 @@
 <% content_for :meta_title, t('.title') %>
-<% bread_crumb t('.title') %>
-<%= render 'shared/bread_crumbs' %>
 
 <article class="login">
   <h1><%= t('.title') %></h1>
@@ -8,14 +6,18 @@
       <fieldset>
         <legend><%= t('.enter_credentials') %></legend>
         <div>
-          <%= label_tag :login, t('.login') %>
+          <div>
+            <%= label_tag :login, t('.login') %>
+          </div>
           <%= text_field_tag :login, params[:login], required: true %>
         </div>
         <div>
-          <%= label_tag :password, t('.password') %>
+          <div>
+            <%= label_tag :password, t('.password') %>
+          </div>
           <%= password_field_tag :password, params[:password], required: true %>
         </div>
-        <div>
+        <div class="button">
           <%= button_tag t('.enter'), type: :submit %>
         </div>
       </fieldset>

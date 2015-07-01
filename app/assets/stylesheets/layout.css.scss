@@ -3,9 +3,14 @@ html {
   padding: 0;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  margin: 0;
+}
+
 body {
-  max-width: 1000px;
-  min-width: 330px;
+  max-width: 1120px;
+  min-width: 340px;
   font-family: 'Forum', serif;
   margin: 0;
   padding: 0;
@@ -14,11 +19,9 @@ body {
     border-bottom: solid #f0f0f0 1px;
 
     h1 {
-      margin: 0;
       padding: 0 0 0 15px;
       font-family: 'Josefin Slab', serif;
       line-height: 50px;
-      font-weight: normal;
       font-size: 40px;
       background: #f0f0f0;
     }
