@@ -3,6 +3,7 @@
   <% if current_user %>
       <nav class="actions">
         <ul>
+          <li><%= link_to t(:list), photos_path %></li>
           <li><%= link_to t(:edit), edit_photo_path(photo) %></li>
           <li><%= link_to t(:create), new_photo_path %></li>
         </ul>
