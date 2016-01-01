@@ -4,6 +4,8 @@ class Theme < ActiveRecord::Base
   validates_presence_of :name, :priority
   validates_uniqueness_of :name
 
+  mount_uploader :image, PreviewUploader
+
   after_initialize :set_next_priority
 
   def self.list_for_user(show_hidden = false)
