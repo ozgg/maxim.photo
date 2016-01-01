@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'index#index'
 
-  resources :photos
+  resources :themes, :albums, :photos
   
   controller :index do
     get 'about'

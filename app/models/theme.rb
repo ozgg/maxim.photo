@@ -1,8 +1,18 @@
 class Theme < ActiveRecord::Base
+  include Visibility
+
   validates_presence_of :name, :priority
   validates_uniqueness_of :name
 
   after_initialize :set_next_priority
+
+  def self.list_for_user(show_hidden = false)
+    self.visibility(show_hidden ? nil : true).order('name asc')
+  end
+
+  def self.entity_parameters
+    [:name, :image, :visible, :priority]
+  end
 
   private
 

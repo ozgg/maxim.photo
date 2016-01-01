@@ -5,6 +5,7 @@ class CreateThemes < ActiveRecord::Migration
       t.boolean :visible, null: false, default: true
       t.integer :priority, limit: 2, null: false, default: 0
       t.string :name, null: false
+      t.string :image
     end
   end
 end

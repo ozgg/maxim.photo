@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20160101194838) do
     t.boolean  "visible",              default: true, null: false
     t.integer  "priority",   limit: 2, default: 0,    null: false
     t.string   "name",                                null: false
+    t.string   "image"
   end
 
   create_table "users", force: :cascade do |t|
