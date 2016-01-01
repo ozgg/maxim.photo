@@ -31,6 +31,6 @@ class ThemesController < ApplicationController
   end
 
   def entity_parameters
-    params.require(:theme).permit(:visible, :name, :image, :description)
+    params.require(:theme).permit(Theme.entity_parameters)
   end
 end

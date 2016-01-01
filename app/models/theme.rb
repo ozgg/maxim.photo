@@ -4,7 +4,7 @@ class Theme < ActiveRecord::Base
   validates_presence_of :name, :priority
   validates_uniqueness_of :name
 
-  mount_uploader :image, PreviewUploader
+  mount_uploader :preview, PreviewUploader
 
   after_initialize :set_next_priority
 
@@ -13,7 +13,7 @@ class Theme < ActiveRecord::Base
   end
 
   def self.entity_parameters
-    [:name, :image, :visible, :priority]
+    [:name, :preview, :visible, :priority]
   end
 
   private
