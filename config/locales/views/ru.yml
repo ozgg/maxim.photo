@@ -26,6 +26,11 @@ ru:
       login: "Логин"
       password: "Пароль"
       enter: "Войти"
+  shared:
+    flash_messages:
+      notice: "Замечание"
+      warning: "Предупреждение"
+      error: "Ошибка"
   views:
     pagination:
       first: "⇤"
@@ -33,3 +38,12 @@ ru:
       previous: "←"
       next: "→"
       truncate: "..."
+  themes:
+    index:
+      title: "Темы фотографий"
+    new:
+      title: "Добавление темы фотографий"
+    edit:
+      title: "Редактирование темы фотографий"
+    show:
+      title: "Тема фотографий «%{name}»"

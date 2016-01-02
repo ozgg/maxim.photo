@@ -36,8 +36,11 @@ ActiveRecord::Schema.define(version: 20160101194838) do
     t.boolean  "visible",              default: true, null: false
     t.integer  "priority",   limit: 2, default: 0,    null: false
     t.string   "name",                                null: false
+    t.string   "slug",                                null: false
     t.string   "image"
   end
+
+  add_index "themes", ["slug"], name: "index_themes_on_slug", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "login",           null: false

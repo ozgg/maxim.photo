@@ -13,3 +13,8 @@ ru:
         name: "название"
         image: "картинка"
         description: "описание"
+      theme:
+        image: "картинка"
+        name: "название"
+        visible: "показывать"
+        priority: "приоритет"

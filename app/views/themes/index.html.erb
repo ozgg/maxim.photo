@@ -1,0 +1,12 @@
+<% content_for :meta_title, t('.title') %>
+<% content_for :options do %>
+    <ul>
+      <li><%= link_to t(:create), new_theme_path %></li>
+    </ul>
+<% end %>
+
+<article class="themes">
+  <h1><%= t('.title') %></h1>
+
+  <%= render partial: 'list', locals: { themes: @collection } %>
+</article>
