@@ -10,5 +10,7 @@
     <dd><%= theme.visible %></dd>
     <dt><%= t('activerecord.attributes.theme.priority') %></dt>
     <dd><%= theme.priority %></dd>
+    <dt><%= t(:created_at) %></dt>
+    <dd><%= time_tag theme.created_at %></dd>
   </dl>
 </article>

@@ -19,3 +19,5 @@ ru:
     form:
       current_image: "Текущая картинка"
   current_image: "Текущая картинка"
+  created_at: "время создания"
+  updated_at: "время обновления"

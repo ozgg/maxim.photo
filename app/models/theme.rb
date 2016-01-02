@@ -1,6 +1,8 @@
 class Theme < ActiveRecord::Base
   include Visibility
 
+  has_many :albums
+
   validates_presence_of :name, :slug, :priority
   validates_uniqueness_of :slug
 

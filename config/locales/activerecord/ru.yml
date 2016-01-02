@@ -19,3 +19,8 @@ ru:
         slug: "код в URL"
         visible: "показывать"
         priority: "приоритет"
+      album:
+        theme_id: "тема"
+        name: "название"
+        slug: "идентификатор"
+        image: "картинка"

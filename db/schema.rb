@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160101194838) do
+ActiveRecord::Schema.define(version: 20160102231721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "albums", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "theme_id"
+    t.string   "name",       null: false
+    t.string   "slug",       null: false
+    t.string   "image"
+  end
+
+  add_index "albums", ["theme_id"], name: "index_albums_on_theme_id", using: :btree
 
   create_table "languages", force: :cascade do |t|
     t.string "code", null: false
@@ -49,4 +60,5 @@ ActiveRecord::Schema.define(version: 20160101194838) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "albums", "themes"
 end
