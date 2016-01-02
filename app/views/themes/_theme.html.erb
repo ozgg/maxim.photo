@@ -1,0 +1,14 @@
+<article class="theme">
+  <h1><%= theme.name %></h1>
+  <figure>
+    <%= image_tag theme.image.big.url, alt: theme.name %>
+  </figure>
+  <dl>
+    <dt><%= t('activerecord.attributes.theme.slug') %></dt>
+    <dd><%= theme.slug %></dd>
+    <dt><%= t('activerecord.attributes.theme.visible') %></dt>
+    <dd><%= theme.visible %></dd>
+    <dt><%= t('activerecord.attributes.theme.priority') %></dt>
+    <dd><%= theme.priority %></dd>
+  </dl>
+</article>

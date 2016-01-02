@@ -16,5 +16,6 @@ ru:
       theme:
         image: "картинка"
         name: "название"
+        slug: "код в URL"
         visible: "показывать"
         priority: "приоритет"
