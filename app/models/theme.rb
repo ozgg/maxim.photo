@@ -21,7 +21,7 @@ class Theme < ActiveRecord::Base
   end
 
   def self.entity_parameters
-    [:name, :preview, :visible, :priority]
+    %i(name slug preview priority visible)
   end
 
   private

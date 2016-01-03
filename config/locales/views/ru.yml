@@ -47,3 +47,12 @@ ru:
       title: "Редактирование темы фотографий"
     show:
       title: "Тема фотографий «%{name}»"
+  albums:
+    edit:
+      title: "Список альбомов"
+    index:
+      title: "Список альбомов"
+    new:
+      title: "Создание альбома"
+    show:
+      title: "Альбом «%{name}»"
