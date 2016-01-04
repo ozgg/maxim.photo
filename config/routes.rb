@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   root 'index#index'
 
+  scope 'portfolio', controller: :portfolio do
+    get '/' => :index, as: :portfolio
+    get '/:theme' => :theme, as: :portfolio_theme
+    get '/:theme/:album' => :album, as: :portfolio_album
+    get '/:theme/:album/:id' => :photo, as: :portfolio_photo
+  end
+
   resources :themes, :albums, :photos
   
   controller :index do

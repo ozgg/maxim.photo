@@ -59,3 +59,6 @@ ru:
   administration:
     index:
       title: "Администрирование"
+  portfolio:
+    index:
+      title: "Портфолио"

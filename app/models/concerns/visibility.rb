@@ -3,6 +3,6 @@ module Visibility
 
   included do
     scope :visibility, ->(visible = nil) { where visible: visible unless visible.nil? }
-    scope :only_visible, ->(flag = true) { where visible: true if flag }
+    scope :only_visible, -> { where visible: true }
   end
 end

@@ -3,11 +3,7 @@ class PhotosController < ApplicationController
   before_action :set_entity, only: [:show, :edit, :update, :destroy]
 
   def index
-    if current_user
-      @collection = Photo.visible.order('id desc').page(current_page).per(9)
-    else
-      @collection = Photo.visible.order('id desc').page(current_page).per(9)
-    end
+    @collection = Photo.page_for_administration(current_page)
   end
 
   def new
@@ -35,6 +31,6 @@ class PhotosController < ApplicationController
   end
 
   def entity_parameters
-    params.require(:photo).permit(:visible, :name, :image, :description)
+    params.require(:photo).permit(Photo.entity_parameters)
   end
 end

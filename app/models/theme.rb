@@ -16,8 +16,8 @@ class Theme < ActiveRecord::Base
     self.ordered_by_name.all
   end
 
-  def self.list_for_user(show_hidden = false)
-    self.only_visible(!show_hidden).ordered_by_name
+  def self.list_for_visitor
+    self.only_visible.ordered_by_name
   end
 
   def self.entity_parameters

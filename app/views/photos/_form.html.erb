@@ -1,13 +1,26 @@
 <%= form_for entity do |f| %>
     <%= render partial: 'shared/list_of_errors', locals: { entity: entity } %>
 
-    <figure class="medium">
+    <figure>
       <% unless entity.image.blank? %>
-          <%= image_tag entity.image.medium.url, alt: t(:current_image) %>
+          <%= image_tag entity.image.small.url, alt: t(:current_image) %>
       <% end %>
 
-      <div><%= f.label :image %></div>
-      <div><%= f.file_field :image, accept: 'image/jpeg' %></div>
+      <figcaption>
+        <%= f.label :image %>
+        <%= f.file_field :image, accept: 'image/jpeg' %>
+      </figcaption>
+    </figure>
+
+    <figure>
+      <% unless entity.preview.blank? %>
+          <%= image_tag entity.preview.small.url, alt: t(:current_image) %>
+      <% end %>
+
+      <figcaption>
+        <%= f.label :preview %>
+        <%= f.file_field :preview, accept: 'image/jpeg' %>
+      </figcaption>
     </figure>
 
     <div>
