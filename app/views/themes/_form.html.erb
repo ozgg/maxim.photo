@@ -2,26 +2,32 @@
     <%= render partial: 'shared/list_of_errors', locals: { entity: entity } %>
 
     <figure>
-      <% unless entity.preview.blank? %>
-          <%= image_tag entity.preview.medium.url, alt: t(:current_image) %>
+      <% unless entity.image.blank? %>
+          <%= image_tag entity.image.medium.url, alt: t(:current_image) %>
       <% end %>
 
-      <div><%= f.label :preview %></div>
-      <div><%= f.file_field :preview, accept: 'image/jpeg' %></div>
+      <%= f.label :image %>
+      <%= f.file_field :image, accept: 'image/jpeg' %>
     </figure>
 
     <div>
-      <div><%= f.label :name %></div>
-      <div><%= f.text_field :name, required: true, size: 50 %></div>
+      <%= f.label :name %>
+      <%= f.text_field :name, required: true, size: 50 %>
     </div>
 
     <div>
-      <div><%= f.label :slug %></div>
-      <div><%= f.text_field :slug, required: true, size: 50 %></div>
+      <%= f.label :slug %>
+      <%= f.text_field :slug, required: true, size: 50 %>
     </div>
 
     <div>
-      <%= f.check_box :visible %><%= f.label :visible %>
+      <%= f.label :priority %>
+      <%= f.number_field :priority, in: (0..100), required: true %>
+    </div>
+
+    <div>
+      <%= f.check_box :visible %>
+      <%= f.label :visible %>
     </div>
 
     <div>

@@ -9,6 +9,7 @@ ru:
         password: "пароль"
         password_confirmation: "подтверждение пароля"
       photo:
+        album_id: "альбом"
         visible: "показывать"
         name: "название"
         image: "картинка"

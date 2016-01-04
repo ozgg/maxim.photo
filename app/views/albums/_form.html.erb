@@ -6,18 +6,25 @@
           <%= image_tag entity.image.medium.url, alt: t(:current_image) %>
       <% end %>
 
-      <div><%= f.label :image %></div>
-      <div><%= f.file_field :image, accept: 'image/jpeg' %></div>
+      <figcaption>
+        <%= f.label :image %>
+        <%= f.file_field :image, accept: 'image/jpeg' %>
+      </figcaption>
     </figure>
 
     <div>
-      <div><%= f.label :name %></div>
-      <div><%= f.text_field :name, required: true, size: 50 %></div>
+      <%= f.label :theme_id %>
+      <%= f.select :theme_id, themes_for_select %>
     </div>
 
     <div>
-      <div><%= f.label :slug %></div>
-      <div><%= f.text_field :slug, required: true, size: 50 %></div>
+      <%= f.label :name %>
+      <%= f.text_field :name, required: true, size: 50 %>
+    </div>
+
+    <div>
+      <%= f.label :slug %>
+      <%= f.text_field :slug, required: true, size: 50 %>
     </div>
 
     <div>

@@ -20,7 +20,11 @@ class ThemesController < ApplicationController
 
   # patch /themes/:id
   def update
-    @entity.update(entity_parameters) ? redirect_to(@entity) : render(:edit)
+    if @entity.update entity_parameters
+      redirect_to @entity
+    else
+      render(:edit)
+    end
   end
 
   # delete /themes/:id

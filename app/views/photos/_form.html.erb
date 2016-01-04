@@ -3,7 +3,7 @@
 
     <figure class="medium">
       <% unless entity.image.blank? %>
-          <%= image_tag entity.image.medium.url, alt: t('.current_image') %>
+          <%= image_tag entity.image.medium.url, alt: t(:current_image) %>
       <% end %>
 
       <div><%= f.label :image %></div>
@@ -11,17 +11,23 @@
     </figure>
 
     <div>
-      <div><%= f.label :name %></div>
-      <div><%= f.text_field :name, required: true %></div>
+      <%= f.label :album_id %>
+      <%= f.select :album_id, album_for_select %>
     </div>
 
     <div>
-      <div><%= f.label :description %></div>
-      <div><%= f.text_area :description, cols: 80, rows: 10 %></div>
+      <%= f.label :name %>
+      <%= f.text_field :name, required: true %>
     </div>
 
     <div>
-      <%= f.check_box :visible %><%= f.label :visible %>
+      <%= f.label :description %><br />
+      <%= f.text_area :description, cols: 80, rows: 10 %>
+    </div>
+
+    <div>
+      <%= f.check_box :visible %>
+      <%= f.label :visible %>
     </div>
 
     <div>

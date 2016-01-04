@@ -6,7 +6,7 @@ class Theme < ActiveRecord::Base
   validates_presence_of :name, :slug, :priority
   validates_uniqueness_of :slug
 
-  mount_uploader :preview, PreviewUploader
+  mount_uploader :image, PreviewUploader
 
   scope :ordered_by_name, -> { order 'name asc' }
 
@@ -21,7 +21,7 @@ class Theme < ActiveRecord::Base
   end
 
   def self.entity_parameters
-    %i(name slug preview priority visible)
+    %i(name slug image priority visible)
   end
 
   private

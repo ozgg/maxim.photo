@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     get 'about'
   end
 
+  controller :administration do
+    get 'administration' => :index, as: :admin
+  end
+
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
