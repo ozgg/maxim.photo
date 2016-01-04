@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160102231721) do
+ActiveRecord::Schema.define(version: 20160104192109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,11 @@ ActiveRecord::Schema.define(version: 20160102231721) do
     t.string   "description"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.string   "preview"
+    t.integer  "album_id"
   end
+
+  add_index "photos", ["album_id"], name: "index_photos_on_album_id", using: :btree
 
   create_table "themes", force: :cascade do |t|
     t.datetime "created_at",                          null: false
@@ -61,4 +65,5 @@ ActiveRecord::Schema.define(version: 20160102231721) do
   end
 
   add_foreign_key "albums", "themes"
+  add_foreign_key "photos", "albums"
 end
