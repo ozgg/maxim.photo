@@ -1,11 +1,8 @@
 <nav>
   <ul>
-    <li><%= link_to t('index.index.title'), root_path, accesskey: '0' %></li>
-    <li><%= link_to t('photos.index.header'), photos_path, accesskey: '1' %></li>
-    <li><%= link_to t('index.about.title'), about_path, accesskey: '2' %></li>
-    <% if current_user %>
-        <li><%= link_to t('administration.index.title'), admin_path %></li>
-        <li><%= link_to t(:logout), logout_path, method: :delete %></li>
+    <% Theme.list_for_visitor.each do |theme| %>
+        <li><%= link_to_theme theme %></li>
     <% end %>
+    <li><%= link_to t('index.about.title'), about_path, accesskey: '2' %></li>
   </ul>
 </nav>

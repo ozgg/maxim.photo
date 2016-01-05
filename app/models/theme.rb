@@ -9,6 +9,7 @@ class Theme < ActiveRecord::Base
   mount_uploader :image, PreviewUploader
 
   scope :ordered_by_name, -> { order 'name asc' }
+  scope :ordered_by_priority, -> { order 'priority asc, name asc' }
 
   after_initialize :set_next_priority
 
@@ -17,7 +18,7 @@ class Theme < ActiveRecord::Base
   end
 
   def self.list_for_visitor
-    self.only_visible.ordered_by_name
+    self.only_visible.ordered_by_priority
   end
 
   def self.entity_parameters

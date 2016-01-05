@@ -30,7 +30,7 @@ ru:
     flash_messages:
       notice: "Замечание"
       warning: "Предупреждение"
-      error: "Ошибка"
+      alert: "Внимание"
   views:
     pagination:
       first: "⇤"

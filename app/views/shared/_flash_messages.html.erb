@@ -1,4 +1,4 @@
-<% %i(notice warning error).each do |type| %>
+<% %i(notice warning alert).each do |type| %>
     <% if flash[type] %>
         <div class="<%= type %>" title="<%= t(".#{type}") %>"><%= flash[type] %></div>
     <% end %>
