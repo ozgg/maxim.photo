@@ -85,7 +85,7 @@ article.albums {
 @media screen and (min-width: 801px) {
   ul.albums {
     li {
-      width: calc(33% - 1.5rem);
+      width: calc(33% - 0.5rem);
 
       div {
         font-size: 1rem;

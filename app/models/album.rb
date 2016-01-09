@@ -12,6 +12,10 @@ class Album < ActiveRecord::Base
     self.ordered_by_name
   end
 
+  def self.list_for_visitor
+    self.order('id asc')
+  end
+
   def self.entity_parameters
     %i(theme_id name slug image)
   end
