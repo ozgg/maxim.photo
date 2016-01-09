@@ -1,2 +1,4 @@
-<%= image_tag album.image.small.url, alt: album.name %>
-<%= link_to album.name, album %>
+<div>
+  <%= link_to image_tag(album.image.medium.url, alt: album.name, title: album.name), album %>
+  <div><%= link_to album.name, album %></div>
+</div>

@@ -1,4 +1,4 @@
-ul.themes {
+ul.albums {
   margin: 0;
   padding: 0;
   display: flex;
@@ -24,7 +24,32 @@ ul.themes {
   }
 }
 
-.theme, .edit-theme {
+article.albums {
+  ul.preview {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    li {
+      list-style: none;
+      width: 50%;
+      margin: 0 0 1rem 0;
+      padding: 0;
+
+      img {
+        width: 100%;
+      }
+
+      div {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.album, .edit-album {
   figure {
     width: 100%;
     max-width: 30rem;
@@ -36,7 +61,7 @@ ul.themes {
 }
 
 @media screen and (min-width: 500px) {
-  ul.themes {
+  ul.albums {
     li {
       padding: 0.25rem;
       width: calc(50% - 0.5rem);
@@ -46,16 +71,34 @@ ul.themes {
       }
     }
   }
+
+  article.albums {
+    ul.preview {
+      li {
+        width: calc(33% - 0.5rem);
+        padding: 0.25rem;
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 801px) {
-  ul.themes {
+  ul.albums {
     li {
       width: calc(33% - 1.5rem);
 
       div {
         font-size: 1rem;
         line-height: 1.25rem;
+      }
+    }
+  }
+
+  article.albums {
+    ul.preview {
+      li {
+        width: calc(25% - 1rem);
+        padding: 0.5rem;
       }
     }
   }

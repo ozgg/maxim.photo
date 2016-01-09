@@ -1,5 +1,5 @@
 <% if albums.any? %>
-    <ul>
+    <ul class="preview">
       <% albums.each do |album| %>
           <li><%= render partial: 'albums/preview', locals: { album: album } %></li>
       <% end %>
