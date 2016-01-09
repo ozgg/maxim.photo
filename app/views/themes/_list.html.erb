@@ -1,5 +1,5 @@
 <% if themes.any? %>
-    <ul>
+    <ul class="themes">
       <% themes.each do |theme| %>
           <li><%= render partial: 'themes/preview', locals: { theme: theme } %></li>
       <% end %>

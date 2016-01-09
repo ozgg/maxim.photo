@@ -1,2 +1,4 @@
-<%= image_tag theme.image.small.url, alt: theme.name %>
-<%= link_to theme.name, theme %>
+<div>
+  <%= link_to image_tag(theme.image.big.url, alt: theme.name, title: theme.name), theme %>
+  <div><%= link_to theme.name, theme %></div>
+</div>

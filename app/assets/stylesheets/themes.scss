@@ -7,8 +7,8 @@ ul.themes {
 
   li {
     list-style: none;
-    margin: 0;
-    padding: 0 0 0.5rem 0;
+    margin: 0 0 1rem 0;
+    padding: 0;
     width: 100%;
     border-bottom: solid #f7f7f7 0.0625rem;
 
@@ -20,6 +20,17 @@ ul.themes {
       text-align: center;
       font-size: 1.25rem;
       line-height: 2rem;
+    }
+  }
+}
+
+.theme, .edit-theme {
+  figure {
+    width: 100%;
+    max-width: 30rem;
+
+    img {
+      width: 100%;
     }
   }
 }

@@ -13,6 +13,16 @@ html {
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
   margin: 0;
+  padding: 0 1rem;
+}
+
+input, textarea {
+  max-width: calc(100% - 1rem);
+}
+
+figure {
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -93,16 +103,20 @@ div.notice {
   text-align: center;
 }
 
-nav.actions {
+div.options {
   ul {
+    max-width: 30rem;
     margin: 0;
-    padding: 0;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
     li {
       list-style: none;
-      display: inline-block;
       margin: 0;
-      padding: 0 0.5rem;
+      padding: 0;
+      line-height: 1.5rem;
 
       &:before {
         content: '[ ';
@@ -129,5 +143,22 @@ nav.actions {
     li:first-letter {
       text-transform: uppercase;
     }
+  }
+}
+
+dl {
+  dt:first-letter {
+    text-transform: uppercase;
+  }
+
+  dd {
+    margin: 0 0 0 1rem;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 399px) {
+  dl {
+    margin: 0 1rem;
   }
 }
