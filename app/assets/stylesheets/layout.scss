@@ -10,51 +10,48 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-  max-width: 970px;
-  min-width: 710px;
+  max-width: 80rem;
+  min-width: 20rem;
   font-family: 'Forum', serif;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
 
   > header {
-    border-bottom: solid #f0f0f0 1px;
+    border-bottom: solid #f0f0f0 0.0625rem;
 
-    h1 {
-      padding: 0 0 0 15px;
+    .site-name {
+      text-align: center;
       font-family: 'Josefin Slab', serif;
-      line-height: 50px;
-      font-size: 40px;
+      line-height: 3.5rem;
+      font-size: 2.5rem;
       background: #f0f0f0;
     }
 
     nav {
-      margin: 0;
-      padding: 5px;
+      margin: 0.5rem;
 
       ul {
         margin: 0;
         padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
 
         li {
           list-style: none;
           display: inline-block;
-          line-height: 25px;
-          font-size: 20px;
-          padding: 0 10px;
-          border-right: solid #cccccc 1px;
-
-          &:last-of-type {
-            border-right: none;
-          }
+          font-variant: small-caps;
+          font-size: 1.75rem;
+          padding: 0.5rem;
         }
       }
     }
   }
 
   > footer {
-    border-top: solid #f0f0f0 1px;
-    padding: 5px 15px;
-    font-size: 14px;
+    border-top: solid #f0f0f0 0.0625rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
     color: #333333;
   }
 }
@@ -69,13 +66,15 @@ a:hover {
   text-decoration: underline;
 }
 
-#main {
-  padding: 15px;
+@media screen and (min-width: 400px) {
+  #main {
+    padding: 1rem;
+  }
 }
 
 div.notice {
-  margin: 1rem;
-  padding: 1rem;
+  margin: 0.5rem;
+  padding: 0.25rem;
   border: solid #f0f0f0 0.0625rem;
   background: #F7F7F7;
   text-align: center;
@@ -90,7 +89,7 @@ nav.actions {
       list-style: none;
       display: inline-block;
       margin: 0;
-      padding: 0 5px;
+      padding: 0 0.5rem;
 
       &:before {
         content: '[ ';
@@ -104,30 +103,18 @@ nav.actions {
 }
 
 .errors {
-  border: solid #fff0f0 1px;
+  border: solid #fff0f0 0.0625rem;
   background: #fff7f7;
-  margin: 15px;
-  padding: 10px;
+  margin: 1rem;
+  padding: 0.75rem;
   color: #200000;
 
   ol {
-    margin: 0 15px;
-    padding: 0 15px;
+    margin: 0 1rem;
+    padding: 0 1rem;
 
     li:first-letter {
       text-transform: uppercase;
-    }
-  }
-}
-
-.about {
-  figure {
-    margin: 0 0 0 15px;
-    float: right;
-
-    img {
-      max-width: 180px;
-      max-height: 285px;
     }
   }
 }
