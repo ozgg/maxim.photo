@@ -1,6 +1,6 @@
 class IndexController < ApplicationController
   def index
-    @photos = Photo.visible.order('id desc').first(6)
+    @themes = Theme.list_for_visitor
   end
 
   def about
