@@ -1,0 +1,9 @@
+<% if photos.any? %>
+    <ul class="photos">
+      <% photos.each do |photo| %>
+          <li><%= render partial: 'portfolio/photo_preview', locals: { photo: photo } %></li>
+      <% end %>
+    </ul>
+<% else %>
+    <%= render 'shared/nothing_found' %>
+<% end %>

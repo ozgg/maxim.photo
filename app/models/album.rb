@@ -1,5 +1,6 @@
 class Album < ActiveRecord::Base
   belongs_to :theme
+  has_many :photos
 
   validates_presence_of :name, :slug, :theme_id
   validates_uniqueness_of :slug, scope: [:theme_id]

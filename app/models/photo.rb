@@ -5,6 +5,7 @@ class Photo < ActiveRecord::Base
   mount_uploader :preview, PreviewUploader
 
   scope :visible, -> { where visible: true }
+  scope :ordered_by_id, -> { order 'id asc' }
 
   PER_PAGE = 9
 

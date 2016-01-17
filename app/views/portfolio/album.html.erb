@@ -2,4 +2,6 @@
 
 <article>
   <h1><%= @album.name %></h1>
+
+  <%= render partial: 'photos', locals: { photos: @album.photos.visible.ordered_by_id } %>
 </article>
