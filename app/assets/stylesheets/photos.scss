@@ -1,7 +1,12 @@
-.photo {
+article.photo {
   figure {
     margin: 0;
     padding: 0;
+    text-align: center;
+
+    img {
+      max-width: 100%;
+    }
 
     &.medium {
       img {

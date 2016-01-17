@@ -1,7 +1,7 @@
 <% content_for :meta_title, @album.long_name %>
 
 <article>
-  <h1><%= @album.name %></h1>
+  <h1><%= @album.long_name %></h1>
 
-  <%= render partial: 'photos', locals: { photos: @album.photos.visible.ordered_by_id } %>
+  <%= render partial: 'photos', locals: { photos: @album.photos_for_portfolio } %>
 </article>

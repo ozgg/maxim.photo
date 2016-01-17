@@ -21,6 +21,10 @@ class Album < ActiveRecord::Base
     %i(theme_id name slug image)
   end
 
+  def photos_for_portfolio
+    photos.visible.ordered_by_id
+  end
+
   def long_name
     "#{theme.name} — #{name}"
   end
