@@ -1,5 +1,7 @@
 class Photo < ActiveRecord::Base
-  validates_presence_of :name, :image
+  belongs_to :album
+
+  validates_presence_of :name, :image, :album_id
 
   mount_uploader :image, ImageUploader
   mount_uploader :preview, PreviewUploader

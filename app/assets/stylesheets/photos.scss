@@ -118,3 +118,74 @@ nav.adjacent {
     }
   }
 }
+
+ul.photos {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  li {
+    list-style: none;
+    margin: 0 0 1rem 0;
+    padding: 0;
+    width: 100%;
+    border-bottom: solid #f7f7f7 0.0625rem;
+
+    img {
+      width: 100%;
+    }
+
+    div {
+      text-align: center;
+      font-size: 1.25rem;
+      line-height: 2rem;
+    }
+  }
+}
+
+
+@media screen and (min-width: 500px) {
+  ul.photos {
+    li {
+      padding: 0.25rem;
+      width: calc(50% - 0.5rem);
+
+      div {
+        line-height: 1.5rem;
+      }
+    }
+  }
+
+  article.photos {
+    ul.preview {
+      li {
+        width: calc(33% - 0.5rem);
+        padding: 0.25rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 801px) {
+  ul.photos {
+    li {
+      width: calc(33% - 0.5rem);
+
+      div {
+        font-size: 1rem;
+        line-height: 1.25rem;
+      }
+    }
+  }
+
+  article.photos {
+    ul.preview {
+      li {
+        width: calc(25% - 1rem);
+        padding: 0.5rem;
+      }
+    }
+  }
+}
