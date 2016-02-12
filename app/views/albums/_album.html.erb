@@ -1,7 +1,7 @@
 <article class="album">
   <h1><%= album.name %></h1>
   <figure>
-    <%= image_tag album.image.big.url, alt: album.name %>
+    <%= image_tag album.image.url, alt: album.name %>
   </figure>
   <dl>
     <dt><%= t('activerecord.attributes.album.theme_id') %></dt>
