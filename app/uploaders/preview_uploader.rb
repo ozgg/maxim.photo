@@ -17,18 +17,14 @@ class PreviewUploader < CarrierWave::Uploader::Base
     ActionController::Base.helpers.asset_path('fallback/preview/' + [version_name, 'default.png'].compact.join('_'))
   end
 
-  resize_to_fill 640, 640
+  resize_to_fill 720, 720
 
-  version :big do
-    resize_to_fill 480, 480
-  end
-
-  version :medium, from_version: :big do
-    resize_to_fill 320, 320
+  version :medium do
+    resize_to_fill 360, 360
   end
 
   version :small, from_version: :medium do
-    resize_to_fill 160, 160
+    resize_to_fill 180, 180
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

@@ -3,7 +3,7 @@
 
     <figure>
       <% unless entity.image.blank? %>
-          <%= image_tag entity.image.small.url, alt: t(:current_image) %>
+          <%= image_tag entity.image.medium.url, alt: t(:current_image) %>
       <% end %>
 
       <figcaption>
