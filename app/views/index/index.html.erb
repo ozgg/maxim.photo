@@ -1,4 +1,8 @@
 <% content_for :meta_title, t('.title') %>
+<% content_for :meta_description, t('.description') %>
+<% if @photos.any? %>
+    <% content_for :meta_image, request.protocol + request.host_with_port + @photos.first.image.medium.url %>
+<% end %>
 
 <article>
   <h1><%= t('.header') %></h1>
