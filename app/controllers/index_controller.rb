@@ -1,6 +1,6 @@
 class IndexController < ApplicationController
   def index
-    @themes = Theme.list_for_visitor
+    @photos = Photo.recent_photos
   end
 
   def about

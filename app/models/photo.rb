@@ -11,6 +11,10 @@ class Photo < ActiveRecord::Base
 
   PER_PAGE = 9
 
+  def self.recent_photos
+    order('id desc').first(PER_PAGE)
+  end
+
   def self.page_for_administration(page)
     order('id desc').page(page).per(PER_PAGE)
   end

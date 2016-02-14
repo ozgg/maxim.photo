@@ -1,0 +1,14 @@
+<meta property="og:title" content="<%= content_for :meta_title %>" />
+<meta property="og:type" content="<%= content_for?(:meta_type) ? (yield :meta_type) : 'website' %>" />
+<% if content_for? :meta_type_extension %>
+    <%= yield :meta_type_extension %>
+<% end %>
+<meta property="og:url" content="<%= url_for(only_path: false) %>" />
+<% if content_for? :meta_image %>
+    <meta property="og:image" content="<%= yield :meta_image %>" />
+<% end %>
+<% if content_for? :meta_description %>
+    <meta name="description" content="<%= yield :meta_description %>" />
+    <meta property="og:description" content="<%= yield :meta_description %>" />
+<% end %>
+<meta property="og:site_name" content="maxim.photo" />

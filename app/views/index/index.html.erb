@@ -1,3 +1,7 @@
 <% content_for :meta_title, t('.title') %>
 
-<%= render partial: 'portfolio/themes', locals: { themes: @themes } %>
+<article>
+  <h1><%= t('.header') %></h1>
+
+  <%= render partial: 'portfolio/photos', locals: { photos: @photos } %>
+</article>
