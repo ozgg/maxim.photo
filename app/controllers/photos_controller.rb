@@ -15,6 +15,12 @@ class PhotosController < ApplicationController
     @entity.save ? redirect_to(@entity) : render(:new)
   end
 
+  def show
+    unless current_user.is_a? User
+      redirect_to portfolio_photo_path(theme: @entity.theme.slug, album: @entity.album.slug, id: @entity.id)
+    end
+  end
+
   def update
     @entity.update(entity_parameters) ? redirect_to(@entity) : render(:edit)
   end

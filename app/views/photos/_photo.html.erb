@@ -9,8 +9,8 @@
         </ul>
       </nav>
   <% end %>
-  <figure class="big">
+  <figure>
     <%= link_to image_tag(photo.image.big.url, alt: photo.name), photo.image.big.url %>
-    <figcaption><%= photo.description %></figcaption>
   </figure>
+  <div class="description"><%= photo.description %></div>
 </article>

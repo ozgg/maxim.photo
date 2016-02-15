@@ -23,10 +23,7 @@ class Photo < ActiveRecord::Base
     %i(album_id visible image preview name description)
   end
 
-  def adjacent
-    {
-        previous: Photo.visible.where('id < ?', self.id).order('id desc').first,
-        next: Photo.visible.where('id > ?', self.id).order('id asc').first,
-    }
+  def theme
+    album.theme
   end
 end
