@@ -10,7 +10,7 @@
   <% end %>
   <% unless post.image.blank? %>
       <figure>
-        <%= link_to image_tag(post.image.big.url, alt: post.title), post.image.big.url %>
+        <%= image_tag(post.image.big.url, alt: post.title) %>
       </figure>
   <% end %>
 

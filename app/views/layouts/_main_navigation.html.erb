@@ -3,6 +3,7 @@
     <% Theme.list_for_visitor.each do |theme| %>
         <li><%= link_to_theme theme %></li>
     <% end %>
+    <li><%= link_to t('posts.index.header'), posts_path, accesskey: '1' %></li>
     <li><%= link_to t('index.about.title'), about_path, accesskey: '2' %></li>
   </ul>
 </nav>
