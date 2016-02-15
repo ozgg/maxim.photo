@@ -1,0 +1,14 @@
+<% content_for :meta_title, t('.title') %>
+
+<article class="edit-post">
+  <h1><%= t('.title') %></h1>
+  <nav class="actions">
+    <ul>
+      <li><%= link_to t(:view), @entity %></li>
+      <li><%= link_to t(:create), new_post_path %></li>
+      <li><%= link_to_delete @entity %></li>
+    </ul>
+  </nav>
+
+  <%= render partial: 'form', locals: { entity: @entity } %>
+</article>

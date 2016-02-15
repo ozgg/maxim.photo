@@ -1,14 +1,4 @@
 article.photo {
-  figure {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-
-    img {
-      max-width: 100%;
-    }
-  }
-
   form {
     max-width: 40rem;
 
@@ -82,7 +72,6 @@ ul.photos {
     }
   }
 }
-
 
 @media screen and (min-width: 500px) {
   ul.photos {

@@ -1,0 +1,20 @@
+<article class="post">
+  <h1><%= post.title %></h1>
+  <% if current_user %>
+      <nav class="actions">
+        <ul>
+          <li><%= link_to t(:edit), edit_post_path(post) %></li>
+          <li><%= link_to t(:create), new_post_path %></li>
+        </ul>
+      </nav>
+  <% end %>
+  <% unless post.image.blank? %>
+      <figure>
+        <%= link_to image_tag(post.image.big.url, alt: post.title), post.image.big.url %>
+      </figure>
+  <% end %>
+
+  <div class="body"><%= simple_format post.body %></div>
+
+  <footer><%= time_tag post.created_at %></footer>
+</article>

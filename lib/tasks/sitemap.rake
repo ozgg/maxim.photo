@@ -21,7 +21,7 @@ namespace :sitemap do
         last_mod = post.updated_at.strftime('%Y-%m-%dT%H:%M:%S%:z')
         file << "<url><loc>#{location}</loc><lastmod>#{last_mod}</lastmod></url>"
       end
-      
+
       file << "</urlset>\n"
     end
   end

@@ -1,0 +1,16 @@
+<div class="post-preview">
+  <div class="image">
+    <% unless post.image.blank? %>
+        <%= image_tag post.image.small_square.url, alt: post.title %>
+    <% end %>
+  </div>
+  <div class="info">
+    <div class="title"><%= link_to post.title, post %></div>
+    <%= time_tag post.created_at %>
+    <div class="body">
+      <% unless post.lead.blank? %>
+          <span class="lead"><%= post.lead %></span>
+      <% end %>
+    </div>
+  </div>
+</div>

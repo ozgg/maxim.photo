@@ -66,3 +66,11 @@ ru:
       title: "Портфолио"
     photo:
       other_images: "Другие фотографии"
+  posts:
+    index:
+      title: "Блог, страница %{page}"
+      header: "Блог"
+    new:
+      title: "Новая публикация"
+    edit:
+      title: "Редактирование публикации"

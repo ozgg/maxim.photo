@@ -16,6 +16,10 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 1rem;
 }
 
+p:first-of-type {
+  margin-top: 0;
+}
+
 input, textarea {
   max-width: calc(100% - 1rem);
 }
@@ -88,6 +92,20 @@ a:link, a:visited {
 a:hover {
   color: #aa0000;
   text-decoration: underline;
+}
+
+#main {
+  > article {
+    figure {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+
+      img {
+        max-width: 100%;
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 400px) {
