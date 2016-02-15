@@ -1,7 +1,7 @@
 <% content_for :meta_title, @photo.name %>
 <% content_for :meta_image, request.protocol + request.host_with_port + @photo.image.medium.url %>
 
-<article class="photo" itemscope itemtype="http://schema.org/Photograph">
+<article class="photo" itemscope itemtype="http://schema.org/ImageObject">
   <h1 itemprop="name"><%= link_to_album @photo.album %> / <%= @photo.name %></h1>
 
   <figure>
