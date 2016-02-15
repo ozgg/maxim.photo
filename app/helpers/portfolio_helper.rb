@@ -14,9 +14,7 @@ module PortfolioHelper
   # @param [Photo] photo
   def link_to_photo(photo)
     source = photo.preview.blank? ? photo.image.big_square.url : photo.preview.url
-    album  = photo.album.slug
-    theme  = photo.album.theme.slug
-    path   = portfolio_photo_path(theme: theme, album: album, id: photo.id)
+    path   = portfolio_photo_path(theme: photo.theme.slug, album: photo.album.slug, id: photo.id)
     link_to image_tag(source, alt: photo.name, title: photo.name), path
   end
 end
