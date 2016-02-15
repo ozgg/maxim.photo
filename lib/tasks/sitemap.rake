@@ -15,6 +15,13 @@ namespace :sitemap do
         last_mod = photo.updated_at.strftime('%Y-%m-%dT%H:%M:%S%:z')
         file << "<url><loc>#{location}</loc><lastmod>#{last_mod}</lastmod></url>"
       end
+
+      Post.all.each do |post|
+        location = post_url(id: post.id)
+        last_mod = post.updated_at.strftime('%Y-%m-%dT%H:%M:%S%:z')
+        file << "<url><loc>#{location}</loc><lastmod>#{last_mod}</lastmod></url>"
+      end
+      
       file << "</urlset>\n"
     end
   end
