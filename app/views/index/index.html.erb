@@ -8,4 +8,11 @@
   <h1><%= t('.header') %></h1>
 
   <%= render partial: 'portfolio/photos', locals: { photos: @photos } %>
+
+  <% if @posts.any? %>
+      <section>
+        <h1><%= t('.recent_posts') %></h1>
+        <%= render partial: 'posts/list', locals: { posts: @posts } %>
+      </section>
+  <% end %>
 </article>

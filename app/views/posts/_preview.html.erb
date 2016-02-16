@@ -1,7 +1,7 @@
 <div class="post-preview">
   <div class="image">
     <% unless post.image.blank? %>
-        <%= image_tag post.image.small_square.url, alt: post.title %>
+        <%= link_to image_tag(post.image.small_square.url, alt: post.title), post %>
     <% end %>
   </div>
   <div class="info">

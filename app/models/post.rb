@@ -5,8 +5,10 @@ class Post < ActiveRecord::Base
 
   PER_PAGE = 5
 
+  scope :recent, -> { order 'id desc' }
+
   def self.page_for_user(page)
-    order('id desc').page(page).per(PER_PAGE)
+    recent.page(page).per(PER_PAGE)
   end
 
   def self.entity_parameters

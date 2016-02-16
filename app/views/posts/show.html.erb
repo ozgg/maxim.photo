@@ -1,4 +1,7 @@
 <% content_for :meta_title, @entity.title %>
+<% unless @entity.image.blank? %>
+    <% content_for :meta_image, request.protocol + request.host_with_port + @entity.image.medium.url %>
+<% end %>
+<% content_for :meta_description, @entity.lead unless @entity.lead.blank? %>
 
 <%= render @entity %>
-
