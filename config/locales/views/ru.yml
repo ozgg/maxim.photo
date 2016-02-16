@@ -75,6 +75,9 @@ ru:
       title: "Новая публикация"
     edit:
       title: "Редактирование публикации"
+    adjacent:
+      previous: "Предыдущая запись"
+      next: "Следующая запись"
   layouts:
     footer:
       copyright: "Максим Хан-Магомедов"

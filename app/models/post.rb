@@ -14,4 +14,11 @@ class Post < ActiveRecord::Base
   def self.entity_parameters
     %i(title image lead body)
   end
+
+  def adjacent
+    {
+        prev: Post.where('id < ?', self.id).recent.first,
+        next: Post.where('id > ?', self.id).recent.last,
+    }
+  end
 end

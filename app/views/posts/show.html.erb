@@ -5,3 +5,4 @@
 <% content_for :meta_description, @entity.lead unless @entity.lead.blank? %>
 
 <%= render @entity %>
+<%= render partial: 'adjacent', locals: { posts: @entity.adjacent } %>
