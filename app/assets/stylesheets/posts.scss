@@ -8,7 +8,7 @@ article.post {
     font-size: 0.875rem;
     font-style: italic;
     border-top: solid #aaaaaa 0.0625rem;
-    padding: 0.25rem 0;
+    padding: 0.25rem 0.5rem 0.25rem 0;
   }
 }
 
@@ -82,8 +82,14 @@ nav.adjacent {
     }
 
     .post-preview {
+      justify-content: flex-end;
+
       .image {
         order: 2;
+      }
+
+      .info {
+        margin: 0 0.5rem 0 0;
       }
     }
   }
@@ -178,14 +184,6 @@ nav.adjacent {
     .next {
       > div:first-of-type {
         padding-right: 1rem;
-      }
-
-      .post-preview {
-        justify-content: flex-end;
-        
-        .info {
-          margin: 0 0.5rem 0 0;
-        }
       }
     }
   }

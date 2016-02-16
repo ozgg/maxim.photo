@@ -5,7 +5,7 @@
   <h1 itemprop="name"><%= link_to_album @photo.album %> / <%= @photo.name %></h1>
 
   <figure>
-    <%= image_tag @photo.image.big.url, alt: @photo.name, itemprop: 'contentUrl' %>
+    <%= link_to image_tag(@photo.image.big.url, alt: @photo.name, itemprop: 'contentUrl'), @photo.image.big.url %>
   </figure>
   <% unless @photo.description.blank? %>
       <div class="description" itemprop="description"><%= @photo.description %></div>
