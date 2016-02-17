@@ -1,11 +1,41 @@
-.about {
-  figure {
-    margin: 0 0 0 15px;
-    float: right;
+article.about {
+  .information {
+    display: flex;
+    justify-content: space-between;
 
-    img {
-      max-width: 180px;
-      max-height: 285px;
+    .history {
+      max-width: calc(100% - 11rem);
+    }
+
+    figure {
+      max-width: 10rem;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  ul {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  article.about {
+    .information {
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .history {
+        order: 2;
+        max-width: 100%;
+      }
+
+      figure {
+        order: 1;
+        max-width: 20rem;
+      }
     }
   }
 }
