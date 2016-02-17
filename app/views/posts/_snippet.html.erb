@@ -1,0 +1,7 @@
+<div class="snippet">
+  &lt;a
+    href=&quot;<%= request.protocol + request.host_with_port + url_for(post) %>&quot;
+    target=&quot;_blank&quot;&gt;&lt;img
+      src=&quot;<%= request.protocol + request.host_with_port + post.image.medium.url %>&quot;
+      alt=&quot;<%= post.title %>&quot; /&gt;&lt;/a&gt;
+</div>

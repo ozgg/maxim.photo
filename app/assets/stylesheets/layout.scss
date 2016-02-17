@@ -129,6 +129,16 @@ div.notice {
   text-align: center;
 }
 
+div.snippet {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: dashed #aaaa00 0.0625rem;
+  background: #fffff0;
+  word-wrap: break-word;
+  font-family: monospace;
+  font-size: 0.75rem;
+}
+
 div.options {
   ul {
     max-width: 30rem;

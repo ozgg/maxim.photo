@@ -8,14 +8,16 @@
           <li><%= link_to t(:edit), edit_post_path(post) %></li>
           <li><%= link_to t(:create), new_post_path %></li>
         </ul>
+
+        <%= render partial: 'posts/snippet', locals: { post: post } %>
       </nav>
   <% end %>
   <% unless post.image.blank? %>
       <figure itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
         <%= link_to image_tag(post.image.big.url, alt: post.title), post.image.big.url %>
         <meta itemprop="url" content="<%= request.protocol + request.host_with_port + post.image.medium_square.url %>" />
-        <meta itemprop="width" content="320">
-        <meta itemprop="height" content="320">
+        <meta itemprop="width" content="360">
+        <meta itemprop="height" content="360">
       </figure>
   <% end %>
 
@@ -28,8 +30,8 @@
     <meta itemprop="name" content="maxim.photo" />
     <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
       <meta itemprop="url" content="http://maxim.photo/maxim.jpg">
-      <meta itemprop="width" content="540" />
-      <meta itemprop="height" content="540" />
+      <meta itemprop="width" content="320" />
+      <meta itemprop="height" content="320" />
     </span>
   </span>
   <meta itemprop="dateModified" content="<%= post.updated_w3c %>" />
