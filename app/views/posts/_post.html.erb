@@ -1,5 +1,7 @@
-<article class="post">
-  <h1><%= post.title %></h1>
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="name"><%= post.title %></h1>
+  <meta itemprop="headline" content="<%= post.headline %>" />
+  <meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="<%= url_for %>" />
   <% if current_user %>
       <nav class="actions">
         <ul>
@@ -9,12 +11,27 @@
       </nav>
   <% end %>
   <% unless post.image.blank? %>
-      <figure>
+      <figure itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
         <%= link_to image_tag(post.image.big.url, alt: post.title), post.image.big.url %>
+        <meta itemprop="url" content="<%= request.protocol + request.host_with_port + post.image.medium_square.url %>" />
+        <meta itemprop="width" content="320">
+        <meta itemprop="height" content="320">
       </figure>
   <% end %>
 
-  <div class="body"><%= simple_format post.body %></div>
+  <div class="body" itemprop="articleBody"><%= simple_format post.body %></div>
 
-  <footer><%= time_tag post.created_at %></footer>
+  <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+    <meta itemprop="name" content="<%= t('layouts.footer.copyright') %>" />
+  </span>
+  <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+    <meta itemprop="name" content="maxim.photo" />
+    <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+      <meta itemprop="url" content="http://maxim.photo/maxim.jpg">
+      <meta itemprop="width" content="540" />
+      <meta itemprop="height" content="540" />
+    </span>
+  </span>
+  <meta itemprop="dateModified" content="<%= post.updated_w3c %>" />
+  <footer><%= time_tag post.created_at, itemprop: 'datePublished' %></footer>
 </article>

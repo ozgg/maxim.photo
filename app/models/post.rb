@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  include TimeHelpers
+
   validates_presence_of :title, :body
 
   mount_uploader :image, ImageUploader
@@ -20,5 +22,9 @@ class Post < ActiveRecord::Base
         prev: Post.where('id < ?', self.id).recent.first,
         next: Post.where('id > ?', self.id).recent.last,
     }
+  end
+
+  def headline
+    lead.blank? ? title : lead
   end
 end
