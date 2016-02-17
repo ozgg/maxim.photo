@@ -1,5 +1,6 @@
 <% content_for :meta_title, t('.title') %>
 <% content_for :meta_description, t('.description') %>
+<% content_for :meta_type, 'website' %>
 <% if @photos.any? %>
     <% content_for :meta_image, request.protocol + request.host_with_port + @photos.first.image.medium.url %>
 <% end %>
@@ -11,7 +12,7 @@
 
   <% if @posts.any? %>
       <section>
-        <h1><%= t('.recent_posts') %></h1>
+        <h2><%= t('.recent_posts') %></h2>
         <%= render partial: 'posts/list', locals: { posts: @posts } %>
       </section>
   <% end %>
