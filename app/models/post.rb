@@ -25,6 +25,6 @@ class Post < ActiveRecord::Base
   end
 
   def headline
-    lead.blank? ? title : lead
+    (lead.blank? ? title : lead)[0..110]
   end
 end

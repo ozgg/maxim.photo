@@ -1,7 +1,7 @@
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
   <h1 itemprop="name"><%= post.title %></h1>
   <meta itemprop="headline" content="<%= post.headline %>" />
-  <meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="<%= url_for %>" />
+  <meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="<%= url_for %>" content="<%= url_for %>" />
   <% if current_user %>
       <nav class="actions">
         <ul>
