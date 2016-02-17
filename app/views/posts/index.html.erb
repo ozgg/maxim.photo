@@ -10,7 +10,7 @@
       </nav>
   <% end %>
 
-  <%= paginate @collection, window: 2 %>
+  <%= paginate @collection, window: 3 %>
   <%= render partial: 'posts/list', locals: { posts: @collection } %>
-  <%= paginate @collection, window: 2 %>
+  <%= paginate @collection, window: 3 %>
 </article>

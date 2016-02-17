@@ -24,11 +24,18 @@ nav.pagination {
 
 @media screen and (max-width: 320px) {
   nav.pagination {
+    font-size: 1.5rem;
+
     span {
       padding: 0.25rem 0.5rem;
+      margin: 0 0.5rem;
 
-      &.gap {
+      &.page {
         display: none;
+
+        &.current {
+          display: inline-block;
+        }
       }
     }
   }
