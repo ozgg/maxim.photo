@@ -12,14 +12,24 @@ class PostsController < ApplicationController
 
   def create
     @entity = Post.new entity_parameters
-    @entity.save ? redirect_to(@entity) : render(:new)
+    if @entity.save
+      @entity.tags_string = params[:tags_string].to_s
+      redirect_to @entity
+    else
+      render :new
+    end
   end
 
   def show
   end
 
   def update
-    @entity.update(entity_parameters) ? redirect_to(@entity) : render(:edit)
+    if @entity.update(entity_parameters)
+      @entity.tags_string = params[:tags_string].to_s
+      redirect_to @entity
+    else
+      render :edit
+    end
   end
 
   def destroy

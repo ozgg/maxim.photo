@@ -28,6 +28,11 @@
     </div>
 
     <div>
+      <%= label_tag :tags_string, t('.tags') %><br />
+      <%= text_area_tag :tags_string, entity.tags_string, cols: 80, rows: 3 %>
+    </div>
+
+    <div>
       <%= f.button t(:submit), type: :submit %>
     </div>
 <% end %>

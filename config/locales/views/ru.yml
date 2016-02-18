@@ -78,6 +78,8 @@ ru:
     adjacent:
       previous: "Предыдущая запись"
       next: "Следующая запись"
+    form:
+      tags: "Метки"
   layouts:
     footer:
       copyright: "Максим Хан-Магомедов"
