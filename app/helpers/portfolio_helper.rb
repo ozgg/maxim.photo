@@ -1,8 +1,8 @@
 module PortfolioHelper
   # @param [Theme] theme
   # @param [String] text
-  def link_to_theme(theme, text = nil)
-    link_to text || theme.name, portfolio_theme_path(theme: theme.slug)
+  def link_to_theme(theme, text = nil, options = {})
+    link_to text || theme.name, portfolio_theme_path(theme: theme.slug), options
   end
 
   # @param [Album] album

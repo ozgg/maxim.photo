@@ -1,9 +1,9 @@
 <nav>
   <ul>
-    <% Theme.list_for_visitor.each do |theme| %>
-        <li><%= link_to_theme theme %></li>
+    <% Theme.list_for_visitor.each_with_index do |theme, index| %>
+        <li><%= link_to_theme theme, theme.name, accesskey: index + 2 %></li>
     <% end %>
     <li><%= link_to t('posts.index.header'), posts_path, accesskey: '1' %></li>
-    <li><%= link_to t('index.about.title'), about_path, accesskey: '2' %></li>
+    <li><%= link_to t('index.about.title'), about_path, accesskey: '0' %></li>
   </ul>
 </nav>
