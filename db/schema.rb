@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160215202100) do
+ActiveRecord::Schema.define(version: 20160218195429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(version: 20160215202100) do
 
   add_index "photos", ["album_id"], name: "index_photos_on_album_id", using: :btree
 
+  create_table "post_tags", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "tag_id",  null: false
+  end
+
+  add_index "post_tags", ["post_id"], name: "index_post_tags_on_post_id", using: :btree
+  add_index "post_tags", ["tag_id"], name: "index_post_tags_on_tag_id", using: :btree
+
   create_table "posts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -52,6 +60,11 @@ ActiveRecord::Schema.define(version: 20160215202100) do
     t.string   "image"
     t.string   "lead"
     t.text     "body",       null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string  "body",                             null: false
+    t.integer "post_count", limit: 2, default: 0, null: false
   end
 
   create_table "themes", force: :cascade do |t|
@@ -75,4 +88,6 @@ ActiveRecord::Schema.define(version: 20160215202100) do
 
   add_foreign_key "albums", "themes"
   add_foreign_key "photos", "albums"
+  add_foreign_key "post_tags", "posts"
+  add_foreign_key "post_tags", "tags"
 end

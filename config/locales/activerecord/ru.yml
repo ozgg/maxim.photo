@@ -31,3 +31,9 @@ ru:
         image: "Картинка"
         lead: "Аннотация"
         body: "Текст"
+      tag:
+        body: "Текст"
+        post_count: "Количество публикаций"
+      post_tag:
+        post_id: "Публикация"
+        tag_id: "Метка"

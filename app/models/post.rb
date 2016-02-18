@@ -1,6 +1,9 @@
 class Post < ActiveRecord::Base
   include TimeHelpers
 
+  has_many :post_tags, dependent: :destroy
+  has_many :posts, through: :post_tags
+
   validates_presence_of :title, :body
 
   mount_uploader :image, ImageUploader
@@ -26,5 +29,13 @@ class Post < ActiveRecord::Base
 
   def headline
     (lead.blank? ? title : lead)[0..110]
+  end
+
+  def tags_string=(tags_string)
+    list_of_tags = []
+    tags_string.split(',').each do |body|
+      list_of_tags << Tag.find_or_create_by(body: body.squish) unless body.blank?
+    end
+    self.tags = list_of_tags.uniq
   end
 end
