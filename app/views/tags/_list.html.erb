@@ -1,0 +1,9 @@
+<% if tags.any? %>
+    <ul class="tags">
+      <% tags.each do |tag| %>
+          <li><%= link_to tag.body, edit_tag_path(tag) %> (<%= tag.post_count %>)</li>
+      <% end %>
+    </ul>
+<% else %>
+    <%= render 'shared/nothing_found' %>
+<% end %>

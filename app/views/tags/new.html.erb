@@ -1,0 +1,12 @@
+<% content_for :meta_title, t('.title') %>
+<% content_for :options do %>
+    <ul>
+      <li><%= link_to t(:list), tags_path %></li>
+    </ul>
+<% end %>
+
+<article class="edit-tag">
+  <h1><%= t('.title') %></h1>
+
+  <%= render partial: 'tags/form', locals: { entity: @entity } %>
+</article>

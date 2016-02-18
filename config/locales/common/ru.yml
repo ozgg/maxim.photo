@@ -5,6 +5,12 @@ ru:
     few: "%{count} ошибки"
     many: "%{count} ошибок"
     other: "%{count} ошибок"
+  post:
+    zero: "нет публикаций"
+    one: "%{count} публикация"
+    few: "%{count} пубилкации"
+    many: "%{count} публикаций"
+    other: "%{count} публикаций"
   nothing_found: "Ничего не нашлось"
   create: "Создать"
   view: "В просмотр"
@@ -15,9 +21,6 @@ ru:
   submit: "Отправить"
   are_you_sure: "Вы уверены?"
   logout: "Выйти"
-  photos:
-    form:
-      current_image: "Текущая картинка"
   current_image: "Текущая картинка"
   created_at: "время создания"
   updated_at: "время обновления"

@@ -5,4 +5,12 @@ class Tag < ActiveRecord::Base
   validates_presence_of :body, :post_count
 
   scope :ordered_by_body, -> { order 'body asc' }
+
+  def self.list_for_administration
+    ordered_by_body.all
+  end
+
+  def self.entity_parameters
+    %i(body)
+  end
 end

@@ -83,3 +83,12 @@ ru:
   layouts:
     footer:
       copyright: "Максим Хан-Магомедов"
+  tags:
+    index:
+      title: "Метки публикаций"
+    edit:
+      title: "Редактирование метки"
+    new:
+      title: "Создание метки"
+    show:
+      title: "Метка «%{body}»"
