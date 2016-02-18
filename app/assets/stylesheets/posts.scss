@@ -3,6 +3,21 @@ article.post {
     margin: 0.5rem;
   }
 
+  ul.tags {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      list-style: none;
+      margin: 0.25rem;
+      padding: 0.25rem 0.5rem;
+      background: #f7f7f7;
+      font-size: 0.75rem;
+    }
+  }
+
   > footer {
     text-align: right;
     font-size: 0.875rem;

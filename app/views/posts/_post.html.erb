@@ -35,5 +35,7 @@
     </span>
   </span>
   <meta itemprop="dateModified" content="<%= post.updated_w3c %>" />
+  <meta itemprop="keywords" content="<%= post.tags_string %>" />
+  <%= render partial: 'posts/tags', locals: { tags: post.tags.ordered_by_body } %>
   <footer><%= time_tag post.created_at, itemprop: 'datePublished' %></footer>
 </article>

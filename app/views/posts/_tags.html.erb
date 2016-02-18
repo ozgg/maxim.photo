@@ -1,0 +1,7 @@
+<% if tags.any? %>
+    <ul class="tags" aria-label="<%= t('posts.form.tags') %>">
+      <% tags.each do |tag| %>
+          <li><%= tag.body %></li>
+      <% end %>
+    </ul>
+<% end %>
