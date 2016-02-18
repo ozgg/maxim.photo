@@ -11,6 +11,11 @@
         <meta property="og:article:tag" content="<%= tag.body %>"/>
     <% end %>
 <% end %>
+<% content_for :meta_twitter do %>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:description" content="<%= @entity.lead %>" />
+<% end %>
+
 
 <%= render @entity %>
 <%= render partial: 'adjacent', locals: { posts: @entity.adjacent } %>

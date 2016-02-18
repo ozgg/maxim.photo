@@ -7,6 +7,10 @@
     <meta property="og:article:modified_time" content="<%= @photo.updated_at.strftime('%Y-%m-%d') %>"/>
     <meta property="og:article:section" content="<%= @photo.album.long_name %>"/>
 <% end %>
+<% content_for :meta_twitter do %>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:description" content="<%= @photo.description || @photo.name %>" />
+<% end %>
 
 <article class="photo" itemscope itemtype="http://schema.org/ImageObject">
   <h1><%= link_to_album @photo.album %> / <span itemprop="name"><%= @photo.name %></span></h1>
