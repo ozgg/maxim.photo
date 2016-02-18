@@ -80,6 +80,9 @@ ru:
       next: "Следующая запись"
     form:
       tags: "Метки"
+    tagged:
+      title: "Публикации с меткой «%{tag}», страница %{page}"
+      header: "Публикации с меткой «%{tag}»"
   layouts:
     footer:
       copyright: "Максим Хан-Магомедов"

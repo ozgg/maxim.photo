@@ -16,6 +16,10 @@ class Post < ActiveRecord::Base
     recent.page(page).per(PER_PAGE)
   end
 
+  def self.tagged_page(tag, page)
+    recent.joins(:post_tags).where(post_tags: { tag: tag }).page(page).per(PER_PAGE)
+  end
+
   def self.entity_parameters
     %i(title image lead body)
   end

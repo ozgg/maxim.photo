@@ -12,9 +12,11 @@ article.post {
     li {
       list-style: none;
       margin: 0.25rem;
-      padding: 0.25rem 0.5rem;
-      background: #f7f7f7;
-      font-size: 0.75rem;
+      border: dotted #f7f7f7 0.0625rem;
+
+      > a {
+        padding: 0.25rem 0.5rem;
+      }
     }
   }
 
