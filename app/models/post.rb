@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
 
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
+  has_many :illustrations, dependent: :destroy
 
   validates_presence_of :title, :body
 

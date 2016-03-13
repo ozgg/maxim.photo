@@ -1,36 +1,68 @@
 <%= form_for entity do |f| %>
     <%= render partial: 'shared/list_of_errors', locals: { entity: entity } %>
 
-    <figure>
-      <% unless entity.image.blank? %>
-          <%= image_tag entity.image.medium.url, alt: t(:current_image) %>
-      <% end %>
+    <fieldset>
+      <legend><%= t('.post') %></legend>
 
-      <figcaption>
-        <%= f.label :image %>
-        <%= f.file_field :image, accept: 'image/jpeg' %>
-      </figcaption>
-    </figure>
+      <figure>
+        <% unless entity.image.blank? %>
+            <%= image_tag entity.image.medium.url, alt: t(:current_image) %>
+        <% end %>
 
-    <div>
-      <%= f.label :title %>
-      <%= f.text_field :title, required: true, size: 50 %>
-    </div>
+        <figcaption>
+          <%= f.label :image %>
+          <%= f.file_field :image, accept: 'image/jpeg' %>
+        </figcaption>
+      </figure>
 
-    <div>
-      <%= f.label :lead %>
-      <%= f.text_field :lead, size: 50 %>
-    </div>
+      <div>
+        <%= f.label :title %>
+        <%= f.text_field :title, required: true, size: 50 %>
+      </div>
 
-    <div>
-      <%= f.label :body %><br />
-      <%= f.text_area :body, cols: 80, rows: 10 %>
-    </div>
+      <div>
+        <%= f.label :lead %>
+        <%= f.text_field :lead, size: 50 %>
+      </div>
 
-    <div>
-      <%= label_tag :tags_string, t('.tags') %><br />
-      <%= text_area_tag :tags_string, entity.tags_string, cols: 80, rows: 3 %>
-    </div>
+      <div>
+        <%= f.label :body %><br />
+        <%= f.text_area :body, cols: 80, rows: 10 %>
+      </div>
+
+      <div>
+        <%= label_tag :tags_string, t('.tags') %><br />
+        <%= text_area_tag :tags_string, entity.tags_string, cols: 80, rows: 3 %>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend><%= t('.illustrations') %></legend>
+
+      <ul>
+        <% entity.illustrations.ordered_by_priority.each do |illustration| %>
+        <li>
+          <%= image_tag illustration.image.small.url unless illustration.image.blank? %>
+          <%= link_to illustration.title, illustration %>
+        </li>
+        <% end %>
+        <li>
+          <div>
+            <%= label_tag 'illustrations[0][image]', t('activerecord.attributes.illustration.image') %>
+            <%= file_field_tag 'illustrations[0][image]', accept: 'image/jpeg' %>
+          </div>
+          <div>
+            <%= label_tag 'illustrations[0][title]', t('activerecord.attributes.illustration.title') %>
+            <%= text_field_tag 'illustrations[0][title]' %>
+          </div>
+          <div>
+            <%= label_tag 'illustrations[0][description]', t('activerecord.attributes.illustration.description') %>
+            <%= text_area_tag 'illustrations[0][description]', '', cols: 50, rows: 5 %>
+          </div>
+        </li>
+      </ul>
+      <button type="button" id="add-illustration"><%= t('.add_illustration') %></button>
+    </fieldset>
 
     <div>
       <%= f.button t(:submit), type: :submit %>

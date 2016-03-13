@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get '/:theme/:album/:id' => :photo, as: :portfolio_photo
   end
 
-  resources :themes, :albums, :photos, :tags
+  resources :themes, :albums, :photos, :tags, :illustrations
 
   resources :posts do
     collection do
