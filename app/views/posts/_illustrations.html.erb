@@ -1,0 +1,16 @@
+<% if illustrations.any? %>
+    <section class="illustrations">
+      <% illustrations.each do |illustration| %>
+          <div>
+            <figure>
+              <%= link_to image_tag(illustration.image.medium.url, alt: illustration.title), illustration.image.big.url %>
+              <figcaption><%= illustration.title %></figcaption>
+            </figure>
+            <% unless illustration.description.blank? %>
+                <div class="description"><%= simple_format illustration.description %></div>
+            <% end %>
+          </div>
+      <% end %>
+
+    </section>
+<% end %>

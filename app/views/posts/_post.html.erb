@@ -21,7 +21,10 @@
       </figure>
   <% end %>
 
-  <div class="body" itemprop="articleBody"><%= simple_format post.body %></div>
+  <div class="body" itemprop="articleBody">
+    <div class="main"><%= simple_format post.body %></div>
+    <%= render partial: 'posts/illustrations', locals: { illustrations: post.illustrations.ordered_by_priority } %>
+  </div>
 
   <span itemprop="author" itemscope itemtype="https://schema.org/Person">
     <meta itemprop="name" content="<%= t('layouts.footer.copyright') %>" />
