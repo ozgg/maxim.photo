@@ -46,3 +46,13 @@ ru:
       title: "Создание метки"
     show:
       title: "Метка «%{body}»"
+  illustrations:
+    index:
+      title: "Иллюстрации, страница %{page}"
+      header: "Иллюстрации"
+    new:
+      title: "Новая иллюстрация"
+    show:
+      title: "Иллюстрация «%{title}»"
+    edit:
+      title: "Редактирование иллюстрации"

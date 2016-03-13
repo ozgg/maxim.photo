@@ -10,6 +10,10 @@ class Illustration < ActiveRecord::Base
 
   scope :ordered_by_priority, -> { order 'priority asc' }
 
+  def self.page_for_administration(page)
+    order('post_id desc, priority asc').page(page).per(PER_PAGE)
+  end
+
   private
 
   def set_next_priority

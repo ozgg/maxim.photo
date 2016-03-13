@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160218195429) do
+ActiveRecord::Schema.define(version: 20160313114443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,16 @@ ActiveRecord::Schema.define(version: 20160218195429) do
   end
 
   add_index "albums", ["theme_id"], name: "index_albums_on_theme_id", using: :btree
+
+  create_table "illustrations", force: :cascade do |t|
+    t.integer "post_id",                           null: false
+    t.integer "priority",    limit: 2, default: 1, null: false
+    t.string  "image"
+    t.string  "title"
+    t.text    "description"
+  end
+
+  add_index "illustrations", ["post_id"], name: "index_illustrations_on_post_id", using: :btree
 
   create_table "languages", force: :cascade do |t|
     t.string "code", null: false
@@ -87,6 +97,7 @@ ActiveRecord::Schema.define(version: 20160218195429) do
   end
 
   add_foreign_key "albums", "themes"
+  add_foreign_key "illustrations", "posts"
   add_foreign_key "photos", "albums"
   add_foreign_key "post_tags", "posts"
   add_foreign_key "post_tags", "tags"

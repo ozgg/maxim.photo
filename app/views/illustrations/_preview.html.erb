@@ -1,0 +1,9 @@
+<div class="illustration-preview">
+  <% if current_user.is_a? User %>
+      <%= link_to image_tag(illustration.image.big_square.url, alt: illustration.title), illustration %>
+  <% else %>
+      <%= link_to illustration.title illustration %>
+  <% end %>
+  <div class="post"><%= illustration.post.title %></div>
+  <div class="title"><%= illustration.title %></div>
+</div>
