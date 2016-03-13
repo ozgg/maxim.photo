@@ -26,12 +26,12 @@
       </div>
 
       <div>
-        <%= f.label :body %><br />
+        <%= f.label :body %><br/>
         <%= f.text_area :body, cols: 80, rows: 10 %>
       </div>
 
       <div>
-        <%= label_tag :tags_string, t('.tags') %><br />
+        <%= label_tag :tags_string, t('.tags') %><br/>
         <%= text_area_tag :tags_string, entity.tags_string, cols: 80, rows: 3 %>
       </div>
     </fieldset>
@@ -41,10 +41,10 @@
 
       <ol>
         <% entity.illustrations.ordered_by_priority.each do |illustration| %>
-        <li>
-          <%= image_tag illustration.image.small_square.url unless illustration.image.blank? %>
-          <%= link_to illustration.title, illustration %>
-        </li>
+            <li>
+              <%= image_tag illustration.image.small_square.url unless illustration.image.blank? %>
+              <%= link_to illustration.title, illustration %>
+            </li>
         <% end %>
         <li>
           <div>
@@ -68,3 +68,17 @@
       <%= f.button t(:submit), type: :submit %>
     </div>
 <% end %>
+
+<script type="text/javascript">/*<![CDATA[*/
+$(document).ready(function () {
+  $('#add-illustration').on('click', function() {
+    var $container = $(this).parent().find('ol');
+    var $last_item = $container.find('li:last-of-type');
+    var last_index = $last_item.find('textarea').attr('id').replace(/\D+(\d+)\D+/, '$1');
+    var next_index = parseInt(last_index) + 1;
+    var pattern    = new RegExp('([_\\[])' + last_index + '([_\\]])', 'g');
+
+    $container.append('<li>' + $last_item.html().replace(pattern, '$1' + next_index + '$2') + '</li>');
+  });
+});
+/*]]>*/</script>
