@@ -17,6 +17,7 @@ class PostsController < ApplicationController
     @entity = Post.new entity_parameters
     if @entity.save
       @entity.tags_string = params[:tags_string].to_s
+      add_illustrations if params[:illustrations].any?
       redirect_to @entity
     else
       render :new
@@ -31,6 +32,7 @@ class PostsController < ApplicationController
   def update
     if @entity.update(entity_parameters)
       @entity.tags_string = params[:tags_string].to_s
+      add_illustrations if params[:illustrations].any?
       redirect_to @entity
     else
       render :edit
@@ -57,5 +59,13 @@ class PostsController < ApplicationController
 
   def entity_parameters
     params.require(:post).permit(Post.entity_parameters)
+  end
+
+  def add_illustrations
+    params[:illustrations].values.each do |illustration_data|
+      unless illustration_data[:title].blank? || illustration_data[:image].blank?
+        @entity.illustrations.create(illustration_data)
+      end
+    end
   end
 end

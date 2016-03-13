@@ -39,10 +39,10 @@
     <fieldset>
       <legend><%= t('.illustrations') %></legend>
 
-      <ul>
+      <ol>
         <% entity.illustrations.ordered_by_priority.each do |illustration| %>
         <li>
-          <%= image_tag illustration.image.small.url unless illustration.image.blank? %>
+          <%= image_tag illustration.image.small_square.url unless illustration.image.blank? %>
           <%= link_to illustration.title, illustration %>
         </li>
         <% end %>
@@ -60,7 +60,7 @@
             <%= text_area_tag 'illustrations[0][description]', '', cols: 50, rows: 5 %>
           </div>
         </li>
-      </ul>
+      </ol>
       <button type="button" id="add-illustration"><%= t('.add_illustration') %></button>
     </fieldset>
 
