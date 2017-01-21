@@ -9,11 +9,14 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
-!/log/.keep
-/tmp
+/tmp/*
+
+# Ignore Byebug command history file.
+.byebug_history
+
+.env
 
 /public/uploads
-/config/database.yml
-/config/secrets.yml
 
-/public/sitemap.xml
+/spec/examples.txt
+/spec/support/uploads/*

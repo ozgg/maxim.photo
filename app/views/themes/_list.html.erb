@@ -1,9 +1,0 @@
-<% if themes.any? %>
-    <ul class="themes">
-      <% themes.each do |theme| %>
-          <li><%= render partial: 'themes/preview', locals: { theme: theme } %></li>
-      <% end %>
-    </ul>
-<% else %>
-    <%= render 'shared/nothing_found' %>
-<% end %>

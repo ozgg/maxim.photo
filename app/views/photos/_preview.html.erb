@@ -1,8 +1,0 @@
-<div class="photo-preview">
-  <% if current_user.is_a? User %>
-      <%= link_to image_tag(photo.image.big_square.url, alt: photo.name), photo %>
-  <% else %>
-      <%= link_to_photo photo %>
-  <% end %>
-  <div class="name"><%= photo.name %></div>
-</div>

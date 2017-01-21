@@ -1,9 +1,3 @@
+Host: maxim.photo
 User-agent: *
-Disallow: /administration/
-Disallow: /login/
-Disallow: /categories/
-Disallow: /albums
-Disallow: /photos/new
-Disallow: /posts/new
-Disallow: /posts/tagged
-
+Allow: /

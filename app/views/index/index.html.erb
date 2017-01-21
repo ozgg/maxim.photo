@@ -1,19 +1,2 @@
-<% content_for :meta_title, t('.title') %>
-<% content_for :meta_description, t('.description') %>
-<% content_for :meta_type, 'website' %>
-<% if @photos.any? %>
-    <% content_for :meta_image, request.protocol + request.host_with_port + @photos.first.image.medium.url %>
-<% end %>
-
-<article>
-  <h1><%= t('.header') %></h1>
-
-  <%= render partial: 'portfolio/photos', locals: { photos: @photos } %>
-
-  <% if @posts.any? %>
-      <section>
-        <h2><%= t('.recent_posts') %></h2>
-        <%= render partial: 'posts/list', locals: { posts: @posts } %>
-      </section>
-  <% end %>
-</article>
+<h1>Oh, hi!</h1>
+<p>Ведутся длительные технические работы в связи с обновлением сайта.</p>

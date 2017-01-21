@@ -1,34 +1,15 @@
 <!DOCTYPE html>
 <html lang="<%= locale %>" prefix="og: http://ogp.me/ns#">
 <head>
-  <title><%= yield :meta_title %> :: maxim.photo</title>
   <meta charset="UTF-8" />
+  <title><%= yield :meta_title %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <%= render 'layouts/meta_texts' %>
+  <%= render 'shared/meta_texts' %>
+  <%= csrf_meta_tags %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render 'layouts/header' %>
-
-<div id="main" role="main">
-  <% if current_user %>
-      <ul>
-        <li><%= link_to t('index.index.title'), root_path %></li>
-        <li><%= link_to t('administration.index.title'), admin_path %></li>
-        <li><%= link_to t(:logout), logout_path, method: :delete %></li>
-      </ul>
-  <% end %>
-
-  <%= render 'shared/flash_messages' %>
-  <%= render 'shared/options' %>
-
   <%= yield %>
-</div>
-
-<%= render 'layouts/metrics' %>
-<%= render 'layouts/footer' %>
-<%= render 'layouts/fonts' %>
 </body>
 </html>

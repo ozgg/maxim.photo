@@ -1,9 +1,0 @@
-<% content_for :meta_title, t('.title', tag: @tag.body, page: current_page) %>
-
-<article class="posts">
-  <h1><%= t('.header', tag: @tag.body) %></h1>
-
-  <%= paginate @collection, window: 3 %>
-  <%= render partial: 'posts/list', locals: { posts: @collection } %>
-  <%= paginate @collection, window: 3 %>
-</article>

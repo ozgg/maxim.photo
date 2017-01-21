@@ -1,7 +1,3 @@
-Roadmap
-=======
+# maxim.photo
 
- * Contact form
- * Error pages in site layout
- * Swipe between adjacent photos
- * Random photos on main page
+Вторая версия сайта на пятых рельсах.
