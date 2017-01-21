@@ -27,3 +27,4 @@ production:
   database: maxim_photo
   username: maxim
   password: <%= ENV['MAXIM_PHOTO_DATABASE_PASSWORD'] %>
+  host: localhost

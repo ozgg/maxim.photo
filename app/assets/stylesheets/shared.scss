@@ -1,15 +1,18 @@
-$main-font-family: "PT Sans", Arial, Verdana, sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,600|Josefin+Slab:300&subset=cyrillic');
+
+$main-font-family: 'Cormorant Garamond', serif;
+$site-name-font-family: 'Cormorant Garamond', serif;
 
 // Common font sizes
-$huge_font_size: 2.4rem;      // 24px
-$larger_font_size: 2.2rem;    // 22px
-$large_font_size: 2rem;       // 20px
-$increased_font_size: 1.8rem; // 18px
-$normal_font_size: 1.6rem;    // 16px
-$decreased_font_size: 1.4rem; // 14px
-$small_font_size: 1.2rem;     // 12px
-$smaller_font_size: 1rem;     // 10px
-$tiny_font_size: .8rem;       // 8px
+$huge_font_size: 3.6rem;
+$larger_font_size: 2.8rem;
+$large_font_size: 2.2rem;
+$increased_font_size: 1.8rem;
+$normal_font_size: 1.6rem;
+$decreased_font_size: 1.4rem;
+$small_font_size: 1.2rem;
+$smaller_font_size: 1rem;
+$tiny_font_size: .8rem;
 
 // Zebra for lists
 $row_background_even: #f0f0f0;

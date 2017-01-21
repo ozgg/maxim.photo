@@ -1,5 +1,5 @@
 html {
-  font: 10px $main-font-family;
+  font: 300 10px $main-font-family;
   margin: 0;
   padding: 0;
   -webkit-text-size-adjust: none;
@@ -10,6 +10,11 @@ html {
 body {
   color: $primary_text_color;
   font-size: $normal_font_size;
+}
+
+h1 {
+  font: 600 $huge_font_size $main-font-family;
+  margin: 0;
 }
 
 .hidden {
