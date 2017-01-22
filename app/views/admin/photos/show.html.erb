@@ -1,6 +1,6 @@
 <% content_for :meta_title, @entity.title %>
 
-<article class="entity-page">
+<article class="entity-page photo">
   <h1><%= @entity.title %></h1>
 
   <ul class="actions">
@@ -8,5 +8,23 @@
     <li><%= edit_icon(edit_photo_path(@entity.id)) %></li>
   </ul>
 
+  <figure>
+    <%= link_to(image_tag(@entity.image.big.url), @entity.image.url) %>
+    <figcaption><%= @entity.lead %></figcaption>
+  </figure>
 
+  <div class="description">
+    <%= prepare_photo_description(@entity) %>
+  </div>
+  <div class="keywords">
+    <%= @entity.keywords %>
+  </div>
+  <div class="flags">
+    <% if @entity.hazard_motion? %>
+        <div><%= t('activerecord.attributes.photo.hazard_motion') %></div>
+    <% end %>
+    <% if @entity.nudity? %>
+        <div><%= t('activerecord.attributes.photo.nudity') %></div>
+    <% end %>
+  </div>
 </article>

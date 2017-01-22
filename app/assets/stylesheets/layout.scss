@@ -82,6 +82,21 @@ main {
     h1 {
       padding: 0 .8rem;
     }
+
+    > figure {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      width: 100%;
+
+      img {
+        max-width: 100%;
+      }
+
+      figcaption {
+        color: $secondary_text_color;
+      }
+    }
   }
 }
 
@@ -92,4 +107,10 @@ h1 {
 
 .hidden {
   display: none !important;
+}
+
+article.photo {
+  > div {
+    padding: 0 .4rem;
+  }
 }

@@ -11,4 +11,9 @@ module PhotosHelper
       image_tag(photo.image.thumbnail.url, alt: photo.title, srcset: versions)
     end
   end
+
+  # @param [Photo] photo
+  def prepare_photo_description(photo)
+    simple_format(photo.description)
+  end
 end
