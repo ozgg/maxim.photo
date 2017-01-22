@@ -73,6 +73,14 @@ body {
   }
 }
 
+main {
+  padding: 1.6rem 0;
+
+  article {
+    position: relative;
+  }
+}
+
 h1 {
   font: 600 $huge_font_size $main-font-family;
   margin: 0;

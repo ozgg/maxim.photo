@@ -11,7 +11,10 @@
 </head>
 <body>
 <%= render 'layouts/application/header' %>
+<main id="main" role="main">
+  <%= render 'shared/flash_messages' %>
   <%= yield %>
+</main>
 <%= render 'layouts/application/footer' %>
 <%= render 'shared/counters' %>
 </body>

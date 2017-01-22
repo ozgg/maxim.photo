@@ -4,6 +4,9 @@
     <ul aria-label="<%= t('.main_mavigation') %>">
       <li><%= link_to(t('photos.index.heading'), photos_path, accesskey: '1') %></li>
       <li><%= link_to(t('index.about.heading'), about_path, accesskey: '2') %></li>
+      <% if current_user.is_a?(User) %>
+          <li><%= link_to(t(:logout), logout_path, method: :delete) %></li>
+      <% end %>
     </ul>
   </nav>
 </header>

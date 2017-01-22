@@ -64,8 +64,8 @@ ru:
     index:
       title: "maxim.photo"
     about:
-      title: "Обо мне"
-      heading: "Обо мне"
+      title: "О сайте maxim.photo"
+      heading: "Автор"
   application:
     not_found:
       title: "Страница не найдена"
@@ -74,6 +74,6 @@ ru:
   layouts:
     application:
       footer:
-        copyright: "Maxim Khan-Magomedov (maxim.photo)"
+        copyright: "Максим Хан-Магомедов (maxim.photo)"
       header:
         main_mavigation: "Главное меню"

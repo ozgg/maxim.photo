@@ -19,11 +19,35 @@ a.profile {
   }
 }
 
-article.recovery {
+article.authentication {
+  text-align: center;
+
   form {
-    label {
-      display: inline-block;
-      min-width: 20rem;
+    box-shadow: $block-shadow;
+    margin: 0 auto;
+    max-width: 30rem;
+
+    .fields {
+      padding: 1.6rem 1.6rem 0;
+
+      > div {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+
+        label {
+          display: inline-block;
+          line-height: $large_font_size;
+        }
+      }
+    }
+
+    .actions {
+      padding: 1.6rem;
+
+      button {
+        @include action-button;
+      }
     }
   }
 }
