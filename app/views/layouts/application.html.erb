@@ -10,6 +10,9 @@
   <%= javascript_include_tag 'application' %>
 </head>
 <body>
+<%= render 'layouts/application/header' %>
   <%= yield %>
+<%= render 'layouts/application/footer' %>
+<%= render 'shared/counters' %>
 </body>
 </html>

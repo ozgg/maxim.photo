@@ -62,9 +62,18 @@ ru:
         title: "Администрирование"
   index:
     index:
-      title: "Главная страница"
+      title: "maxim.photo"
+    about:
+      title: "Обо мне"
+      heading: "Обо мне"
   application:
     not_found:
       title: "Страница не найдена"
       heading: "Страница не найдена"
       message: "Страница не существует или была удалена"
+  layouts:
+    application:
+      footer:
+        copyright: "Maxim Khan-Magomedov (maxim.photo)"
+      header:
+        main_mavigation: "Главное меню"

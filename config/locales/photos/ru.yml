@@ -1,0 +1,5 @@
+ru:
+  photos:
+    index:
+      title: "Фотографии, страница %{page}"
+      heading: "Фотографии"
