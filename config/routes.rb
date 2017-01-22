@@ -10,4 +10,10 @@ Rails.application.routes.draw do
     post 'login' => :create
     delete 'logout' => :destroy
   end
+
+  namespace :admin do
+    get '/' => 'index#index'
+
+    resources :photos, only: [:index, :show]
+  end
 end

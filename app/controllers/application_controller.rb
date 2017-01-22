@@ -26,4 +26,24 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
   end
+
+  protected
+
+  # Handle HTTP error with status 404 without raising exception
+  #
+  # @param [String] message
+  # @param [Symbol|String] view
+  def handle_http_404(message, view = :not_found)
+    logger.warn "#{message}\n\t#{request.method} #{request.original_url}"
+    render view, status: :not_found
+  end
+
+  # Ограничить доступ для анонимных посетителей
+  def restrict_anonymous_access
+    unless current_user.is_a? User
+      ip = request.env['HTTP_X_REAL_IP'] || request.remote_ip
+      logger.warn("Unauthorized: #{ip}\n\t#{request.method} #{request.original_url}")
+      render(:unauthorized, status: :unauthorized)
+    end
+  end
 end

@@ -1,0 +1,19 @@
+<% content_for :meta_title, t('.title') %>
+
+<article>
+  <h1><%= t('.heading') %></h1>
+
+  <div class="dashboard">
+    <nav>
+      <ul>
+        <li>
+          <div><%= link_to(t('admin.photos.index.heading'), admin_photos_path) %></div>
+          <div class="description"><%= t('admin.photos.index.description') %></div>
+          <ul class="actions">
+            <li><%= create_icon(new_photo_path) %></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</article>

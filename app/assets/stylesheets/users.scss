@@ -19,35 +19,31 @@ a.profile {
   }
 }
 
-article.authentication {
-  text-align: center;
+form.login {
+  box-shadow: $block-shadow;
+  margin: 0 auto;
+  max-width: 30rem;
 
-  form {
-    box-shadow: $block-shadow;
-    margin: 0 auto;
-    max-width: 30rem;
+  .fields {
+    padding: 1.6rem 1.6rem 0;
 
-    .fields {
-      padding: 1.6rem 1.6rem 0;
+    > div {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
 
-      > div {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-
-        label {
-          display: inline-block;
-          line-height: $large_font_size;
-        }
+      label {
+        display: inline-block;
+        line-height: $large_font_size;
       }
     }
+  }
 
-    .actions {
-      padding: 1.6rem;
+  .actions {
+    padding: 1.6rem;
 
-      button {
-        @include action-button;
-      }
+    button {
+      @include action-button;
     }
   }
 }
