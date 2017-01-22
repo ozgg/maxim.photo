@@ -115,6 +115,9 @@ article.entity-page {
   }
 
   form {
+    margin: 1.6rem auto;
+    max-width: 64rem;
+
     table {
       figure {
         margin: 0;
@@ -217,6 +220,56 @@ article.entity-page {
           content: '\261E';
           margin-right: 0.4rem;
         }
+      }
+    }
+
+    .fields {
+      figure {
+        margin: 0 auto;
+        padding: 0;
+        max-width: 32rem;
+        text-align: center;
+
+        img {
+          max-width: 100%;
+        }
+      }
+
+      > div {
+        background: $row_background_odd;
+        padding: .4rem 0;
+
+        &:nth-of-type(even) {
+          background: $row_background_even;
+        }
+
+        > div {
+          padding: 0 .4rem;
+        }
+      }
+
+      ul.flags {
+        margin: 0;
+        padding: 0;
+
+        li {
+          list-style: none;
+          margin: 0;
+          padding: .4rem;
+        }
+      }
+
+      input:not([type=checkbox]):not([size]), textarea {
+        width: calc(100% - 1rem);
+      }
+    }
+
+    .buttons {
+      padding: .8rem;
+      text-align: center;
+
+      button[type=submit] {
+        @include action-button;
       }
     }
   }
@@ -401,6 +454,19 @@ ul.actions {
       &:first-of-type {
         text-align: right;
       }
+    }
+  }
+}
+
+form {
+  .guideline {
+    color: $secondary_text_color;
+    font-size: $decreased_font_size;
+    margin: 0;
+
+    &::before {
+      content: '\261E';
+      margin-right: 0.4rem;
     }
   }
 }
