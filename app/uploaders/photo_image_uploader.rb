@@ -28,10 +28,10 @@ class PhotoImageUploader < CarrierWave::Uploader::Base
   end
 
   version :thumbnail_2x, from_version: :small do
-    resize_to_fit(160, 90)
+    resize_to_fit(160, 160)
   end
 
-  version :preview, from_version: :thumbnail_2x do
-    resize_to_fit(80, 45)
+  version :thumbnail, from_version: :thumbnail_2x do
+    resize_to_fit(80, 80)
   end
 end
