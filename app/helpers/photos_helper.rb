@@ -13,6 +13,18 @@ module PhotosHelper
   end
 
   # @param [Photo] photo
+  def photo_image_preview(photo)
+    versions = "#{photo.image.big.url} 2x"
+    image_tag(photo.image.medium.url, alt: photo.title, srcset: versions)
+  end
+
+  # @param [Photo] photo
+  def photo_image_full(photo)
+    versions = "#{photo.image.url} 2x"
+    image_tag(photo.image.big.url, alt: photo.title, srcset: versions)
+  end
+
+  # @param [Photo] photo
   def prepare_photo_description(photo)
     simple_format(photo.description)
   end

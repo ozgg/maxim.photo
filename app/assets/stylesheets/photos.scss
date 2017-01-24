@@ -1,0 +1,23 @@
+article.photo {
+  > div {
+    padding: 0 .4rem;
+  }
+}
+
+ul.photo-previews {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    img {
+      max-width: 100%;
+    }
+  }
+}

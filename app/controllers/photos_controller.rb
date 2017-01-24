@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   before_action :restrict_anonymous_access, except: [:index, :show]
-  before_action :set_entity, only: [:edit, :update, :destroy]
+  before_action :set_entity, only: [:show, :edit, :update, :destroy]
 
   # get /photos
   def index

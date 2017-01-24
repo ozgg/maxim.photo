@@ -2,4 +2,13 @@
 
 <article>
   <h1><%= t('.heading') %></h1>
+  <% if current_user.is_a?(User) %>
+      <ul class="actions">
+        <li><%= create_icon(new_photo_path) %></li>
+      </ul>
+  <% end %>
+
+  <%= paginate @collection %>
+  <%= render partial: 'list', locals: { collection: @collection } %>
+  <%= paginate @collection %>
 </article>

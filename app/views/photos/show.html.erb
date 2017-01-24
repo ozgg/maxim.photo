@@ -1,0 +1,15 @@
+<% content_for :meta_title, @entity.title %>
+
+<article class="photo">
+  <h1><%= @entity.title %></h1>
+  <% if current_user.is_a?(User) %>
+      <ul class="actions">
+        <li><%= edit_icon(edit_photo_path(@entity.id)) %></li>
+      </ul>
+  <% end %>
+
+  <figure>
+    <%= photo_image_full(@entity) %>
+    <figcaption><%= @entity.lead %></figcaption>
+  </figure>
+</article>
