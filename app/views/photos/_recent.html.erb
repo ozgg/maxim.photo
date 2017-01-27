@@ -1,0 +1,10 @@
+<% unless entity.nil? %>
+<section id="recent-photo">
+  <h2><%= t('.heading') %></h2>
+
+  <figure>
+    <%= link_to(image_tag(entity.image.big.url, alt: entity.title), photo_path(entity.id)) %>
+    <figcaption><%= entity.lead %></figcaption>
+  </figure>
+</section>
+<% end %>
