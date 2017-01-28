@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170122210609) do
+ActiveRecord::Schema.define(version: 20170128235751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "metric_values", force: :cascade do |t|
+    t.integer  "metric_id",             null: false
+    t.datetime "time",                  null: false
+    t.integer  "quantity",  default: 1, null: false
+    t.index "date_trunc('day'::text, \"time\")", name: "metric_values_day_idx", using: :btree
+    t.index ["metric_id"], name: "index_metric_values_on_metric_id", using: :btree
+  end
+
+  create_table "metrics", force: :cascade do |t|
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.boolean  "incremental",                 default: false, null: false
+    t.boolean  "start_with_zero",             default: false, null: false
+    t.boolean  "show_on_dashboard",           default: true,  null: false
+    t.integer  "default_period",    limit: 2, default: 7,     null: false
+    t.integer  "value",                       default: 0,     null: false
+    t.integer  "previous_value",              default: 0,     null: false
+    t.string   "name",                                        null: false
+    t.string   "description",                 default: "",    null: false
+  end
 
   create_table "photos", force: :cascade do |t|
     t.datetime "created_at",                    null: false
@@ -36,4 +57,5 @@ ActiveRecord::Schema.define(version: 20170122210609) do
     t.index ["slug"], name: "index_users_on_slug", unique: true, using: :btree
   end
 
+  add_foreign_key "metric_values", "metrics"
 end

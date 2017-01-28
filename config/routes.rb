@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'index#index'
 
+  mount Track::Engine, at: '/'
+
   resources :photos
 
   get 'about' => 'index#about'
