@@ -13,6 +13,18 @@
             <li><%= create_icon(new_photo_path) %></li>
           </ul>
         </li>
+        <li>
+          <div><%= link_to(t('admin.metrics.index.heading'), admin_metrics_path) %></div>
+          <div class="description"><%= t('admin.metrics.index.description') %></div>
+        </li>
+        <li>
+          <div><%= link_to(t('admin.agents.index.heading'), admin_agents_path) %></div>
+          <div class="description"><%= t('admin.agents.index.description') %></div>
+        </li>
+        <li>
+          <div><%= link_to(t('admin.browsers.index.heading'), admin_browsers_path) %></div>
+          <div class="description"><%= t('admin.browsers.index.description') %></div>
+        </li>
       </ul>
     </nav>
   </div>

@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   mount Track::Engine, at: '/'
 
-  resources :photos
-
   get 'about' => 'index#about'
+
+  resources :photos
 
   controller :authentication do
     get 'login' => :new

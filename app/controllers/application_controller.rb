@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_page, :param_from_request, :current_user
+  helper_method :current_page, :param_from_request, :current_user, :current_user_has_role?
 
   # Получить текущую страницу из запроса
   #
@@ -27,20 +27,15 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
+  def current_user_has_role?(*roles)
+    current_user.is_a?(User)
+  end
+
   protected
 
   def require_role(*roles)
     restrict_anonymous_access
   end
-
-  # Handle HTTP error with status 404 without raising exception
-  #
-  # @param [String] message
-  # @param [Symbol|String] view
-  # def handle_http_404(message, view = :not_found)
-  #   logger.warn "#{message}\n\t#{request.method} #{request.original_url}"
-  #   render view, status: :not_found
-  # end
 
   # Ограничить доступ для анонимных посетителей
   def restrict_anonymous_access
