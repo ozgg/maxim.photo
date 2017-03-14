@@ -24,5 +24,16 @@
     <figcaption><%= @entity.lead %></figcaption>
   </figure>
 
+  <% if current_user_has_privilege?(:administrator) %>
+      <div class="snippet">
+        &lt;a
+        href=&quot;<%= request.protocol + request.host_with_port + url_for(@entity) %>&quot;
+        target=&quot;_blank&quot;&gt;&lt;img
+        src=&quot;<%= request.protocol + request.host_with_port + @entity.image.medium.url %>&quot;
+        srcset=&quot;<%= request.protocol + request.host_with_port + @entity.image.big.url %> 2x&quot;
+        alt=&quot;<%= @entity.title %>&quot; /&gt;&lt;/a&gt;
+      </div>
+  <% end %>
+
   <%= render partial: 'adjacent', locals: { adjacent: @adjacent } %>
 </article>

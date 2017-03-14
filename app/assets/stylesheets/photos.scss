@@ -3,6 +3,14 @@ article.photo {
     padding: 0 .4rem;
   }
 
+  .snippet {
+    background: #f0f0f0;
+    margin: 1.6rem;
+    padding: .8rem;
+    border: .1rem dotted $secondary-text-color;
+    font-size: $decreased-font-size;
+  }
+
   .adjacent {
     border-top: $edge-border;
     margin: 1.6rem;
