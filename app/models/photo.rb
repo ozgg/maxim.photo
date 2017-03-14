@@ -26,4 +26,11 @@ class Photo < ApplicationRecord
   def self.entity_parameters
     %i(image title hazard_motion nudity keywords lead description shot_date)
   end
+
+  def adjacent
+    {
+      prev: Photo.where('id < ?', id).order('id desc').first,
+      next: Photo.where('id > ?', id).order('id asc').first
+    }
+  end
 end

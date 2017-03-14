@@ -2,6 +2,64 @@ article.photo {
   > div {
     padding: 0 .4rem;
   }
+
+  .adjacent {
+    border-top: $edge-border;
+    margin: 1.6rem;
+    padding: .8rem 0 0 0;
+
+    > div {
+      text-align: center;
+
+      &.prev {
+        > div:not(.image) > a::before {
+          content: '← ';
+        }
+      }
+
+      &.next {
+        > div:not(.image) > a::after {
+          content: ' →';
+        }
+      }
+
+      a:link,
+      a:visited {
+        display: inline-block;
+        line-height: 2.4rem;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .image {
+        background: no-repeat center / 150%;
+        height: 8rem;
+        transition: background-size .2s ease-out;
+        width: 8rem;
+
+
+        a {
+          align-items: center;
+          display: flex;
+          height: 100%;
+          justify-content: center;
+          overflow: hidden;
+          width: 100%;
+        }
+
+        &:hover {
+          background-size: 100%;
+        }
+
+        img {
+          visibility: hidden;
+        }
+      }
+    }
+  }
 }
 
 ul.photo-previews {

@@ -2,7 +2,7 @@
 
 <article>
   <h1><%= t('.heading') %></h1>
-  <% if current_user.is_a?(User) %>
+  <% if current_user_has_privilege?(:administrator) %>
       <ul class="actions">
         <li><%= create_icon(new_photo_path) %></li>
       </ul>

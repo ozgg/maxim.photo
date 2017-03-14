@@ -12,4 +12,6 @@
     <%= photo_image_full(@entity) %>
     <figcaption><%= @entity.lead %></figcaption>
   </figure>
+
+  <%= render partial: 'adjacent', locals: { adjacent: @adjacent } %>
 </article>

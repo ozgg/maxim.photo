@@ -115,3 +115,9 @@ h1 {
     max-width: 64rem;
   }
 }
+
+nav.adjacent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

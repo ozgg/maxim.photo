@@ -45,3 +45,6 @@ ru:
       success: "Фотография успешно удалена"
     recent:
       heading: "Недавняя фотография"
+    adjacent:
+      previous: "Назад"
+      next: "Вперёд"

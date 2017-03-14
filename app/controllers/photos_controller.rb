@@ -6,7 +6,7 @@ class PhotosController < ApplicationController
   def index
     @collection = Photo.page_for_visitors(current_page)
   end
-  
+
   # get /photos/new
   def new
     @entity = Photo.new
@@ -24,6 +24,7 @@ class PhotosController < ApplicationController
 
   # get /photos/:id
   def show
+    @adjacent = @entity.adjacent
   end
 
   # get /photos/:id/edit
