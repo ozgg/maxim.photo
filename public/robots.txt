@@ -1,3 +1,7 @@
-Host: maxim.photo
+Host: https://maxim.photo
+
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /login
+Disallow: /my
