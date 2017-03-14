@@ -6,25 +6,15 @@
   <div class="dashboard">
     <nav>
       <ul>
-        <li>
-          <div><%= link_to(t('admin.photos.index.heading'), admin_photos_path) %></div>
-          <div class="description"><%= t('admin.photos.index.description') %></div>
-          <ul class="actions">
-            <li><%= create_icon(new_photo_path) %></li>
-          </ul>
-        </li>
-        <li>
-          <div><%= link_to(t('admin.metrics.index.heading'), admin_metrics_path) %></div>
-          <div class="description"><%= t('admin.metrics.index.description') %></div>
-        </li>
-        <li>
-          <div><%= link_to(t('admin.agents.index.heading'), admin_agents_path) %></div>
-          <div class="description"><%= t('admin.agents.index.description') %></div>
-        </li>
-        <li>
-          <div><%= link_to(t('admin.browsers.index.heading'), admin_browsers_path) %></div>
-          <div class="description"><%= t('admin.browsers.index.description') %></div>
-        </li>
+        <li><%= render 'admin/photos/nav_item' %></li>
+        <li><%= render 'admin/metrics/nav_item' %></li>
+        <!--<li><%# render 'admin/users/nav_item' %></li>-->
+        <li><%= render 'admin/tokens/nav_item' %></li>
+        <li><%= render 'admin/privileges/nav_item' %></li>
+        <li><%= render 'admin/privilege_groups/nav_item' %></li>
+        <!--<li><%# render 'admin/codes/nav_item' %></li>-->
+        <!--<li><%= render 'admin/agents/nav_item' %></li>-->
+        <!--<li><%= render 'admin/browsers/nav_item' %></li>-->
       </ul>
     </nav>
   </div>

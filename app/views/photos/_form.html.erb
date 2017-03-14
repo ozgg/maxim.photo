@@ -5,7 +5,7 @@
       <div>
         <figure id="photo-image">
           <% if entity.image.blank? %>
-            <%= label_tag('photo_image', image_tag('image-placeholder.png')) %>
+            <%= label_tag('photo_image', image_tag('biovision/base/placeholders/photo.svg')) %>
           <% else %>
             <%= label_tag('photo_image', image_tag(entity.image.medium.url)) %>
           <% end %>

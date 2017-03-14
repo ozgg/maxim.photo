@@ -1,5 +1,4 @@
-class Admin::PhotosController < ApplicationController
-  before_action :restrict_anonymous_access
+class Admin::PhotosController < AdminController
   before_action :set_entity, except: [:index]
 
   # get /admin/photos

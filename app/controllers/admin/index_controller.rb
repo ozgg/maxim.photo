@@ -1,6 +1,4 @@
-class Admin::IndexController < ApplicationController
-  before_action :restrict_anonymous_access
-
+class Admin::IndexController < AdminController
   # get /admin/
   def index
   end

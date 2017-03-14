@@ -28,8 +28,8 @@ body {
     border-bottom: $edge-border;
 
     .site-name {
-      font-size: $huge_font_size;
-      line-height: calc(2 * #{$huge_font_size});
+      font-size: $larger-font-size;
+      line-height: calc(2 * #{$larger-font-size});
 
       a {
         color: $primary_text_color;
@@ -46,7 +46,7 @@ body {
         padding: 0;
 
         li {
-          font-size: $large_font_size;
+          font-size: $increased-font-size;
           font-variant: small-caps;
           list-style: none;
           margin: 0 .8rem;
@@ -101,10 +101,17 @@ main {
 }
 
 h1 {
-  font: 600 $huge_font_size $main-font-family;
+  font: 600 $larger_font_size $main-font-family;
   margin: 0;
 }
 
 .hidden {
   display: none !important;
+}
+
+.entity-page {
+  form {
+    margin: 1.6rem auto;
+    max-width: 64rem;
+  }
 }

@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require biovision/base/biovision
 //= require_tree .

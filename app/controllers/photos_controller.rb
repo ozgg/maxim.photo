@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :restrict_anonymous_access, except: [:index, :show]
+  before_action :restrict_access, except: [:index, :show]
   before_action :set_entity, only: [:show, :edit, :update, :destroy]
 
   # get /photos
@@ -48,6 +48,10 @@ class PhotosController < ApplicationController
   end
 
   protected
+
+  def restrict_access
+    require_privilege :administrator
+  end
 
   def set_entity
     @entity = Photo.find_by(id: params[:id])

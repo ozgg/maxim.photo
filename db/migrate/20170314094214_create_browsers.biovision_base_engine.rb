@@ -1,4 +1,4 @@
-# This migration comes from track_engine (originally 20170129000001)
+# This migration comes from biovision_base_engine (originally 20170301000101)
 class CreateBrowsers < ActiveRecord::Migration[5.0]
   def up
     unless Browser.table_exists?
@@ -9,7 +9,7 @@ class CreateBrowsers < ActiveRecord::Migration[5.0]
         t.boolean :active, null: false, default: true
         t.boolean :locked, null: false, default: false
         t.boolean :deleted, null: false, default: false
-        t.integer :agents_count, null: false, default: 0
+        t.integer :agents_count, default: 0, null: false
         t.string :name, null: false
       end
     end

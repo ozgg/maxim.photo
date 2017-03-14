@@ -40,15 +40,16 @@ gem 'rails-i18n', '~> 5.0.0'
 gem 'mini_magick'
 gem 'carrierwave'
 
-gem 'track', git: 'https://github.com/Biovision/track.git'
-# gem 'track', path: '/Users/maxim/Projects/Biovision/track'
+gem 'biovision-base', git: 'https://github.com/Biovision/biovision-base.git'
+# gem 'biovision-base', path: '/Users/maxim/Projects/Biovision/biovision-base'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'rspec-rails'
+
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -58,6 +59,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
   gem 'mina'
 end
 
