@@ -11,12 +11,14 @@
 /log/*
 /tmp/*
 
-# Ignore Byebug command history file.
-.byebug_history
+/node_modules
+/yarn-error.log
 
-.env
+.byebug_history
 
 /public/uploads
 
 /spec/examples.txt
 /spec/support/uploads/*
+
+.env

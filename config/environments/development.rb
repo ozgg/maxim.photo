@@ -18,7 +18,7 @@ Rails.application.configure do
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => 'public, max-age=172800'
+      'Cache-Control' => "public, max-age=#{2.days.seconds.to_i}"
     }
   else
     config.action_controller.perform_caching = false
@@ -30,8 +30,8 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :test
   config.action_mailer.default_options = {
-      from: 'example.com <webmaster@example.com>',
-      reply_to: 'support@example.com'
+      from: 'maxim.photo <webmaster@maxim.photo>',
+      reply_to: 'support@maxim.photo'
   }
   config.action_mailer.default_url_options = { :host => '0.0.0.0:3000' }
 
