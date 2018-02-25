@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180222220570) do
+ActiveRecord::Schema.define(version: 20180223102455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,19 @@ ActiveRecord::Schema.define(version: 20180222220570) do
     t.string "name", null: false
     t.index ["browser_id"], name: "index_agents_on_browser_id"
     t.index ["name"], name: "index_agents_on_name"
+  end
+
+  create_table "albums", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "visible", default: true, null: false
+    t.boolean "highlight", default: false, null: false
+    t.integer "priority", limit: 2, default: 1, null: false
+    t.integer "photos_count", limit: 2, default: 0, null: false
+    t.string "title", null: false
+    t.string "slug", null: false
+    t.string "image"
+    t.string "image_alt_text"
   end
 
   create_table "browsers", force: :cascade do |t|
@@ -199,6 +212,27 @@ ActiveRecord::Schema.define(version: 20180222220570) do
     t.string "description", default: "", null: false
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "album_id", null: false
+    t.integer "priority", limit: 2, default: 1, null: false
+    t.integer "height", limit: 2
+    t.integer "width", limit: 2
+    t.boolean "visible", default: true, null: false
+    t.boolean "highlight", default: false, null: false
+    t.string "caption", null: false
+    t.string "slug", null: false
+    t.string "image"
+    t.string "image_alt_text"
+    t.string "meta_title"
+    t.string "meta_keywords"
+    t.string "meta_description"
+    t.text "description"
+    t.json "exif"
+    t.index ["album_id"], name: "index_photos_on_album_id"
+  end
+
   create_table "privilege_group_privileges", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -349,6 +383,7 @@ ActiveRecord::Schema.define(version: 20180222220570) do
   add_foreign_key "media_folders", "media_folders", column: "parent_id", on_update: :cascade, on_delete: :cascade
   add_foreign_key "media_folders", "users", on_update: :cascade, on_delete: :nullify
   add_foreign_key "metric_values", "metrics", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "photos", "albums", on_update: :cascade, on_delete: :cascade
   add_foreign_key "privilege_group_privileges", "privilege_groups", on_update: :cascade, on_delete: :cascade
   add_foreign_key "privilege_group_privileges", "privileges", on_update: :cascade, on_delete: :cascade
   add_foreign_key "privileges", "privileges", column: "parent_id", on_update: :cascade, on_delete: :cascade
