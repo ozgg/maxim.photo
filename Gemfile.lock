@@ -1,8 +1,7 @@
-GIT
-  remote: https://github.com/Biovision/biovision-base.git
-  revision: 76e9c79eb6e844de42154df036f139ad458cf730
+PATH
+  remote: /Users/maxim/Projects/Biovision/gems/biovision-base
   specs:
-    biovision-base (0.12.180220)
+    biovision-base (0.12.180224)
       bcrypt (~> 3.1)
       carrierwave (~> 1.2)
       carrierwave-bombshelter (~> 0.2)
@@ -89,7 +88,7 @@ GEM
       factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
     fastimage (2.1.1)
-    ffi (1.9.22)
+    ffi (1.9.23)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (0.9.5)

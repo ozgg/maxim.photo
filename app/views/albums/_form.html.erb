@@ -1,0 +1,103 @@
+<%= form_with model: entity, html: { id: 'album-form' } do |f| %>
+  <%= render partial: 'shared/list_of_errors', locals: { entity: entity } %>
+
+  <dl>
+    <dt><%= f.label :priority %></dt>
+    <dd>
+      <%=
+        f.number_field(
+            :priority,
+            id: :album_priority,
+            in: Album::PRIORITY_RANGE,
+            required: true
+        )
+        %>
+    </dd>
+
+    <dt><%= f.label :image %></dt>
+    <dd>
+      <figure role="group" class="preview" id="album-image">
+        <% if entity.image.blank? %>
+          <%= f.label :image, image_tag('biovision/base/placeholders/photo.svg') %>
+        <% else %>
+          <%= f.label :image, image_tag(entity.image.large.url) %>
+        <% end %>
+        <figcaption>
+          <%=
+            f.file_field(
+                :image,
+                id: :album_image,
+                accept: 'image/jpeg',
+                data: { image: 'album-image' },
+                required: entity.id.nil?
+            )
+          %>
+        </figcaption>
+      </figure>
+      <div class="guideline"><%= t('.guidelines.image') %></div>
+    </dd>
+
+    <dt><%= f.label :image_alt_text %></dt>
+    <dd>
+      <%=
+        f.text_field(
+            :image_alt_text,
+            id: :album_image_alt_text,
+            size: nil,
+            maxlength: Album::META_LIMIT,
+            required: true
+        )
+      %>
+      <div class="guideline"><%= t('.guidelines.image_alt_text') %></div>
+    </dd>
+
+    <dt><%= f.label :title %></dt>
+    <dd>
+      <%=
+        f.text_field(
+            :title,
+            id: :album_title,
+            size: nil,
+            maxlength: Album::TITLE_LIMIT,
+            required: true,
+            data: { transliterate: :album_slug }
+        )
+      %>
+      <div class="guideline"><%= t('.guidelines.title') %></div>
+    </dd>
+
+    <dt><%= f.label :slug %></dt>
+    <dd>
+      <%=
+        f.text_field(
+            :slug,
+            id: :album_slug,
+            size: nil,
+            maxlength: Album::SLUG_LIMIT,
+            required: true,
+            pattern: Album::SLUG_PATTERN_HTML,
+            title: t('.guidelines.title')
+        )
+      %>
+      <div class="guideline"><%= t('.guidelines.slug') %></div>
+    </dd>
+
+    <dt><%= t(:flags) %></dt>
+    <dd>
+      <ul class="flags">
+        <li>
+          <%= f.check_box :visible, id: :album_visible %>
+          <%= f.label :visible %>
+        </li>
+        <li>
+          <%= f.check_box :highlight, id: :album_highlight %>
+          <%= f.label :highlight %>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+
+  <div class="buttons">
+    <%= f.button t(:save), type: :submit, class: 'button-save' %>
+  </div>
+<% end %>

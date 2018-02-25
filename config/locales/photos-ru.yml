@@ -37,7 +37,7 @@ ru:
   admin:
     albums:
       nav_item:
-        description: "Альбомами"
+        description: "Управление альбомами"
         text: "Альбомы"
       index:
         heading: "Альбомы"

@@ -14,10 +14,12 @@ class Album < ApplicationRecord
 
   mount_uploader :image, AlbumImageUploader
 
+  has_many :photos, dependent: :delete_all
+
   after_initialize :set_next_priority
   before_validation :normalize_priority
 
-  validates_presence_of :title
+  validates_presence_of :title, :image_alt_text
   validates_uniqueness_of :title
   validates_format_of :slug, with: SLUG_PATTERN
   validates_length_of :slug, maximum: SLUG_LIMIT
