@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180223102455) do
+ActiveRecord::Schema.define(version: 2018_04_17_213956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "agents", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -27,19 +48,6 @@ ActiveRecord::Schema.define(version: 20180223102455) do
     t.string "name", null: false
     t.index ["browser_id"], name: "index_agents_on_browser_id"
     t.index ["name"], name: "index_agents_on_name"
-  end
-
-  create_table "albums", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "visible", default: true, null: false
-    t.boolean "highlight", default: false, null: false
-    t.integer "priority", limit: 2, default: 1, null: false
-    t.integer "photos_count", limit: 2, default: 0, null: false
-    t.string "title", null: false
-    t.string "slug", null: false
-    t.string "image"
-    t.string "image_alt_text"
   end
 
   create_table "browsers", force: :cascade do |t|
@@ -212,27 +220,6 @@ ActiveRecord::Schema.define(version: 20180223102455) do
     t.string "description", default: "", null: false
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "album_id", null: false
-    t.integer "priority", limit: 2, default: 1, null: false
-    t.integer "height", limit: 2
-    t.integer "width", limit: 2
-    t.boolean "visible", default: true, null: false
-    t.boolean "highlight", default: false, null: false
-    t.string "caption", null: false
-    t.string "slug", null: false
-    t.string "image"
-    t.string "image_alt_text"
-    t.string "meta_title"
-    t.string "meta_keywords"
-    t.string "meta_description"
-    t.text "description"
-    t.json "exif"
-    t.index ["album_id"], name: "index_photos_on_album_id"
-  end
-
   create_table "privilege_group_privileges", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -311,18 +298,6 @@ ActiveRecord::Schema.define(version: 20180223102455) do
     t.index ["user_id"], name: "index_user_privileges_on_user_id"
   end
 
-  create_table "user_profiles", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
-    t.integer "gender", limit: 2
-    t.date "birthday"
-    t.string "name"
-    t.string "patronymic"
-    t.string "surname"
-    t.index ["user_id"], name: "index_user_profiles_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -348,7 +323,9 @@ ActiveRecord::Schema.define(version: 20180223102455) do
     t.boolean "phone_confirmed", default: false, null: false
     t.boolean "allow_mail", default: true, null: false
     t.boolean "foreign_slug", default: false, null: false
+    t.boolean "consent", default: false, null: false
     t.datetime "last_seen"
+    t.date "birthday"
     t.string "slug", null: false
     t.string "screen_name", null: false
     t.string "password_digest"
@@ -357,6 +334,7 @@ ActiveRecord::Schema.define(version: 20180223102455) do
     t.string "image"
     t.string "notice"
     t.string "search_string"
+    t.json "profile_data", default: {}, null: false
     t.index ["agent_id"], name: "index_users_on_agent_id"
     t.index ["email"], name: "index_users_on_email"
     t.index ["language_id"], name: "index_users_on_language_id"
@@ -383,7 +361,6 @@ ActiveRecord::Schema.define(version: 20180223102455) do
   add_foreign_key "media_folders", "media_folders", column: "parent_id", on_update: :cascade, on_delete: :cascade
   add_foreign_key "media_folders", "users", on_update: :cascade, on_delete: :nullify
   add_foreign_key "metric_values", "metrics", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "photos", "albums", on_update: :cascade, on_delete: :cascade
   add_foreign_key "privilege_group_privileges", "privilege_groups", on_update: :cascade, on_delete: :cascade
   add_foreign_key "privilege_group_privileges", "privileges", on_update: :cascade, on_delete: :cascade
   add_foreign_key "privileges", "privileges", column: "parent_id", on_update: :cascade, on_delete: :cascade
@@ -393,7 +370,6 @@ ActiveRecord::Schema.define(version: 20180223102455) do
   add_foreign_key "user_languages", "users", on_update: :cascade, on_delete: :cascade
   add_foreign_key "user_privileges", "privileges", on_update: :cascade, on_delete: :cascade
   add_foreign_key "user_privileges", "users", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "user_profiles", "users", on_update: :cascade, on_delete: :cascade
   add_foreign_key "users", "agents", on_update: :cascade, on_delete: :nullify
   add_foreign_key "users", "languages", on_update: :cascade, on_delete: :nullify
   add_foreign_key "users", "users", column: "inviter_id", on_update: :cascade, on_delete: :nullify

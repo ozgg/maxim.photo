@@ -1,10 +1,10 @@
 ru:
-  copyright: "2008–2018 Максим Хан-Магомедов (maxim.photo)"
+  copyright: "2018 example.com"
   shared:
     meta_texts:
-      site_name: "maxim.photo"
+      site_name: "example.com"
   index:
     index:
       description: "Новый сайт на движке biovision"
       heading: "Главная страница"
-      title: "maxim.photo"
+      title: "Главная страница"
