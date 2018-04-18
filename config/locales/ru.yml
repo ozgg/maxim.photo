@@ -1,8 +1,8 @@
 ru:
-  copyright: "2018 example.com"
+  copyright: "2008–2018 Maxim Khan-Magomedov (maxim.photo)"
   shared:
     meta_texts:
-      site_name: "example.com"
+      site_name: "maxim.photo"
   index:
     index:
       description: "Новый сайт на движке biovision"

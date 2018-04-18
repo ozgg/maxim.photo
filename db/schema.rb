@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_17_213956) do
+ActiveRecord::Schema.define(version: 2018_04_17_220005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,18 @@ ActiveRecord::Schema.define(version: 2018_04_17_213956) do
     t.string "name", null: false
     t.index ["browser_id"], name: "index_agents_on_browser_id"
     t.index ["name"], name: "index_agents_on_name"
+  end
+
+  create_table "albums", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "visible", default: true, null: false
+    t.boolean "highlight", default: false, null: false
+    t.integer "photos_count", limit: 2, default: 0, null: false
+    t.integer "priority", limit: 2, default: 1, null: false
+    t.string "title", null: false
+    t.string "slug", null: false
+    t.string "image_alt_text"
   end
 
   create_table "browsers", force: :cascade do |t|
