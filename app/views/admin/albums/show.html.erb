@@ -37,4 +37,14 @@
       <dd><%= @entity.title %></dd>
     <% end %>
   </dl>
+
+  <%=
+    render(
+        partial: 'shared/admin/toggleable',
+        locals:  {
+            entity: entity,
+            url:    toggle_admin_album_path(id: entity.id)
+        }
+    )
+  %>
 </article>

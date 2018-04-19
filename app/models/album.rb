@@ -29,7 +29,7 @@ class Album < ApplicationRecord
   validates_length_of :title, maximum: TITLE_LIMIT
   validates_length_of :image_alt_text, maximum: META_LIMIT
 
-  scope :ordered_by_priority, -> { order('priority desc, title asc') }
+  scope :ordered_by_priority, -> { order('priority asc, title asc') }
   scope :visible, -> { where(visible: true) }
   scope :highlighted, -> { where(highlight: true) }
   scope :list_for_visitors, -> { visible.ordered_by_priority }

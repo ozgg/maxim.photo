@@ -57,6 +57,8 @@ ru:
       dashboard:
         maxim_photo:
           heading: "Модуль фотографий"
+        photos:
+          heading: "Фотографии"
   albums:
     new:
       title: "Новый альбом"

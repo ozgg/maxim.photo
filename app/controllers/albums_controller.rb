@@ -1,4 +1,6 @@
 class AlbumsController < AdminController
+  before_action :set_entity, only: [:edit, :update, :destroy]
+
   # get /albums/new
   def new
     @entity = Album.new

@@ -19,8 +19,8 @@ module PhotosHelper
   # @param [Album] entity
   def album_image_preview(entity)
     return '' unless entity.image.attached?
-    # versions = "#{entity.image.preview_2x.url} 2x"
-    image_tag(entity.image.variant(resize: Album::IMAGE_PREVIEW_2X), alt: entity.image_alt_text)
+    versions = "#{url_for(entity.image.variant(resize: Album::IMAGE_PREVIEW_2X))} 2x"
+    image_tag(entity.image.variant(resize: Album::IMAGE_PREVIEW), alt: entity.image_alt_text, srcset: versions)
   end
 
   # @param [Photo] entity
@@ -33,7 +33,7 @@ module PhotosHelper
   # @param [Album] entity
   def album_image_medium(entity)
     return '' unless entity.image.attached?
-    # versions = "#{entity.image.variant(resize: Album::IMAGE_LARGE).processed.service_url} 2x"
-    image_tag(entity.image.variant(resize: Album::IMAGE_LARGE), alt: entity.image_alt_text)
+    versions = "#{url_for(entity.image.variant(resize: Album::IMAGE_LARGE))} 2x"
+    image_tag(entity.image.variant(resize: Album::IMAGE_MEDIUM), alt: entity.image_alt_text, srcset: versions)
   end
 end

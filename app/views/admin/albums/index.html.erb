@@ -12,6 +12,6 @@
   </ul>
 
   <%= paginate @collection %>
-  <%= render partial: 'shared/admin/list', locals: { collection: @collection } %>
+  <%= render partial: 'shared/admin/list_with_priority', locals: { collection: @collection } %>
   <%= paginate @collection %>
 </article>
