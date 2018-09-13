@@ -1,5 +1,8 @@
-class AlbumsController < AdminController
-  before_action :set_entity, only: [:edit, :update, :destroy]
+class AlbumsController < ApplicationController
+  before_action :set_entity, only: %i[show edit update destroy]
+  before_action :restrict_access, except: %i[index show]
+
+  layout 'admin', except: %i[index show]
 
   # get /albums/new
   def new
@@ -14,6 +17,10 @@ class AlbumsController < AdminController
     else
       form_processed_with_error(:new)
     end
+  end
+
+  def show
+    
   end
 
   # get /albums/:id/edit

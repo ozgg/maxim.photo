@@ -1,0 +1,50 @@
+.albums-list {
+  display: grid;
+  grid-auto-rows: auto;
+  grid-gap: var(--spacer-s);
+  grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+  margin: 0 auto;
+  max-width: $content-width;
+  padding: var(--spacer-xs);
+
+  li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &:hover {
+      .image {
+        box-shadow: $aberration-shadow-c;
+      }
+    }
+
+    a:link,
+    a:visited {
+      color: inherit;
+    }
+
+    .image {
+      box-shadow: $aberration-shadow-a;
+      font-size: 0;
+      transition: .5s;
+
+      a {
+        display: block;
+        overflow: hidden;
+      }
+
+      img {
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+      }
+    }
+
+    .title {
+      font-size: var(--font-size-large);
+      font-weight: 400;
+      padding: var(--spacer-xs);
+      text-align: center;
+    }
+  }
+}

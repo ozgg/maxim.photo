@@ -11,14 +11,26 @@ module PhotosHelper
     link_to(text, admin_album_path(id: entity.id))
   end
 
-  # @param [Photo] entity
+  # @param [Album] entity
+  def album_link(entity, text = entity.title)
+    link_to(text, portfolio_album_path(id: entity.id, slug: entity.slug))
+  end
+
+  # @param [Photo|Album] entity
   def photo_image_preview(entity)
     return '' if entity.image.blank?
     versions = "#{entity.image.preview_2x.url} 2x"
     image_tag(entity.image.preview.url, alt: entity.image_alt_text, srcset: versions)
   end
 
-  # @param [Photo] entity
+  # @param [Photo|Album] entity
+  def photo_image_small(entity)
+    return '' if entity.image.blank?
+    versions = "#{entity.image.medium.url} 2x"
+    image_tag(entity.image.small.url, alt: entity.image_alt_text, srcset: versions)
+  end
+
+  # @param [Photo|Album] entity
   def photo_image_medium(entity)
     return '' if entity.image.blank?
     versions = "#{entity.image.big.url} 2x"

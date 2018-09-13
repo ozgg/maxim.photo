@@ -21,13 +21,13 @@ body {
       a:visited {
         color: #000;
         text-decoration: none;
-        text-shadow: .2rem .05rem .2rem rgba(0, 255, 255, 0), -.2rem -.05rem .2rem rgba(255, 0, 255, 0);
+        text-shadow: $aberration-shadow-a;
         transition: 1s;
       }
 
       a:hover {
         color: rgba(0, 0, 0, .75);
-        text-shadow: .2rem .05rem .2rem rgba(0, 255, 255, .5), -.2rem -.05rem .2rem rgba(255, 0, 255, .5);
+        text-shadow: $aberration-shadow-b;
       }
     }
   }
