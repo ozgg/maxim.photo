@@ -3,6 +3,11 @@
   <%= render partial: 'shared/list_of_errors', locals: { entity: entity } %>
 
   <dl>
+    <% unless entity.id.nil? %>
+      <dt><%= t('activerecord.attributes.photo.album_id') %></dt>
+      <dd><%= admin_album_link(entity.album) %></dd>
+    <% end %>
+
     <dt><%= f.label :priority %></dt>
     <dd>
       <%=
@@ -10,7 +15,7 @@
             :priority,
             id:   "#{model_name}_priority",
             size: nil,
-            in:   Album::PRIORITY_RANGE
+            in:   Photo::PRIORITY_RANGE
         )
       %>
     </dd>
@@ -22,25 +27,11 @@
             :title,
             id:        "#{model_name}_title",
             size:      nil,
-            maxlength: Album::TITLE_LIMIT,
+            maxlength: Photo::TITLE_LIMIT,
             required: true
         )
       %>
       <div class="guideline"><%= t('.guidelines.title') %></div>
-    </dd>
-
-    <dt><%= f.label :slug %></dt>
-    <dd>
-      <%=
-        f.text_field(
-            :slug,
-            id:        "#{model_name}_slug",
-            size:      nil,
-            maxlength: Album::SLUG_LIMIT,
-            required:  true
-        )
-      %>
-      <div class="guideline"><%= t('.guidelines.slug') %></div>
     </dd>
 
     <dt><%= f.label :image %></dt>
@@ -56,7 +47,7 @@
             f.file_field(
                 :image,
                 id:     "#{model_name}_image",
-                accept: 'image/jpeg,image/png',
+                accept: 'image/jpeg',
                 data:   { image: "#{model_name}-image" }
             )
           %>
@@ -72,7 +63,7 @@
             :image_alt_text,
             id:        "#{model_name}_image_alt_text",
             size:      nil,
-            maxlength: Album::META_LIMIT
+            maxlength: Photo::META_LIMIT
         )
       %>
       <div class="guideline"><%= t('.guidelines.image_alt_text') %></div>
@@ -85,7 +76,7 @@
             :meta_title,
             id:        "#{model_name}_meta_title",
             size:      nil,
-            maxlength: Album::META_LIMIT
+            maxlength: Photo::META_LIMIT
         )
       %>
       <div class="guideline"><%= t('.guidelines.meta_title') %></div>
@@ -98,7 +89,7 @@
             :meta_description,
             id:        "#{model_name}_meta_description",
             size:      nil,
-            maxlength: Album::META_LIMIT
+            maxlength: Photo::META_LIMIT
         )
       %>
       <div class="guideline"><%= t('.guidelines.meta_description') %></div>
@@ -111,7 +102,7 @@
             :meta_keywords,
             id:        "#{model_name}_meta_keywords",
             size:      nil,
-            maxlength: Album::META_LIMIT
+            maxlength: Photo::META_LIMIT
         )
       %>
       <div class="guideline"><%= t('.guidelines.meta_keywords') %></div>
@@ -123,6 +114,7 @@
   <%= render 'shared/forms/state_container' %>
 
   <div class="buttons">
+    <%= f.hidden_field :album_id if entity.id.nil? %>
     <%= f.button t(:save), type: :submit, class: 'button-save' %>
   </div>
 <% end %>

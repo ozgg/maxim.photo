@@ -7,7 +7,12 @@
     <%= entity.slug %>
   </div>
   <div class="secondary info">
-    <%= t(:photo_count, count: entity.photos_count) %>
+    <%=
+      link_to(
+          t(:photo_count, count: entity.photos_count),
+          photos_admin_album_path(id: entity.id)
+      )
+    %>
   </div>
 
   <%=

@@ -13,6 +13,8 @@ class Album < ApplicationRecord
 
   mount_uploader :image, PhotoImageUploader
 
+  has_many :photos, dependent: :destroy
+
   after_initialize :set_next_priority
   before_validation :normalize_priority
 
@@ -40,7 +42,14 @@ class Album < ApplicationRecord
   end
 
   def self.entity_parameters
-    %i[visible highlight title slug image image_alt_text]
+    meta_data = %i[image_alt_text meta_description meta_keywords meta_title]
+    main_data = %i[highlight image priority slug title visible]
+    main_data + meta_data
+  end
+
+  # @param [User] user
+  def editable_by?(user)
+    UserPrivilege.user_has_privilege?(user, :photo_manager)
   end
 
   # @param [Integer] delta

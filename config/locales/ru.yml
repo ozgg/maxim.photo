@@ -11,3 +11,8 @@ ru:
   about:
     index:
       nav_text: "Обо мне"
+  admin:
+    albums:
+      photos:
+        title: "Фотографии альбома «%{name}»"
+        nav_text: "Фотографии"

@@ -293,6 +293,9 @@ ActiveRecord::Schema.define(version: 2018_09_13_205901) do
     t.string "title"
     t.string "image"
     t.string "image_alt_text"
+    t.string "meta_title"
+    t.string "meta_description"
+    t.string "meta_keywords"
     t.index ["album_id"], name: "index_photos_on_album_id"
   end
 

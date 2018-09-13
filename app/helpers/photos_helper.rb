@@ -1,7 +1,7 @@
 module PhotosHelper
   # @param [Photo] entity
   # @param [String] entity
-  def admin_photo_link(entity, text = entity.caption)
+  def admin_photo_link(entity, text = entity.title)
     link_to(text, admin_photo_path(id: entity.id))
   end
 

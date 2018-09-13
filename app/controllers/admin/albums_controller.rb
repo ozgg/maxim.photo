@@ -6,11 +6,16 @@ class Admin::AlbumsController < AdminController
 
   # get /admin/albums
   def index
-    @collection = Album.page_for_administration(current_page)
+    @collection = Album.list_for_administration
   end
 
   # get /admin/albums/:id
   def show
+  end
+
+  # get /admin/albums/:id/photos
+  def photos
+    @collection = @entity.photos.list_for_administration
   end
 
   private

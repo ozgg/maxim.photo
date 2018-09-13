@@ -9,6 +9,9 @@ class CreatePhotos < ActiveRecord::Migration[5.2]
         t.string :title
         t.string :image
         t.string :image_alt_text
+        t.string :meta_title
+        t.string :meta_description
+        t.string :meta_keywords
       end
     end
   end

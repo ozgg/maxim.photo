@@ -1,0 +1,21 @@
+<% content_for :meta_title, t('.title') %>
+<% content_for :breadcrumbs do %>
+  <%= link_to(t('admin.albums.nav_item.text'), admin_albums_path) %>
+  <% unless @entity.album.nil? %>
+    <%= admin_album_link(@entity.album) %>
+    <%= link_to(t('admin.albums.photos.nav_text'), photos_admin_album_path(id: @entity.album_id)) %>
+  <% end %>
+  <span><%= t('.heading') %></span>
+<% end %>
+
+<article>
+  <h1><%= t('.heading') %></h1>
+
+  <% unless @entity.album_id.nil? %>
+    <ul class="actions">
+      <li><%= back_icon(admin_album_path(id: @entity.album_id)) %></li>
+    </ul>
+  <% end %>
+
+  <%= render partial: 'form', locals: { entity: @entity } %>
+</article>

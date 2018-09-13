@@ -5,7 +5,7 @@ class Photo < ApplicationRecord
   TITLE_LIMIT    = 100
   META_LIMIT     = 250
 
-  toggleable :visible, :highlight
+  toggleable :visible
 
   mount_uploader :image, PhotoImageUploader
 
@@ -13,6 +13,8 @@ class Photo < ApplicationRecord
 
   after_initialize :set_next_priority
   before_validation :normalize_priority
+
+  validates_presence_of :title
 
   scope :ordered_by_priority, -> { order('priority asc, title asc') }
   scope :siblings, -> (entity) { where(album: entity.album) }
@@ -31,7 +33,14 @@ class Photo < ApplicationRecord
   end
 
   def self.entity_parameters
-    %i[visible highlight title slug image image_alt_text]
+    meta_data = %i[image_alt_text meta_description meta_keywords meta_title]
+    main_data = %i[image priority title visible]
+
+    main_data + meta_data
+  end
+
+  def self.creation_parameters
+    entity_parameters + %i[album_id]
   end
 
   # @param [Integer] delta
@@ -51,7 +60,7 @@ class Photo < ApplicationRecord
 
   def set_next_priority
     if id.nil? && priority == 1
-      self.priority = self.class.maximum(:priority).to_i + 1
+      self.priority = self.class.siblings(self).maximum(:priority).to_i + 1
     end
   end
 
