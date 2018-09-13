@@ -16,8 +16,8 @@
     <% unless @entity.image.blank? %>
       <dt><%= t('activerecord.attributes.album.image') %></dt>
       <dd>
-        <figure>
-          <%= album_image_medium(@entity) %>
+        <figure role="group">
+          <%= photo_image_medium(@entity) %>
           <figcaption><%= @entity.image_alt_text %></figcaption>
         </figure>
       </dd>
@@ -42,8 +42,8 @@
     render(
         partial: 'shared/admin/toggleable',
         locals:  {
-            entity: entity,
-            url:    toggle_admin_album_path(id: entity.id)
+            entity: @entity,
+            url:    toggle_admin_album_path(id: @entity.id)
         }
     )
   %>

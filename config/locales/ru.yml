@@ -8,3 +8,6 @@ ru:
       description: "Новый сайт на движке biovision"
       heading: "Главная страница"
       title: "Главная страница"
+  about:
+    index:
+      nav_text: "Обо мне"

@@ -6,6 +6,9 @@
   <div class="info">
     <%= entity.slug %>
   </div>
+  <div class="secondary info">
+    <%= t(:photo_count, count: entity.photos_count) %>
+  </div>
 
   <%=
     render(

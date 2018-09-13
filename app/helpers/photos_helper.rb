@@ -21,7 +21,7 @@ module PhotosHelper
   # @param [Photo] entity
   def photo_image_medium(entity)
     return '' if entity.image.blank?
-    versions = "#{entity.image.medium_2x.url} 2x"
-    image_tag(entity.image.medium.url, alt: entity.name, srcset: versions)
+    versions = "#{entity.image.big.url} 2x"
+    image_tag(entity.image.medium.url, alt: entity.image_alt_text, srcset: versions)
   end
 end

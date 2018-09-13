@@ -1,0 +1,43 @@
+body {
+  color: $text-color-primary;
+  display: flex;
+  flex-direction: column;
+  font: 300 var(--font-size-normal) $font-family-main;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  > header {
+    box-shadow: 0 .3rem .3rem rgba(127, 127, 0, .5);
+    padding: var(--spacer-s);
+    width: 100%;
+    z-index: 3;
+
+    .site-name {
+      font: 300 var(--font-size-xl) $font-family-heading;
+      text-align: center;
+
+      a:link,
+      a:visited {
+        color: #000;
+        text-decoration: none;
+        text-shadow: .2rem .05rem .2rem rgba(0, 255, 255, 0), -.2rem -.05rem .2rem rgba(255, 0, 255, 0);
+        transition: 1s;
+      }
+
+      a:hover {
+        color: rgba(0, 0, 0, .75);
+        text-shadow: .2rem .05rem .2rem rgba(0, 255, 255, .5), -.2rem -.05rem .2rem rgba(255, 0, 255, .5);
+      }
+    }
+  }
+
+  > footer {
+    border-top: $border-primary;
+    font-size: var(--font-size-decreased);
+    color: $text-color-secondary;
+    margin: auto 0 0 0;
+    padding: var(--spacer-s);
+    width: 100%;
+  }
+}
