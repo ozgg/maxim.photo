@@ -7,6 +7,7 @@ class CreatePhotos < ActiveRecord::Migration[5.2]
         t.boolean :visible, default: true, null: false
         t.integer :priority, limit: 2, default: 1, null: false
         t.string :title
+        t.string :image
         t.string :image_alt_text
       end
     end

@@ -9,15 +9,9 @@ class Album < ApplicationRecord
   SLUG_PATTERN_HTML = '^[a-z][-0-9a-zA-Z]*[0-9a-zA-Z]$'
   META_LIMIT        = 250
 
-  IMAGE_PREVIEW    = '80x80'
-  IMAGE_PREVIEW_2X = '160x160'
-  IMAGE_SMALL      = '320x320'
-  IMAGE_MEDIUM     = '640x640'
-  IMAGE_LARGE      = '1280x1280'
-
   toggleable :visible, :highlight
 
-  has_one_attached :image
+  mount_uploader :image, PhotoImageUploader
 
   after_initialize :set_next_priority
   before_validation :normalize_priority
@@ -46,7 +40,7 @@ class Album < ApplicationRecord
   end
 
   def self.entity_parameters
-    %i(visible highlight title slug image image_alt_text)
+    %i[visible highlight title slug image image_alt_text]
   end
 
   # @param [Integer] delta

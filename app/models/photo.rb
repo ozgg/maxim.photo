@@ -5,15 +5,9 @@ class Photo < ApplicationRecord
   TITLE_LIMIT    = 100
   META_LIMIT     = 250
 
-  IMAGE_PREVIEW    = '80x80'
-  IMAGE_PREVIEW_2X = '160x160'
-  IMAGE_SMALL      = '320x320'
-  IMAGE_MEDIUM     = '640x640'
-  IMAGE_LARGE      = '1280x1280'
-
   toggleable :visible, :highlight
 
-  has_one_attached :image
+  mount_uploader :image, PhotoImageUploader
 
   belongs_to :album, counter_cache: true
 
@@ -37,7 +31,7 @@ class Photo < ApplicationRecord
   end
 
   def self.entity_parameters
-    %i(visible highlight title slug image image_alt_text)
+    %i[visible highlight title slug image image_alt_text]
   end
 
   # @param [Integer] delta

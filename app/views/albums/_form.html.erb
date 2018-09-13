@@ -1,5 +1,5 @@
-<% entity_name = entity.class.to_s.underscore %>
-<%= form_with(model: entity, html: { id: "#{entity_name}-form" }) do |f| %>
+<% model_name = entity.class.to_s.underscore %>
+<%= form_with(model: entity, html: { id: "#{model_name}-form" }) do |f| %>
   <%= render partial: 'shared/list_of_errors', locals: { entity: entity } %>
 
   <dl>
@@ -8,7 +8,7 @@
       <%=
         f.number_field(
             :priority,
-            id:   :album_priority,
+            id:   "#{model_name}_priority",
             size: nil,
             in:   Album::PRIORITY_RANGE
         )
@@ -20,7 +20,7 @@
       <%=
         f.text_field(
             :title,
-            id:        :album_title,
+            id:        "#{model_name}_title",
             size:      nil,
             maxlength: Album::TITLE_LIMIT
         )
@@ -33,7 +33,7 @@
       <%=
         f.text_field(
             :slug,
-            id:        :album_slug,
+            id:        "#{model_name}_slug",
             size:      nil,
             maxlength: Album::SLUG_LIMIT,
             required:  true
@@ -44,7 +44,7 @@
 
     <dt><%= f.label :image %></dt>
     <dd>
-      <figure class="preview" role="group" id="<%= entity_name %>-image">
+      <figure class="preview" role="group" id="<%= model_name %>-image">
         <% if entity.image.attached? %>
           <%= f.label :image, image_tag(entity.image.variant(resize: Album::IMAGE_SMALL)) %>
         <% else %>
@@ -54,9 +54,9 @@
           <%=
             f.file_field(
                 :image,
-                id:     "#{entity_name}_image",
+                id:     "#{model_name}_image",
                 accept: 'image/jpeg,image/png',
-                data:   { image: "#{entity_name}-image" }
+                data:   { image: "#{model_name}-image" }
             )
           %>
         </figcaption>
@@ -69,14 +69,18 @@
       <%=
         f.text_field(
             :image_alt_text,
-            id:        :album_image_alt_text,
+            id:        "#{model_name}_image_alt_text",
             size:      nil,
             maxlength: Album::META_LIMIT
         )
       %>
       <div class="guideline"><%= t('.guidelines.image_alt_text') %></div>
     </dd>
+
+    <%= render partial: 'shared/forms/entity_flags', locals: { f: f } %>
   </dl>
+
+  <%= render 'shared/forms/state_container' %>
 
   <div class="buttons">
     <%= f.button t(:save), type: :submit, class: 'button-save' %>

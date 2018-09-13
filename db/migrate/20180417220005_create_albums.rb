@@ -9,10 +9,14 @@ class CreateAlbums < ActiveRecord::Migration[5.2]
         t.integer :priority, limit: 2, default: 1, null: false
         t.string :title, null: false
         t.string :slug, null: false
+        t.string :image
         t.string :image_alt_text
+        t.string :meta_title
+        t.string :meta_description
+        t.string :meta_keywords
       end
 
-      Privilege.create(slug: 'photo_manager', name: 'Управляющий фотографиями')
+      create_privileges
     end
   end
 
@@ -20,5 +24,11 @@ class CreateAlbums < ActiveRecord::Migration[5.2]
     if Album.table_exists?
       drop_table :albums
     end
+  end
+
+  private
+
+  def create_privileges
+    Privilege.create(slug: 'photo_manager', name: 'Управляющий фотографиями')
   end
 end
