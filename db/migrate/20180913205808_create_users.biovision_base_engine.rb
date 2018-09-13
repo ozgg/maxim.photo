@@ -37,6 +37,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
         t.string :image
         t.string :notice
         t.string :search_string
+        t.string :referral_link, index: true
         t.json :profile_data, default: {}, null: false
       end
 

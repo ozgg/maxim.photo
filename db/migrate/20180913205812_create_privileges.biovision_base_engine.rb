@@ -8,6 +8,7 @@ class CreatePrivileges < ActiveRecord::Migration[5.1]
         t.boolean :locked, default: false, null: false
         t.boolean :deleted, default: false, null: false
         t.boolean :regional, default: false, null: false
+        t.boolean :administrative, default: true, null: false
         t.integer :priority, limit: 2, default: 1, null: false
         t.integer :users_count, default: 0, null: false
         t.string :parents_cache, default: '', null: false
@@ -20,6 +21,8 @@ class CreatePrivileges < ActiveRecord::Migration[5.1]
       add_foreign_key :privileges, :privileges, column: :parent_id, on_update: :cascade, on_delete: :cascade
 
       add_index :privileges, :slug, unique: true
+
+      create_privileges
     end
   end
 
@@ -34,5 +37,6 @@ class CreatePrivileges < ActiveRecord::Migration[5.1]
     Privilege.create!(slug: 'metrics_manager', name: 'Аналитик метрик')
     Privilege.create!(slug: 'moderator', name: 'Модератор')
     Privilege.create!(slug: 'chief_editor', name: 'Главный редактор')
+    Privilege.create!(slug: 'content_manager', name: 'Контент-менеджер')
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_17_213955) do
+ActiveRecord::Schema.define(version: 2018_09_13_205901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,22 @@ ActiveRecord::Schema.define(version: 2018_04_17_213955) do
     t.index ["name"], name: "index_agents_on_name"
   end
 
+  create_table "albums", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "visible", default: true, null: false
+    t.boolean "highlight", default: false, null: false
+    t.integer "photos_count", limit: 2, default: 0, null: false
+    t.integer "priority", limit: 2, default: 1, null: false
+    t.string "title", null: false
+    t.string "slug", null: false
+    t.string "image"
+    t.string "image_alt_text"
+    t.string "meta_title"
+    t.string "meta_description"
+    t.string "meta_keywords"
+  end
+
   create_table "browsers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -84,6 +100,23 @@ ActiveRecord::Schema.define(version: 2018_04_17_213955) do
     t.index ["user_id"], name: "index_codes_on_user_id"
   end
 
+  create_table "editable_blocks", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "language_id"
+    t.boolean "visible", default: true, null: false
+    t.boolean "raw_output", default: false, null: false
+    t.string "slug", null: false
+    t.string "name"
+    t.string "description"
+    t.string "image"
+    t.string "title"
+    t.text "lead"
+    t.text "body"
+    t.text "footer"
+    t.index ["language_id"], name: "index_editable_blocks_on_language_id"
+  end
+
   create_table "editable_pages", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -94,6 +127,7 @@ ActiveRecord::Schema.define(version: 2018_04_17_213955) do
     t.string "nav_group"
     t.string "url"
     t.string "image"
+    t.string "image_alt_text"
     t.string "title", default: "", null: false
     t.string "keywords", default: "", null: false
     t.string "description", default: "", null: false
@@ -108,6 +142,7 @@ ActiveRecord::Schema.define(version: 2018_04_17_213955) do
     t.bigint "agent_id"
     t.inet "ip"
     t.boolean "processed"
+    t.boolean "consent", default: false, null: false
     t.string "name"
     t.string "email"
     t.string "phone"
@@ -146,8 +181,37 @@ ActiveRecord::Schema.define(version: 2018_04_17_213955) do
     t.datetime "updated_at", null: false
     t.integer "users_count", default: 0, null: false
     t.integer "priority", limit: 2, default: 1, null: false
+    t.boolean "active", default: true, null: false
     t.string "slug", null: false
     t.string "code", null: false
+  end
+
+  create_table "link_block_items", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "link_block_id", null: false
+    t.boolean "visible", default: true, null: false
+    t.integer "priority", limit: 2, default: 1, null: false
+    t.string "slug"
+    t.string "image"
+    t.string "image_alt_text"
+    t.string "title"
+    t.string "button_text"
+    t.string "button_url"
+    t.text "body"
+    t.index ["link_block_id"], name: "index_link_block_items_on_link_block_id"
+  end
+
+  create_table "link_blocks", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "language_id"
+    t.boolean "visible", default: true, null: false
+    t.string "slug", null: false
+    t.string "title"
+    t.text "lead"
+    t.text "footer_text"
+    t.index ["language_id"], name: "index_link_blocks_on_language_id"
   end
 
   create_table "login_attempts", force: :cascade do |t|
@@ -220,6 +284,18 @@ ActiveRecord::Schema.define(version: 2018_04_17_213955) do
     t.string "description", default: "", null: false
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "album_id", null: false
+    t.boolean "visible", default: true, null: false
+    t.integer "priority", limit: 2, default: 1, null: false
+    t.string "title"
+    t.string "image"
+    t.string "image_alt_text"
+    t.index ["album_id"], name: "index_photos_on_album_id"
+  end
+
   create_table "privilege_group_privileges", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -245,6 +321,7 @@ ActiveRecord::Schema.define(version: 2018_04_17_213955) do
     t.boolean "locked", default: false, null: false
     t.boolean "deleted", default: false, null: false
     t.boolean "regional", default: false, null: false
+    t.boolean "administrative", default: true, null: false
     t.integer "priority", limit: 2, default: 1, null: false
     t.integer "users_count", default: 0, null: false
     t.string "parents_cache", default: "", null: false
@@ -334,10 +411,12 @@ ActiveRecord::Schema.define(version: 2018_04_17_213955) do
     t.string "image"
     t.string "notice"
     t.string "search_string"
+    t.string "referral_link"
     t.json "profile_data", default: {}, null: false
     t.index ["agent_id"], name: "index_users_on_agent_id"
     t.index ["email"], name: "index_users_on_email"
     t.index ["language_id"], name: "index_users_on_language_id"
+    t.index ["referral_link"], name: "index_users_on_referral_link"
     t.index ["screen_name"], name: "index_users_on_screen_name"
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end
@@ -346,12 +425,15 @@ ActiveRecord::Schema.define(version: 2018_04_17_213955) do
   add_foreign_key "codes", "agents", on_update: :cascade, on_delete: :nullify
   add_foreign_key "codes", "code_types", on_update: :cascade, on_delete: :cascade
   add_foreign_key "codes", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "editable_blocks", "languages", on_update: :cascade, on_delete: :cascade
   add_foreign_key "editable_pages", "languages", on_update: :cascade, on_delete: :cascade
   add_foreign_key "feedback_requests", "agents", on_update: :cascade, on_delete: :nullify
   add_foreign_key "feedback_requests", "languages", on_update: :cascade, on_delete: :nullify
   add_foreign_key "foreign_users", "agents", on_update: :cascade, on_delete: :nullify
   add_foreign_key "foreign_users", "foreign_sites", on_update: :cascade, on_delete: :cascade
   add_foreign_key "foreign_users", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "link_block_items", "link_blocks", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "link_blocks", "languages", on_update: :cascade, on_delete: :cascade
   add_foreign_key "login_attempts", "agents", on_update: :cascade, on_delete: :nullify
   add_foreign_key "login_attempts", "users", on_update: :cascade, on_delete: :cascade
   add_foreign_key "media_files", "agents", on_update: :cascade, on_delete: :nullify
@@ -361,6 +443,7 @@ ActiveRecord::Schema.define(version: 2018_04_17_213955) do
   add_foreign_key "media_folders", "media_folders", column: "parent_id", on_update: :cascade, on_delete: :cascade
   add_foreign_key "media_folders", "users", on_update: :cascade, on_delete: :nullify
   add_foreign_key "metric_values", "metrics", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "photos", "albums", on_update: :cascade, on_delete: :cascade
   add_foreign_key "privilege_group_privileges", "privilege_groups", on_update: :cascade, on_delete: :cascade
   add_foreign_key "privilege_group_privileges", "privileges", on_update: :cascade, on_delete: :cascade
   add_foreign_key "privileges", "privileges", column: "parent_id", on_update: :cascade, on_delete: :cascade
