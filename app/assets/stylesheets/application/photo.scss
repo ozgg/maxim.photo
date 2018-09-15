@@ -15,6 +15,7 @@
     &:hover {
       .image {
         box-shadow: $aberration-shadow-c;
+        filter: hue-rotate(-5deg);
       }
     }
 
@@ -47,4 +48,74 @@
       text-align: center;
     }
   }
+}
+
+.photos-list {
+  display: grid;
+  grid-auto-flow: dense;
+  grid-auto-rows: auto;
+  grid-gap: var(--spacer-s);
+  grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+  margin: 0 auto;
+  max-width: $content-width;
+  padding: var(--spacer-xs);
+  scroll-behavior: smooth;
+
+  > div {
+    padding: 0;
+    margin: 0;
+
+    label {
+      cursor: pointer;
+      display: block;
+      font-size: 0;
+      overflow: hidden;
+
+      img {
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+      }
+    }
+
+    figure {
+      display: none;
+    }
+  }
+
+  input[type=radio]:checked {
+    + div {
+      display: flex;
+      grid-column: 1/-1;
+      grid-row: 1;
+      max-height: 100vh;
+      width: 100%;
+
+      > label {
+        display: none;
+      }
+
+      figure {
+        display: block;
+        margin: 0 auto;
+        height: 100%;
+
+        img {
+          height: 100%;
+          object-fit: contain;
+          width: 100%;
+        }
+      }
+
+      figcaption {
+        border-bottom: $border-primary;
+        font-size: var(--font-size-increased);
+        padding: var(--spacer-xs);
+      }
+    }
+  }
+}
+
+#photo_0:focus + div {
+  box-shadow: 0 0 .2rem rgba(0, 0, 0, .25);
 }

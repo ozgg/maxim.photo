@@ -1,0 +1,26 @@
+<% if collection.any? %>
+  <input type="radio" name="photo" id="photo_0" class="visually-hidden" checked/>
+  <div class="photos-list" id="photo-gallery">
+    <% collection.each do |entity| %>
+      <% element_id = "photo_#{entity.id}" %>
+      <%=
+        radio_button_tag(
+            'photo',
+            entity.id,
+            false,
+            id:    element_id,
+            class: 'visually-hidden'
+        )
+      %>
+      <div>
+        <%= label_tag(element_id, photo_image_small(entity), class: 'proportional-container r-1x1') %>
+        <figure>
+          <div>
+            <%= photo_image_medium(entity) %>
+          </div>
+          <figcaption><%= entity.title %></figcaption>
+        </figure>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -4,6 +4,11 @@ class AlbumsController < ApplicationController
 
   layout 'admin', except: %i[index show]
 
+  # get /albums
+  def index
+    @collection = Album.list_for_visitors
+  end
+
   # get /albums/new
   def new
     @entity = Album.new
@@ -19,8 +24,8 @@ class AlbumsController < ApplicationController
     end
   end
 
+  # get /albums/:id
   def show
-    
   end
 
   # get /albums/:id/edit

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   scope '(:locale)', constraints: { locale: /ru|en/ } do
     root 'index#index'
 
-    resources :albums, :photos, only: %i[new create edit]
+    resources :albums, :photos, only: %i[index new create edit]
 
     get 'albums/:id-:slug' => 'albums#show', as: :portfolio_album, constraints: { id: /\d+/, slug: /[-a-z0-9]+/ }
 

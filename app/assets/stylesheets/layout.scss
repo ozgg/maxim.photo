@@ -25,6 +25,7 @@ body {
         transition: 1s;
       }
 
+      a:focus,
       a:hover {
         color: rgba(0, 0, 0, .75);
         text-shadow: $aberration-shadow-b;
@@ -39,5 +40,23 @@ body {
     margin: auto 0 0 0;
     padding: var(--spacer-s);
     width: 100%;
+  }
+}
+
+.breadcrumbs {
+  margin: 0 auto;
+  max-width: $content-width;
+  padding: var(--spacer-s) var(--spacer-xs);
+}
+
+article {
+  max-width: $content-width;
+  margin: 0 auto;
+  position: relative;
+
+  h1 {
+    font-size: var(--font-size-xxl);
+    font-weight: 400;
+    text-align: center;
   }
 }
