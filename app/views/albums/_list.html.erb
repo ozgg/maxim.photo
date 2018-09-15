@@ -2,7 +2,7 @@
   <ul class="albums-list">
     <% collection.each do |entity| %>
     <li>
-      <div class="image"><%= album_link(entity, photo_image_small(entity)) %></div>
+      <div class="image"><%= album_link(entity, photo_image_small(entity), tabindex: '-1') %></div>
       <div class="title"><%= album_link(entity) %></div>
     </li>
     <% end %>

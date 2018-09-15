@@ -12,8 +12,10 @@ module PhotosHelper
   end
 
   # @param [Album] entity
-  def album_link(entity, text = entity.title)
-    link_to(text, portfolio_album_path(id: entity.id, slug: entity.slug))
+  # @param [String] text
+  # @param [Hash] options
+  def album_link(entity, text = entity.title, options = {})
+    link_to(text, portfolio_album_path(id: entity.id, slug: entity.slug), options)
   end
 
   # @param [Photo|Album] entity
