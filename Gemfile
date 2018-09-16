@@ -33,8 +33,8 @@ gem 'dotenv-rails'
 
 gem 'autoprefixer-rails', group: :production
 
-# gem 'biovision-base', git: 'https://github.com/Biovision/biovision-base.git'
-gem 'biovision-base', path: '/Users/maxim/Projects/Biovision/gems/biovision-base'
+gem 'biovision-base', git: 'https://github.com/Biovision/biovision-base.git'
+# gem 'biovision-base', path: '/Users/maxim/Projects/Biovision/gems/biovision-base'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

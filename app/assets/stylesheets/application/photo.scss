@@ -64,8 +64,9 @@
   > div {
     padding: 0;
     margin: 0;
+    position: relative;
 
-    label {
+    .preview {
       cursor: pointer;
       display: block;
       font-size: 0;
@@ -83,6 +84,58 @@
     }
   }
 
+  .prev,
+  .next {
+    align-items: center;
+    bottom: 3.6rem;
+    color: rgba(0, 0, 0, .25);
+    cursor: pointer;
+    display: none;
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    position: absolute;
+    text-shadow: $aberration-shadow-a;
+    transition: .25s;
+    top: 0;
+    z-index: 3;
+
+    &:hover {
+      color: $text-color-primary;
+      text-shadow: $aberration-shadow-c;
+    }
+  }
+
+  .prev {
+    left: 0;
+    padding: 0 var(--spacer-s) 0 var(--spacer-xxs);
+
+    &:hover {
+      background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    }
+  }
+
+  .next {
+    padding: 0 var(--spacer-xxs) 0 var(--spacer-s);
+    right: 0;
+
+    &:hover {
+      background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    }
+  }
+
+  figure {
+    label {
+
+      &.prev {
+        left: 0;
+      }
+
+      &.next {
+        right: 0;
+      }
+    }
+  }
+
   input[type=radio]:checked {
     + div {
       display: flex;
@@ -91,7 +144,12 @@
       max-height: 100vh;
       width: 100%;
 
-      > label {
+      .prev,
+      .next {
+        display: flex;
+      }
+
+      .preview {
         display: none;
       }
 
@@ -123,6 +181,6 @@
   }
 }
 
-#photo_0:focus + div {
+#photo_none:focus + div {
   box-shadow: 0 0 .2rem rgba(0, 0, 0, .25);
 }

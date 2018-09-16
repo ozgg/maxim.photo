@@ -1,8 +1,9 @@
 <% if collection.any? %>
-  <input type="radio" name="photo" id="photo_0" class="visually-hidden" checked/>
+  <% total_photos = collection.count %>
+  <input type="radio" name="photo" id="photo_none" class="visually-hidden" checked/>
   <div class="photos-list" id="photo-gallery">
-    <% collection.each do |entity| %>
-      <% element_id = "photo_#{entity.id}" %>
+    <% collection.each_with_index do |entity, index| %>
+      <% element_id = "photo_#{index}" %>
       <%=
         radio_button_tag(
             'photo',
@@ -13,7 +14,13 @@
         )
       %>
       <div>
-        <%= label_tag(element_id, photo_image_small(entity), class: 'proportional-container r-1x1') %>
+        <%= label_tag(element_id, photo_image_small(entity), class: 'proportional-container r-1x1 preview') %>
+        <% if index > 0 %>
+          <%= label_tag("photo_#{index - 1}", '&larr;'.html_safe, class: 'prev', tabindex: -1) %>
+        <% end %>
+        <% if index < total_photos - 1 %>
+          <%= label_tag("photo_#{index + 1}", '&rarr;'.html_safe, class: 'next', tabindex: -1) %>
+        <% end %>
         <figure role="group">
           <div>
             <%= photo_image_medium(entity) %>
