@@ -1,11 +1,11 @@
 .albums-list {
   display: grid;
   grid-auto-rows: auto;
-  grid-gap: var(--spacer-s);
+  grid-gap: $spacer-s;
   grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
   margin: 0 auto;
   max-width: $content-width;
-  padding: var(--spacer-xs);
+  padding: $spacer-xs;
 
   li {
     list-style: none;
@@ -42,9 +42,9 @@
     }
 
     .title {
-      font-size: var(--font-size-large);
+      font-size: $font-size-large;
       font-weight: 400;
-      padding: var(--spacer-xs);
+      padding: $spacer-xs;
       text-align: center;
     }
   }
@@ -54,11 +54,11 @@
   display: grid;
   grid-auto-flow: dense;
   grid-auto-rows: auto;
-  grid-gap: var(--spacer-s);
+  grid-gap: $spacer-s;
   grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
   margin: 0 auto;
   max-width: $content-width;
-  padding: var(--spacer-xs);
+  padding: $spacer-xs;
   scroll-behavior: smooth;
 
   > div {
@@ -72,6 +72,10 @@
       font-size: 0;
       overflow: hidden;
 
+      &:hover {
+        box-shadow: 0 0 .5rem rgba(0, 0, 0, .75);
+      }
+
       img {
         height: 100%;
         object-fit: cover;
@@ -84,14 +88,14 @@
     }
   }
 
-  .prev,
-  .next {
+  .next,
+  .prev {
     align-items: center;
     bottom: 3.6rem;
     color: rgba(0, 0, 0, .25);
     cursor: pointer;
     display: none;
-    font-size: var(--font-size-xl);
+    font-size: $font-size-xl;
     font-weight: 700;
     position: absolute;
     text-shadow: $aberration-shadow-a;
@@ -107,7 +111,7 @@
 
   .prev {
     left: 0;
-    padding: 0 var(--spacer-s) 0 var(--spacer-xxs);
+    padding: 0 $spacer-s 0 $spacer-xxs;
 
     &:hover {
       background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
@@ -115,7 +119,7 @@
   }
 
   .next {
-    padding: 0 var(--spacer-xxs) 0 var(--spacer-s);
+    padding: 0 $spacer-xxs 0 $spacer-s;
     right: 0;
 
     &:hover {
@@ -175,7 +179,7 @@
         border-bottom: $border-primary;
         color: $text-color-secondary;
         flex: none;
-        padding: var(--spacer-xs);
+        padding: $spacer-xs;
       }
     }
   }
@@ -183,4 +187,44 @@
 
 #photo_none:focus + div {
   box-shadow: 0 0 .2rem rgba(0, 0, 0, .25);
+}
+
+@supports (--css: vars) {
+  .albums-list {
+    grid-gap: var(--spacer-s);
+    padding: var(--spacer-xs);
+
+    li {
+      .title {
+        font-size: var(--font-size-large);
+        padding: var(--spacer-xs);
+      }
+    }
+  }
+
+  .photos-list {
+    grid-gap: var(--spacer-s);
+    padding: var(--spacer-xs);
+
+    .next,
+    .prev {
+      font-size: var(--font-size-xl);
+    }
+
+    .prev {
+      padding: 0 var(--spacer-s) 0 var(--spacer-xxs);
+    }
+
+    .next {
+      padding: 0 var(--spacer-xxs) 0 var(--spacer-s);
+    }
+
+    input[type=radio]:checked {
+      + div {
+        figcaption {
+          padding: var(--spacer-xs);
+        }
+      }
+    }
+  }
 }
