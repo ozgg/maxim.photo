@@ -8,9 +8,11 @@ class CreatePhotos < ActiveRecord::Migration[5.2]
     create_photos unless Photo.table_exists?
     create_photo_tags unless PhotoTag.table_exists?
     create_photo_photo_tags unless PhotoPhotoTag.table_exists?
+    create_featured_photos unless FeaturedPhoto.table_exists?
   end
 
   def down
+    drop_table :featured_photos if FeaturedPhoto.table_exists?
     drop_table :photo_photo_tags if PhotoPhotoTag.table_exists?
     drop_table :photo_tags if PhotoTag.table_exists?
     drop_table :photos if Photo.table_exists?
@@ -66,6 +68,13 @@ class CreatePhotos < ActiveRecord::Migration[5.2]
     create_table :photo_photo_tags, comment: 'Link between tag and photo' do |t|
       t.references :photo, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
       t.references :photo_tag, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
+    end
+  end
+
+  def create_featured_photos
+    create_table :featured_photos, comment: 'Featured photo for homepage' do |t|
+      t.references :photo, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
+      t.integer :priority, limit: 2, default: 1, null: false
     end
   end
 end

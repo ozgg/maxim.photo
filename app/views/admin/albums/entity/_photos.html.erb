@@ -1,0 +1,10 @@
+<section>
+  <h2><%= t(:photo_count, count: entity.photos_count) %></h2>
+
+  <%=
+    render(
+        partial: 'shared/admin/list_with_priority',
+        locals: { collection: collection }
+    )
+  %>
+</section>

@@ -52,4 +52,8 @@ class Photo < ApplicationRecord
   def self.creation_parameters
     entity_parameters + %i[album_id]
   end
+
+  def title!
+    title.blank? ? id : title
+  end
 end

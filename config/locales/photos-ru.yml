@@ -1,0 +1,138 @@
+ru:
+  photo_count:
+    zero: "фотографий нет"
+    one: "%{count} фотография"
+    few: "%{count} фотографии"
+    many: "%{count} фотографий"
+    other: "%{count} фотографий"
+  activerecord:
+    models:
+      album: "Альбом"
+      featured_photo: "Фотография для главной страницы"
+      photo: "Фотография"
+      photo_photo_tag: "Метка у фотографии"
+      photo_tag: "Метка для фотографии"
+    attributes:
+      album:
+        description: "Описание"
+        image: "Изображение"
+        image_alt_text: "Альтернативный текст для изображения"
+        meta_description: "Описание для метатэга"
+        meta_keywords: "Ключевые слова для метатэга"
+        meta_title: "Название для заголовка окна"
+        name: "Название"
+        slug: "Идентификатор"
+        visible: "Показывать"
+      featured_photo:
+        photo: "Фотография"
+        photo_id: "Фотография"
+        priority: "Порядок сортировки"
+      photo:
+        album: "Альбом"
+        album_id: "Альбом"
+        image: "Изображение"
+        image_alt_text: "Альтернативный текст для изображения"
+        meta_description: "Описание для метатэга"
+        meta_keywords: "Ключевые слова для метатэга"
+        meta_title: "Название для заголовка окна"
+        priority: "Порядок сортировки"
+        title: "Название"
+        visible: "Показывать"
+      photo_photo_tag:
+        photo: "Фотография"
+        photo_id: "Фотография"
+        photo_tag: "Метка"
+        photo_tag_id: "Метка"
+      photo_tag:
+        name: "Название"
+        slug: "Идентификатор"
+  admin:
+    albums:
+      nav_item:
+        description: "Управление альбомами"
+        text: "Альбомы"
+      index:
+        heading: "Альбомы"
+        title: "Альбомы, страница %{page}"
+      show:
+        title: "Альбом фотографий «%{title}»"
+    photo_tags:
+      nav_item:
+        description: "Управление метками фотографий"
+        text: "Метки фотографий"
+      index:
+        heading: "Метки фотографий"
+        title: "Метки фотографий"
+      show:
+        title: "Метка фотографий «%{name}»"
+    photos:
+      nav_item:
+        description: "Управление фотографиями"
+        text: "Фотографии"
+      index:
+        heading: "Фотографии"
+        title: "Фотографии, страница %{page}"
+      show:
+        title: "Фотография «%{title}»"
+  albums:
+    new:
+      title: "Новый альбом"
+      nav_text: "Создать"
+      heading: "Добавление альбома"
+    edit:
+      title: "Редактирование альбома"
+      nav_text: "Редактировать"
+      heading: "Редактирование альбома"
+    destroy:
+      success: "Альбом успешно удалён"
+    form:
+      guidelines:
+        description: "Максимум 255 символов."
+        image: "Максимальный размер — 3000×3000, формат — JPEG."
+        image_alt_text: "Краткое описание того, что происходит на картинке. До 250 символов."
+        meta_description: "50–70 символов для оторбажения в результатах поиска. Максимум — 250."
+        meta_keywords: "Максимум 250 символов."
+        meta_title: "Максимум 250 символов."
+        name: "Максимум 50 символов."
+        slug: "Используется в URL. Только латинские буквы, цифры и дефис (кроме первого и последнего символа), максимум 50 символов."
+    index:
+      nav_text: "Альбомы"
+      title: "Альбомы"
+      heading: "Альбомы"
+  photo_tags:
+    edit:
+      title: "Редактирование метки фотографий"
+      nav_text: "Редактировать"
+      heading: "Редактирование метки фотографий"
+    destroy:
+      success: "Фотография успешно удалена"
+    form:
+      guidelines:
+        name: "Максимум 30 символов."
+    new:
+      heading: "Добавить метку фотографий"
+      nav_text: "Создать"
+      title: "Добавление метки фотографии"
+  photos:
+    edit:
+      title: "Редактирование фотографии"
+      nav_text: "Редактировать"
+      heading: "Редактирование фотографии"
+    destroy:
+      success: "Фотография успешно удалена"
+    form:
+      guidelines:
+        image: "Максимальный размер — 3000×3000, формат — JPEG."
+        image_alt_text: "Краткое описание того, что происходит на картинке. До 200 символов."
+        meta_description: "50–55 слов. Максимум 250 символов."
+        meta_keywords: "Максимум 250 символов."
+        meta_title: "Если указать, будет отображаться в заголовке окна вместо названия. Максимум 250 символов."
+        title: "Максимум 100 символов."
+    new:
+      heading: "Добавить фотографию"
+      nav_text: "Добавить"
+      title: "Добавление фотографии"
+  biovision:
+    components:
+      photos:
+        name: "Фотографии"
