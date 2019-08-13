@@ -1,6 +1,9 @@
-<header>
-  <div class="site-name"><%= link_to('maxim.photo', root_path) %></div>
-  <nav>
-    <%= render 'layouts/application/header/navigation' %>
-  </nav>
+<header id="main-header">
+  <div>
+    <%= render 'layouts/application/header/logo' %>
+    <nav>
+      <%= render 'layouts/application/header/navigation' %>
+    </nav>
+    <%= render 'layouts/application/header/authentication' %>
+  </div>
 </header>

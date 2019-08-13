@@ -1,5 +1,5 @@
 ru:
-  copyright: "2008–2018 Maxim Khan-Magomedov (maxim.photo)"
+  copyright: "2008–2019 Maxim Khan-Magomedov (maxim.photo)"
   shared:
     meta_texts:
       site_name: "maxim.photo"
@@ -11,8 +11,3 @@ ru:
   about:
     index:
       nav_text: "Обо мне"
-  admin:
-    albums:
-      photos:
-        title: "Фотографии альбома «%{name}»"
-        nav_text: "Фотографии"

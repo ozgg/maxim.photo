@@ -2,15 +2,18 @@
 <html lang="<%= locale %>" prefix="og: http://ogp.me/ns#">
 <head>
   <meta charset="UTF-8"/>
-  <title><%= yield :meta_title %> :: maxim.photo</title>
+  <title><%= yield :meta_title %></title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="format-detection" content="telephone=no"/>
+  <%= yield :alternate_links %>
   <%= render 'shared/meta_texts' %>
+  <%= raw SimpleBlock['head_counters_js'] %>
 </head>
 <body>
+<%= raw SimpleBlock['head_counters_no_js'] %>
 <%= render 'layouts/application/header' %>
 
 <main id="main">
@@ -21,6 +24,6 @@
 </main>
 
 <%= render 'layouts/application/footer' %>
-<%= render 'shared/counters' %>
+<%= raw SimpleBlock['counters'] %>
 </body>
 </html>

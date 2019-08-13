@@ -1,27 +1,30 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  resources :albums, :photos, only: %i[update destroy]
+  concern :check do
+    post :check, on: :collection, defaults: { format: :json }
+  end
+
+  concern :toggle do
+    post :toggle, on: :member, defaults: { format: :json }
+  end
+
+  concern :priority do
+    post :priority, on: :member, defaults: { format: :json }
+  end
+
+  concern :removable_image do
+    delete :image, action: :destroy_image, on: :member, defaults: { format: :json }
+  end
+
+  concern :lock do
+    member do
+      put :lock, defaults: { format: :json }
+      delete :lock, action: :unlock, defaults: { format: :json }
+    end
+  end
 
   scope '(:locale)', constraints: { locale: /ru|en/ } do
     root 'index#index'
-
-    resources :albums, :photos, only: %i[index new create edit]
-
-    get 'albums/:id-:slug' => 'albums#show', as: :portfolio_album, constraints: { id: /\d+/, slug: /[-a-z0-9]+/ }
-
-    namespace :admin do
-      resources :albums, only: %i[index show] do
-        member do
-          get 'photos'
-          post 'toggle', defaults: { format: :json }
-          post 'priority', defaults: { format: :json }
-        end
-      end
-      resources :photos, only: :show do
-        member do
-          post 'toggle', defaults: { format: :json }
-          post 'priority', defaults: { format: :json }
-        end
-      end
-    end
   end
 end

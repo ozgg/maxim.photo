@@ -12,6 +12,6 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require biovision/base/biovision.js
-//= require biovision/base/biovision-sliders.js
+//= require biovision/base/biovision
+//= require biovision/base/components/carousel
 //= require_tree .

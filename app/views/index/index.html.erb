@@ -1,10 +1,11 @@
-<% content_for :meta_title, t('.title') %>
+<% if @editable_page.nil? %>
+  <% content_for :meta_title, t('.title') %>
+  <% content_for :meta_description, t('.description') %>
+<% else %>
+  <%= render partial: 'editable_pages/entity/metadata', locals: { entity: @editable_page } %>
+<% end %>
 
-<article>
-  <%=
-    render(
-        partial: 'albums/list',
-        locals: { collection: Album.highlighted.list_for_visitors }
-    )
-  %>
+<article id="homepage">
+  <%= render partial: 'index/index/editable', locals: { entity: @editable_page } %>
+  <%= render 'index/index/default_dashboard' %>
 </article>

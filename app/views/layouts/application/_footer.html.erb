@@ -1,37 +1,15 @@
-<footer>
+<footer id="main-footer">
   <div>
+    <div class="copyright">&copy; <%= t(:copyright) %></div>
     <nav>
-      <ul class="inner">
+      <ul>
         <li><%= link_to(t('about.index.nav_text'), about_path) %></li>
-<!--        <li><%#= link_to(t('about.tos.nav_text'), tos_path) %></li>-->
+        <li><%= link_to(t('about.tos.nav_text'), tos_path) %></li>
+        <li><%= link_to(t('about.privacy.nav_text'), privacy_path) %></li>
         <% if UserPrivilege.user_has_any_privilege?(current_user) %>
-          <li><%= link_to(t('admin.index.index.heading'), admin_path) %></li>
+            <li><%= link_to(t('admin.index.index.heading'), admin_path) %></li>
         <% end %>
       </ul>
-
-      <ul class="social">
-        <li>
-          <%=
-            link_to(
-                image_tag('icons/social/patreon.svg', alt: 'Patreon'),
-                'https://www.patreon.com/ozgg',
-                target: '_blank',
-                rel: 'external nofollow noopener noreferrer'
-            )
-          %>
-        </li>
-        <li>
-          <%=
-            link_to(
-                image_tag('icons/social/instagram.svg', alt: 'Instagram'),
-                'https://www.instagram.com/maximkm/',
-                target: '_blank',
-                rel: 'external nofollow noopener noreferrer'
-            )
-          %>
-        </li>
-      </ul>
     </nav>
-    <div class="copyright">&copy; <%= t(:copyright) %></div>
   </div>
 </footer>
