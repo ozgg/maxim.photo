@@ -24,7 +24,17 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :albums, :photos, :photo_tags, only: %i[update destroy]
+
   scope '(:locale)', constraints: { locale: /ru|en/ } do
     root 'index#index'
+
+    resources :albums, :photos, :photo_tags, except: %i[update destroy show], concerns: :check
+
+    namespace :admin do
+      resources :albums, only: %i[index show], concerns: :toggle
+      resources :photos, only: %i[index show], concerns: %i[toggle priority]
+      resources :photo_tags, only: %i[index show]
+    end
   end
 end

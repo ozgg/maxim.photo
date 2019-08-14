@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_125863) do
+ActiveRecord::Schema.define(version: 2019_08_13_131313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,23 @@ ActiveRecord::Schema.define(version: 2019_08_13_125863) do
     t.string "name", null: false
     t.index ["browser_id"], name: "index_agents_on_browser_id"
     t.index ["name"], name: "index_agents_on_name"
+  end
+
+  create_table "albums", comment: "Album for photos", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "slug", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "visible", default: true, null: false
+    t.integer "photos_count", default: 0, null: false
+    t.string "image"
+    t.string "description"
+    t.string "image_alt_text"
+    t.string "meta_title"
+    t.string "meta_description"
+    t.string "meta_keywords"
+    t.index ["name"], name: "index_albums_on_name"
+    t.index ["slug"], name: "index_albums_on_slug"
   end
 
   create_table "biovision_component_users", comment: "User privileges in component", force: :cascade do |t|
@@ -120,6 +137,12 @@ ActiveRecord::Schema.define(version: 2019_08_13_125863) do
     t.text "body", default: "", null: false
     t.text "parsed_body"
     t.index ["language_id"], name: "index_editable_pages_on_language_id"
+  end
+
+  create_table "featured_photos", comment: "Featured photo for homepage", force: :cascade do |t|
+    t.bigint "photo_id", null: false
+    t.integer "priority", limit: 2, default: 1, null: false
+    t.index ["photo_id"], name: "index_featured_photos_on_photo_id"
   end
 
   create_table "feedback_requests", comment: "Feedback request", force: :cascade do |t|
@@ -243,6 +266,36 @@ ActiveRecord::Schema.define(version: 2019_08_13_125863) do
     t.integer "previous_value", default: 0, null: false
     t.string "name", null: false
     t.index ["biovision_component_id"], name: "index_metrics_on_biovision_component_id"
+  end
+
+  create_table "photo_photo_tags", comment: "Link between tag and photo", force: :cascade do |t|
+    t.bigint "photo_id", null: false
+    t.bigint "photo_tag_id", null: false
+    t.index ["photo_id"], name: "index_photo_photo_tags_on_photo_id"
+    t.index ["photo_tag_id"], name: "index_photo_photo_tags_on_photo_tag_id"
+  end
+
+  create_table "photo_tags", comment: "Tag for photo", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "slug", null: false
+    t.integer "photos_count", default: 0, null: false
+    t.index ["name"], name: "index_photo_tags_on_name"
+    t.index ["slug"], name: "index_photo_tags_on_slug"
+  end
+
+  create_table "photos", comment: "Photo", force: :cascade do |t|
+    t.bigint "album_id"
+    t.boolean "visible", default: true, null: false
+    t.integer "priority", limit: 2, default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.string "image"
+    t.string "image_alt_text"
+    t.string "meta_title"
+    t.string "meta_description"
+    t.string "meta_keywords"
+    t.index ["album_id"], name: "index_photos_on_album_id"
   end
 
   create_table "privilege_group_privileges", comment: "Privilege in group", force: :cascade do |t|
@@ -376,6 +429,7 @@ ActiveRecord::Schema.define(version: 2019_08_13_125863) do
   add_foreign_key "codes", "code_types", on_update: :cascade, on_delete: :cascade
   add_foreign_key "codes", "users", on_update: :cascade, on_delete: :cascade
   add_foreign_key "editable_pages", "languages", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "featured_photos", "photos", on_update: :cascade, on_delete: :cascade
   add_foreign_key "feedback_requests", "agents", on_update: :cascade, on_delete: :nullify
   add_foreign_key "feedback_requests", "languages", on_update: :cascade, on_delete: :nullify
   add_foreign_key "feedback_requests", "users", on_update: :cascade, on_delete: :cascade
@@ -392,6 +446,9 @@ ActiveRecord::Schema.define(version: 2019_08_13_125863) do
   add_foreign_key "media_folders", "users", on_update: :cascade, on_delete: :nullify
   add_foreign_key "metric_values", "metrics", on_update: :cascade, on_delete: :cascade
   add_foreign_key "metrics", "biovision_components", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "photo_photo_tags", "photo_tags", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "photo_photo_tags", "photos", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "photos", "albums", on_update: :cascade, on_delete: :cascade
   add_foreign_key "privilege_group_privileges", "privilege_groups", on_update: :cascade, on_delete: :cascade
   add_foreign_key "privilege_group_privileges", "privileges", on_update: :cascade, on_delete: :cascade
   add_foreign_key "privileges", "privileges", column: "parent_id", on_update: :cascade, on_delete: :cascade

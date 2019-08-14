@@ -5,7 +5,7 @@
 <% end %>
 
 <article>
-  <h1><%= @entity.slug %></h1>
+  <h1><%= @entity.title! %></h1>
 
   <ul class="actions">
     <li><%= back_icon(admin_photos_path) %></li>
@@ -42,6 +42,7 @@
       </div>
     <% end %>
 
+    <%= render partial: 'shared/entity/meta_texts', locals: { entity: @entity } %>
     <%= render partial: 'shared/entity/timestamps', locals: { entity: @entity } %>
   </dl>
 

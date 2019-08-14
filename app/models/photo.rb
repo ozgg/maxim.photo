@@ -56,4 +56,19 @@ class Photo < ApplicationRecord
   def title!
     title.blank? ? id : title
   end
+
+  # @param [PhotoTag] entity
+  def photo_tag?(entity)
+    photo_photo_tags.where(photo_tag: entity).exists?
+  end
+
+  # @param [PhotoTag] entity
+  def add_photo_tag(entity)
+    photo_photo_tags.create(photo_tag: entity)
+  end
+
+  # @param [PhotoTag] entity
+  def remove_photo_tag(entity)
+    photo_photo_tags.where(photo_tag: entity).destroy_all
+  end
 end

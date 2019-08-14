@@ -24,4 +24,19 @@ class PhotoTag < ApplicationRecord
   def self.entity_parameters
     %i[name]
   end
+
+  # @param [Photo] entity
+  def photo?(entity)
+    photo_photo_tags.where(photo: entity).exists?
+  end
+
+  # @param [Photo] entity
+  def add_photo(entity)
+    photo_photo_tags.create(photo: entity)
+  end
+
+  # @param [Photo] entity
+  def remove_photo(entity)
+    photo_photo_tags.where(photo: entity).destroy_all
+  end
 end

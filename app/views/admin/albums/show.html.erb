@@ -40,6 +40,7 @@
       <dd><%= @entity.description %></dd>
     <% end %>
 
+    <%= render partial: 'shared/entity/meta_texts', locals: { entity: @entity } %>
     <%= render partial: 'shared/entity/timestamps', locals: { entity: @entity } %>
   </dl>
 
