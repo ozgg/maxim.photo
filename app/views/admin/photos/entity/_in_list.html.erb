@@ -1,0 +1,36 @@
+<div class="image">
+  <%= simple_image_preview(entity) %>
+</div>
+<div class="data">
+  <div><%= admin_photo_link(entity) %></div>
+  <div class="info">
+    <%= entity.image_alt_text %>
+  </div>
+  <% unless entity.album.nil? %>
+    <div class="secondary info">
+      <%= admin_album_link(entity.album) %>
+    </div>
+  <% end %>
+
+  <%=
+    render(
+        partial: 'shared/admin/toggleable',
+        locals: {
+            entity: entity,
+            url: toggle_admin_photo_path(id: entity.id)
+        }
+    )
+  %>
+
+  <ul class="actions">
+    <li><%= edit_icon(edit_photo_path(id: entity.id)) %></li>
+    <%=
+      render(
+          partial: 'shared/actions/priority_changer',
+          locals:  {
+              path: priority_admin_photo_path(id: entity.id)
+          }
+      )
+    %>
+  </ul>
+</div>

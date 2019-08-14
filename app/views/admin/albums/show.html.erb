@@ -1,11 +1,11 @@
-<% content_for :meta_title, t('.title', slug: @entity.slug) %>
+<% content_for :meta_title, t('.title', name: @entity.name) %>
 <% content_for :breadcrumbs do %>
   <%= link_to(t('admin.albums.nav_item.text'), admin_albums_path) %>
   <span><%= @entity.slug %></span>
 <% end %>
 
 <article>
-  <h1><%= @entity.slug %></h1>
+  <h1><%= @entity.name %></h1>
 
   <ul class="actions">
     <li><%= back_icon(admin_albums_path) %></li>
@@ -59,6 +59,15 @@
         locals: {
             entity: @entity,
             collection: @entity.photos.list_for_administration
+        }
+    )
+  %>
+
+  <%=
+    render(
+        partial: 'admin/albums/entity/new_photo',
+        locals: {
+            entity: @entity
         }
     )
   %>

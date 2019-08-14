@@ -55,7 +55,7 @@ ru:
         heading: "Альбомы"
         title: "Альбомы, страница %{page}"
       show:
-        title: "Альбом фотографий «%{title}»"
+        title: "Альбом фотографий «%{name}»"
     photo_tags:
       nav_item:
         description: "Управление метками фотографий"

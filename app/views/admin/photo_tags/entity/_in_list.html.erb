@@ -1,0 +1,10 @@
+<div class="data">
+  <div><%= admin_photo_tag_link(entity) %></div>
+  <div class="info">
+    <%= t(:photo_count, count: entity.photos_count) %>
+  </div>
+
+  <ul class="actions">
+    <li><%= edit_icon(edit_photo_path(id: entity.id)) %></li>
+  </ul>
+</div>

@@ -1,0 +1,31 @@
+<% content_for :meta_title, t('.title', name: @entity.name) %>
+<% content_for :breadcrumbs do %>
+  <%= link_to(t('admin.photo_tags.nav_item.text'), admin_photo_tags_path) %>
+  <span><%= @entity.name %></span>
+<% end %>
+
+<article>
+  <h1><%= @entity.name %></h1>
+
+  <ul class="actions">
+    <li><%= back_icon(admin_photo_tags_path) %></li>
+    <li><%= edit_icon(edit_photo_tag_path(id: @entity.id)) %></li>
+  </ul>
+
+  <dl>
+    <div>
+      <dt><%= t('activerecord.attributes.photo_tag.name') %></dt>
+      <dd><%= @entity.name %></dd>
+    </div>
+  </dl>
+
+  <%=
+    render(
+        partial: 'admin/photo_tags/entity/photos',
+        locals: {
+            entity: @entity,
+            collection: @entity.photos.recent
+        }
+    )
+  %>
+</article>
