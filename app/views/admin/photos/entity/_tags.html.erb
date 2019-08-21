@@ -1,0 +1,23 @@
+<section>
+  <h2><%= t('.heading') %></h2>
+
+  <ul class="entity-links">
+    <% PhotoTag.list_for_administration.each do |photo_tag| %>
+      <li>
+        <% element_id = "photo_tag_#{photo_tag.id}" %>
+        <%=
+          check_box_tag(
+              'photo_tag',
+              photo_tag.id,
+              entity.photo_tag?(photo_tag),
+              data: {
+                  url: tag_admin_photo_path(id: entity.id, tag_id: photo_tag.id)
+              },
+              id: element_id
+          )
+        %>
+        <%= label_tag element_id, photo_tag.name %>
+      </li>
+    <% end %>
+  </ul>
+</section>

@@ -16,6 +16,20 @@ class Admin::PhotosController < AdminController
   def show
   end
 
+  # put /admin/photos/:id/tags/:tag_id
+  def add_tag
+    @entity.add_photo_tag(PhotoTag.find_by(id: params[:tag_id]))
+
+    head :no_content
+  end
+
+  # delete /admin/photos/:id/tags/:tag_id
+  def remove_tag
+    @entity.remove_photo_tag(PhotoTag.find_by(id: params[:tag_id]))
+
+    head :no_content
+  end
+
   private
 
   def component_slug

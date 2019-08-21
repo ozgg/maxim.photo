@@ -11,6 +11,9 @@
       <%= admin_album_link(entity.album) %>
     </div>
   <% end %>
+  <div class="secondary info">
+    <%= entity.photo_tags.map(&:name).join(', ') %>
+  </div>
 
   <%=
     render(

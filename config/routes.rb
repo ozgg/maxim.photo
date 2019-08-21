@@ -33,7 +33,12 @@ Rails.application.routes.draw do
 
     namespace :admin do
       resources :albums, only: %i[index show], concerns: :toggle
-      resources :photos, only: %i[index show], concerns: %i[toggle priority]
+      resources :photos, only: %i[index show], concerns: %i[toggle priority] do
+        member do
+          put 'tags/:tag_id' => :add_tag, as: :tag
+          delete 'tags/:tag_id' => :remove_tag
+        end
+      end
       resources :photo_tags, only: %i[index show]
     end
   end

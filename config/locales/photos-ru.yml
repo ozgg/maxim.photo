@@ -74,6 +74,9 @@ ru:
         title: "Фотографии, страница %{page}"
       show:
         title: "Фотография «%{title}»"
+      entity:
+        tags:
+          heading: "Метки"
   albums:
     new:
       title: "Новый альбом"
