@@ -57,6 +57,10 @@ class Photo < ApplicationRecord
     title.blank? ? id : title
   end
 
+  def featured?
+    FeaturedPhoto.where(photo_id: id).exists?
+  end
+
   # @param [PhotoTag] entity
   def photo_tag?(entity)
     photo_photo_tags.where(photo_tag: entity).exists?

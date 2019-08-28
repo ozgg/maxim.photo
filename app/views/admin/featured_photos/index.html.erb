@@ -1,0 +1,28 @@
+<% content_for :meta_title, t('.title') %>
+<% content_for :breadcrumbs do %>
+  <span><%= t('admin.featured_photos.nav_item.text') %></span>
+<% end %>
+
+<article>
+  <h1><%= t('.heading') %></h1>
+  <ul class="actions">
+    <li><%= back_icon(admin_path) %></li>
+  </ul>
+
+  <%=
+    render(
+        partial: 'shared/admin/list_with_priority',
+        locals: {
+            collection: @collection
+        }
+    )
+  %>
+
+  <section class="js-featured-photo-list" data-url="<%= admin_photos_path %>">
+    <div class="container" data-url="<%= admin_featured_photos_path %>"></div>
+    <nav class="pagination">
+      <button class="prev" disabled></button>
+      <button class="next" disabled></button>
+    </nav>
+  </section>
+</article>

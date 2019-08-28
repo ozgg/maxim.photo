@@ -40,6 +40,7 @@ Rails.application.routes.draw do
         end
       end
       resources :photo_tags, only: %i[index show]
+      resources :featured_photos, only: %i[index create destroy], concerns: %i[priority toggle]
     end
   end
 end

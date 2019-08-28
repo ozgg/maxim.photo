@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_13_131313) do
+ActiveRecord::Schema.define(version: 2019_08_28_194848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2019_08_13_131313) do
     t.string "slug", null: false
     t.jsonb "settings", default: {}, null: false
     t.jsonb "parameters", default: {}, null: false
+    t.integer "priority", limit: 2, default: 1, null: false
     t.index ["slug"], name: "index_biovision_components_on_slug", unique: true
   end
 

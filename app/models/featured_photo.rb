@@ -15,4 +15,12 @@ class FeaturedPhoto < ApplicationRecord
   scope :visible, -> { joins(:photos).where(photos: { visible: true }) }
   scope :list_for_visitors, -> { visible.ordered_by_priority }
   scope :list_for_administration, -> { ordered_by_priority }
+
+  def image
+    photo.image
+  end
+
+  def image_alt_text
+    photo.image_alt_text
+  end
 end

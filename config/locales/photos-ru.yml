@@ -77,6 +77,13 @@ ru:
       entity:
         tags:
           heading: "Метки"
+    featured_photos:
+      index:
+        title: "Фотографии для главной"
+        heading: "Фотографии для главной страницы"
+      nav_item:
+        text: "Фотографии для главной"
+        description: "Управление списком фотографий для главной страницы"
   albums:
     new:
       title: "Новый альбом"
