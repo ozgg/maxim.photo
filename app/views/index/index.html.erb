@@ -5,7 +5,13 @@
   <%= render partial: 'editable_pages/entity/metadata', locals: { entity: @editable_page } %>
 <% end %>
 
-<article id="homepage">
-  <%= render partial: 'index/index/editable', locals: { entity: @editable_page } %>
-  <%= render 'index/index/default_dashboard' %>
+<article class="frontpage">
+  <section class="frontpage-albums">
+    <%=
+      render(
+          partial: 'albums/list',
+          locals: { collection: Album.frontpage }
+      )
+    %>
+  </section>
 </article>

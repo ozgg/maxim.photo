@@ -28,6 +28,10 @@ class Admin::FeaturedPhotosController < AdminController
 
   private
 
+  def component_class
+    Biovision::Components::PhotosComponent
+  end
+
   def set_entity
     @entity = FeaturedPhoto.find_by(id: params[:id])
     handle_http_404('Cannot find featured_photo') if @entity.nil?

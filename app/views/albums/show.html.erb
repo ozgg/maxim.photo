@@ -1,0 +1,16 @@
+<% content_for :meta_title, @entity.name %>
+
+<article class="album">
+  <div class="content-wrapper">
+    <header>
+      <h1><%= @entity.name %></h1>
+
+      <div class="description"><%= raw(@entity.description) %></div>
+    </header>
+
+    <section class="photos">
+      <%= render partial: 'photos/list', locals: { collection: @entity.photos.list_for_visitors } %>
+    </section>
+  </div>
+
+</article>

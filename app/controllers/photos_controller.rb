@@ -62,8 +62,13 @@ class PhotosController < ApplicationController
 
   protected
 
+  def component_class
+    Biovision::Components::PhotosComponent
+  end
+
   def restrict_access
-    component_restriction Biovision::Components::PhotosComponent
+    error = 'Managing photos is not allowed'
+    handle_http_401(error) unless component_handler.allow?
   end
 
   def set_entity

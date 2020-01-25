@@ -6,8 +6,10 @@
 #   name [String]
 #   photos_count [Integer]
 #   slug [String]
+#   uuid [UUID]
 class PhotoTag < ApplicationRecord
   include Checkable
+  include HasUuid
   include RequiredUniqueName
 
   NAME_LIMIT = 30

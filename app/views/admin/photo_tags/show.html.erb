@@ -1,5 +1,6 @@
 <% content_for :meta_title, t('.title', name: @entity.name) %>
 <% content_for :breadcrumbs do %>
+  <%= admin_biovision_component_link(component_handler.component) %>
   <%= link_to(t('admin.photo_tags.nav_item.text'), admin_photo_tags_path) %>
   <span><%= @entity.name %></span>
 <% end %>
@@ -17,6 +18,8 @@
       <dt><%= t('activerecord.attributes.photo_tag.name') %></dt>
       <dd><%= @entity.name %></dd>
     </div>
+
+    <%= render partial: 'shared/entity/uuid', locals: { entity: @entity } %>
   </dl>
 
   <%=

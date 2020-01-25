@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     root 'index#index'
 
     resources :albums, :photos, :photo_tags, except: %i[update destroy show], concerns: :check
+    get 'albums/:id-:slug' => 'albums#show', as: :show_album
 
     namespace :admin do
       resources :albums, only: %i[index show], concerns: :toggle

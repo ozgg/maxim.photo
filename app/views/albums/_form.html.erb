@@ -79,7 +79,7 @@
       <dd>
         <figure class="preview" role="group" id="<%= model_name %>-image">
           <% if entity.image.blank? %>
-            <%= f.label :image, image_tag('biovision/base/placeholders/16x9.svg', alt: '') %>
+            <%= f.label :image, image_tag('biovision/base/placeholders/3x2.svg', alt: '') %>
           <% else %>
             <%= f.label :image, image_tag(entity.image.medium_url, alt: '') %>
           <% end %>
@@ -88,7 +88,7 @@
               f.file_field(
                   :image,
                   id: "#{model_name}_image",
-                  accept: 'image/jpeg,image/png,image/svg+xml',
+                  accept: 'image/jpeg',
                   data: { image: "#{model_name}-image" }
               )
             %>
@@ -117,7 +117,6 @@
       </dd>
     </div>
 
-    <%= render partial: 'shared/forms/meta_texts', locals: { f: f } %>
     <%= render partial: 'shared/forms/entity_flags', locals: { f: f } %>
   </dl>
 

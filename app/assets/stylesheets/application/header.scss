@@ -1,3 +1,83 @@
-#main-header {
+.main-header {
+  font-weight: 300;
+  padding: var(--spacer-s) var(--spacer-xs);
 
+  a {
+    color: inherit;
+    text-decoration: none;
+    text-shadow: $aberration-shadow-a;
+    transition: 1s;
+
+    &:focus,
+    &:hover {
+      color: rgba(0, 0, 0, .75);
+      text-shadow: $aberration-shadow-b;
+    }
+  }
+
+  .logo {
+    font: var(--font-size-xxl) $font-family-heading;
+    text-align: center;
+  }
+
+  nav {
+    font-size: var(--font-size-large);
+
+    ul {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin: var(--spacer-s) auto 0;
+      padding: 0;
+    }
+
+    li {
+      margin: 0;
+      padding: 0;
+
+      &:not(:last-of-type)::after {
+        background: #aaa;
+        content: '\A';
+        display: inline-block;
+        height: var(--font-size-normal);
+        margin: 0 var(--spacer-xxs);
+        width: .2rem;
+      }
+    }
+
+    a {
+      display: inline-block;
+      padding: var(--spacer-xxs) var(--spacer-s);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .main-header {
+    .logo {
+      font-size: var(--font-size-large);
+    }
+
+    nav {
+      font-size: var(--font-size-increased);
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .main-header {
+    nav {
+      font-size: var(--font-size-normal);
+
+      li:not(:last-of-type)::after {
+        width: .1rem;
+      }
+
+      a {
+        padding-left: var(--spacer-xs);
+        padding-right: var(--spacer-xs);
+      }
+    }
+  }
 }

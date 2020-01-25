@@ -1,0 +1,21 @@
+<% if collection.any? %>
+  <ul class="albums-list">
+    <% collection.each do |entity| %>
+      <li class="album-preview">
+        <figure>
+          <%=
+            album_link(
+                entity,
+                simple_image_medium(entity),
+                class: 'proportional-container r-1x1 covered',
+                tabindex: '-1'
+            )
+          %>
+          <figcaption>
+            <%= album_link(entity) %>
+          </figcaption>
+        </figure>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

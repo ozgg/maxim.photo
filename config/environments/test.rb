@@ -38,10 +38,10 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
   config.action_mailer.default_options = {
-      from: 'maxim.photo <webmaster@maxim.photo>',
-      reply_to: 'webmaster@maxim.photo'
+    from: 'maxim.photo <webmaster@maxim.photo>',
+    reply_to: 'webmaster@maxim.photo'
   }
-  config.action_mailer.default_url_options = { :host => '0.0.0.0:3000' }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr

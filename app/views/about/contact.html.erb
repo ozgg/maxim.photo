@@ -1,0 +1,23 @@
+<% unless @editable_page.nil? %>
+  <%=
+    render(
+        partial: 'editable_pages/entity/metadata',
+        locals: { entity: @editable_page }
+    )
+  %>
+<% end %>
+
+<article class="editable-page">
+  <div class="content-wrapper">
+    <% unless @editable_page.nil? %>
+      <%=
+        render(
+            partial: 'editable_pages/entity/content',
+            locals: { entity: @editable_page }
+        )
+      %>
+    <% end %>
+
+    <%= render partial: 'feedback_requests/form' %>
+  </div>
+</article>

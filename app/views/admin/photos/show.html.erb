@@ -1,5 +1,6 @@
 <% content_for :meta_title, t('.title', title: @entity.title!) %>
 <% content_for :breadcrumbs do %>
+  <%= admin_biovision_component_link(component_handler.component) %>
   <%= link_to(t('admin.photos.nav_item.text'), admin_photos_path) %>
   <span><%= @entity.title! %></span>
 <% end %>
@@ -15,25 +16,14 @@
   <dl>
     <% unless @entity.album.nil? %>
       <div>
-        <dt><%= t('activerecord.attributes.photo.album') %></dt>
+        <dt><%= t('attributes.album') %></dt>
         <dd><%= admin_album_link(@entity.album) %></dd>
       </div>
 
-      <div>
-        <dt><%= t('activerecord.attributes.photo.priority') %></dt>
-        <dd><%= @entity.priority %></dd>
-      </div>
+      <%= render partial: 'shared/entity/priority', locals: { entity: @entity } %>
     <% end %>
 
-    <div>
-      <dt><%= t('activerecord.attributes.photo.image') %></dt>
-      <dd>
-        <figure role="group" class="preview">
-          <%= simple_image_medium(@entity) %>
-          <figcaption><%= @entity.image_alt_text %></figcaption>
-        </figure>
-      </dd>
-    </div>
+    <%= render partial: 'shared/entity/image', locals: { entity: @entity } %>
 
     <% unless @entity.title.blank? %>
       <div>
@@ -42,19 +32,10 @@
       </div>
     <% end %>
 
-    <%= render partial: 'shared/entity/meta_texts', locals: { entity: @entity } %>
+    <%= render partial: 'components/photos/entity/description', locals: { entity: @entity } %>
+    <%= render partial: 'shared/entity/uuid', locals: { entity: @entity } %>
     <%= render partial: 'shared/entity/timestamps', locals: { entity: @entity } %>
   </dl>
-
-  <%=
-    render(
-        partial: 'shared/admin/toggleable',
-        locals: {
-            entity: @entity,
-            url: toggle_admin_photo_path(id: @entity.id)
-        }
-    )
-  %>
 
   <%=
     render(

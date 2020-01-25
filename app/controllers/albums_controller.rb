@@ -3,7 +3,7 @@
 # Managing albums
 class AlbumsController < ApplicationController
   before_action :restrict_access, except: %i[index show]
-  before_action :set_entity, only: %i[edit update destroy]
+  before_action :set_entity, only: %i[edit update destroy show]
 
   layout 'admin', except: %i[index show]
 
@@ -36,7 +36,7 @@ class AlbumsController < ApplicationController
 
   # get /albums/:id-:slug
   def show
-    @entity = Album.list_for_visitors.find_by(id: params[:id])
+    @entity = Album.find_by(id: params[:id])
     handle_http_404('Cannot find album') if @entity.nil?
   end
 
@@ -62,8 +62,13 @@ class AlbumsController < ApplicationController
 
   protected
 
+  def component_class
+    Biovision::Components::PhotosComponent
+  end
+
   def restrict_access
-    component_restriction Biovision::Components::PhotosComponent
+    error = 'Managing albums is not allowed'
+    handle_http_401(error) unless component_handler.allow?
   end
 
   def set_entity

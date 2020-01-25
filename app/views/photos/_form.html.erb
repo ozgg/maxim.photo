@@ -13,7 +13,7 @@
   <dl>
     <% unless entity.album.nil? %>
       <div>
-        <dt><%= t('activerecord.attributes.photo.album') %></dt>
+        <dt><%= t('attributes.album') %></dt>
         <dd><%= admin_album_link(entity.album) %></dd>
       </div>
     <% end %>
@@ -32,7 +32,7 @@
               f.file_field(
                   :image,
                   id: "#{model_name}_image",
-                  accept: 'image/jpeg,image/png,image/svg+xml',
+                  accept: 'image/jpeg',
                   data: { image: "#{model_name}-image" }
               )
             %>
@@ -80,8 +80,24 @@
       </dd>
     </div>
 
-    <%= render partial: 'shared/forms/meta_texts', locals: { f: f } %>
-    <%= render partial: 'shared/forms/entity_flags', locals: { f: f } %>
+    <div>
+      <dt><%= f.label :description %></dt>
+      <dd>
+        <%=
+          f.text_area(
+              :description,
+              data: {
+                  check: :description
+              },
+              id: "#{model_name}_description",
+              maxlength: Photo::DESCRIPTION_LIMIT,
+              size: nil
+          )
+        %>
+        <div class="check-result-error" data-field="description"></div>
+        <div class="guideline"><%= t('.guidelines.description') %></div>
+      </dd>
+    </div>
   </dl>
 
   <%= render 'shared/forms/state_container' %>
@@ -89,6 +105,6 @@
   <div class="buttons">
     <%= hidden_field_tag :entity_id, entity.id %>
     <%= f.hidden_field :album_id if entity.id.nil? %>
-    <%= f.button t(:save), type: :submit, class: 'button-save' %>
+    <%= f.button t(:save), class: 'button-save' %>
   </div>
 <% end %>

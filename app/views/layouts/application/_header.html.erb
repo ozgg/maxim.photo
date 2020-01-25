@@ -1,9 +1,12 @@
-<header id="main-header">
-  <div>
-    <%= render 'layouts/application/header/logo' %>
+<header class="main-header">
+  <div class="content-wrapper">
+    <div class="logo"><%= link_to('maxim.photo', root_path) %></div>
     <nav>
-      <%= render 'layouts/application/header/navigation' %>
+      <ul>
+        <li><%= link_to(t('about.index.nav_text'), about_path) %></li>
+        <li><%= link_to(t('albums.index.nav_text'), albums_path) %></li>
+        <li><%= link_to(t('about.contact.nav_text'), contact_path) %></li>
+      </ul>
     </nav>
-    <%= render 'layouts/application/header/authentication' %>
   </div>
 </header>

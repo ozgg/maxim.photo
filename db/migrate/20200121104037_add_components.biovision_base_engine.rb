@@ -1,14 +1,14 @@
 # frozen_string_literal: true
-# This migration comes from biovision_base_engine (originally 20190801111111)
+# This migration comes from biovision_base_engine (originally 20190826121212)
 
 # Add users and content components if they do not exist
 class AddComponents < ActiveRecord::Migration[5.2]
   def up
-    %w[users content].each do |slug|
-      BiovisionComponent.create(slug: slug)
-    end
-
-    copy_contact_parameters
+    #%w[users content].each do |slug|
+    #  BiovisionComponent.create(slug: slug)
+    #end
+    #
+    #copy_contact_parameters
   end
 
   def down

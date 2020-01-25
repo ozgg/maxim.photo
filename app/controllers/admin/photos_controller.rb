@@ -32,12 +32,8 @@ class Admin::PhotosController < AdminController
 
   private
 
-  def component_slug
-    Biovision::Components::PhotosComponent::SLUG
-  end
-
-  def restrict_access
-    component_restriction Biovision::Components::PhotosComponent
+  def component_class
+    Biovision::Components::PhotosComponent
   end
 
   def set_entity

@@ -1,0 +1,13 @@
+<%= render partial: 'shared/entity/metadata', locals: { entity: @editable_page } %>
+
+<article class="about">
+  <div class="content-wrapper">
+    <h1><%= @editable_page.title %></h1>
+
+    <figure><%= simple_image_large(@editable_page) %></figure>
+
+    <div class="text">
+      <%= raw(@editable_page.body) %>
+    </div>
+  </div>
+</article>

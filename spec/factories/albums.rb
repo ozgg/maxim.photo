@@ -3,7 +3,8 @@ FactoryBot.define do
     name { "MyString" }
     slug { "MyString" }
     visible { false }
-    photos_count { 1 }
+    priority { 1 }
+    uuid { "" }
     image { "MyString" }
     description { "MyString" }
     image_alt_text { "MyString" }

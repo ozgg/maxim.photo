@@ -22,4 +22,11 @@ module PhotosHelper
   def admin_photo_tag_link(entity, text = entity.name, options = {})
     link_to(text, admin_photo_tag_path(id: entity.id), options)
   end
+
+  # @param [Album] entity
+  # @param [String] text
+  # @param [Hash] options
+  def album_link(entity, text = entity.name, options = {})
+    link_to(text, show_album_path(id: entity.id, slug: entity.slug), options)
+  end
 end

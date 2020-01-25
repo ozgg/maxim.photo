@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_194848) do
+ActiveRecord::Schema.define(version: 2020_01_21_202020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,21 +48,21 @@ ActiveRecord::Schema.define(version: 2019_08_28_194848) do
     t.index ["name"], name: "index_agents_on_name"
   end
 
-  create_table "albums", comment: "Album for photos", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "slug", null: false
+  create_table "albums", comment: "Photo albums", force: :cascade do |t|
+    t.integer "priority", limit: 2, default: 1, null: false
+    t.uuid "uuid", null: false
+    t.boolean "visible", default: true, null: false
+    t.boolean "highlight", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "visible", default: true, null: false
     t.integer "photos_count", default: 0, null: false
+    t.string "name"
+    t.string "slug", null: false
     t.string "image"
-    t.string "description"
     t.string "image_alt_text"
-    t.string "meta_title"
-    t.string "meta_description"
-    t.string "meta_keywords"
-    t.index ["name"], name: "index_albums_on_name"
-    t.index ["slug"], name: "index_albums_on_slug"
+    t.string "description"
+    t.index ["slug"], name: "index_albums_on_slug", unique: true
+    t.index ["uuid"], name: "index_albums_on_uuid", unique: true
   end
 
   create_table "biovision_component_users", comment: "User privileges in component", force: :cascade do |t|
@@ -71,18 +71,19 @@ ActiveRecord::Schema.define(version: 2019_08_28_194848) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "administrator", default: false, null: false
-    t.jsonb "data", default: {}, null: false
+    t.jsonb "data", default: {"settings"=>{}, "privileges"=>[]}, null: false
     t.index ["biovision_component_id"], name: "index_biovision_component_users_on_biovision_component_id"
+    t.index ["data"], name: "index_biovision_component_users_on_data", using: :gin
     t.index ["user_id"], name: "index_biovision_component_users_on_user_id"
   end
 
   create_table "biovision_components", comment: "Biovision component", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "priority", limit: 2, default: 1, null: false
     t.string "slug", null: false
     t.jsonb "settings", default: {}, null: false
     t.jsonb "parameters", default: {}, null: false
-    t.integer "priority", limit: 2, default: 1, null: false
     t.index ["slug"], name: "index_biovision_components_on_slug", unique: true
   end
 
@@ -136,11 +137,10 @@ ActiveRecord::Schema.define(version: 2019_08_28_194848) do
     t.string "meta_keywords", default: "", null: false
     t.string "meta_description", default: "", null: false
     t.text "body", default: "", null: false
-    t.text "parsed_body"
     t.index ["language_id"], name: "index_editable_pages_on_language_id"
   end
 
-  create_table "featured_photos", comment: "Featured photo for homepage", force: :cascade do |t|
+  create_table "featured_photos", comment: "Photo for front page", force: :cascade do |t|
     t.bigint "photo_id", null: false
     t.integer "priority", limit: 2, default: 1, null: false
     t.index ["photo_id"], name: "index_featured_photos_on_photo_id"
@@ -269,34 +269,33 @@ ActiveRecord::Schema.define(version: 2019_08_28_194848) do
     t.index ["biovision_component_id"], name: "index_metrics_on_biovision_component_id"
   end
 
-  create_table "photo_photo_tags", comment: "Link between tag and photo", force: :cascade do |t|
+  create_table "photo_photo_tags", comment: "Links between photos and tags", force: :cascade do |t|
     t.bigint "photo_id", null: false
     t.bigint "photo_tag_id", null: false
     t.index ["photo_id"], name: "index_photo_photo_tags_on_photo_id"
     t.index ["photo_tag_id"], name: "index_photo_photo_tags_on_photo_tag_id"
   end
 
-  create_table "photo_tags", comment: "Tag for photo", force: :cascade do |t|
+  create_table "photo_tags", comment: "Photo tags", force: :cascade do |t|
+    t.uuid "uuid"
+    t.integer "photos_count", default: 0, null: false
     t.string "name", null: false
     t.string "slug", null: false
-    t.integer "photos_count", default: 0, null: false
-    t.index ["name"], name: "index_photo_tags_on_name"
-    t.index ["slug"], name: "index_photo_tags_on_slug"
+    t.index ["uuid"], name: "index_photo_tags_on_uuid", unique: true
   end
 
-  create_table "photos", comment: "Photo", force: :cascade do |t|
+  create_table "photos", comment: "Photos", force: :cascade do |t|
     t.bigint "album_id"
-    t.boolean "visible", default: true, null: false
+    t.uuid "uuid", null: false
     t.integer "priority", limit: 2, default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title"
     t.string "image"
     t.string "image_alt_text"
-    t.string "meta_title"
-    t.string "meta_description"
-    t.string "meta_keywords"
+    t.string "title"
+    t.text "description"
     t.index ["album_id"], name: "index_photos_on_album_id"
+    t.index ["uuid"], name: "index_photos_on_uuid", unique: true
   end
 
   create_table "privilege_group_privileges", comment: "Privilege in group", force: :cascade do |t|
@@ -325,6 +324,7 @@ ActiveRecord::Schema.define(version: 2019_08_28_194848) do
     t.integer "parent_id"
     t.boolean "administrative", default: true, null: false
     t.boolean "deletable", default: true, null: false
+    t.boolean "regional", default: false, null: false
     t.integer "priority", limit: 2, default: 1, null: false
     t.integer "users_count", default: 0, null: false
     t.string "parents_cache", default: "", null: false
@@ -347,6 +347,41 @@ ActiveRecord::Schema.define(version: 2019_08_28_194848) do
     t.text "body"
     t.index ["name"], name: "index_simple_blocks_on_name"
     t.index ["slug"], name: "index_simple_blocks_on_slug"
+  end
+
+  create_table "simple_image_tag_images", comment: "Link between simple image and tag", force: :cascade do |t|
+    t.bigint "simple_image_id", null: false
+    t.bigint "simple_image_tag_id", null: false
+    t.index ["simple_image_id"], name: "index_simple_image_tag_images_on_simple_image_id"
+    t.index ["simple_image_tag_id"], name: "index_simple_image_tag_images_on_simple_image_tag_id"
+  end
+
+  create_table "simple_image_tags", comment: "Tag for tagging simple image", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "simple_images_count", default: 0, null: false
+    t.index ["name"], name: "index_simple_image_tags_on_name"
+    t.index ["simple_images_count"], name: "index_simple_image_tags_on_simple_images_count"
+  end
+
+  create_table "simple_images", comment: "Simple image", force: :cascade do |t|
+    t.bigint "biovision_component_id", null: false
+    t.bigint "user_id"
+    t.bigint "agent_id"
+    t.inet "ip"
+    t.uuid "uuid", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image"
+    t.string "image_alt_text"
+    t.string "caption"
+    t.string "source_name"
+    t.string "source_link"
+    t.jsonb "data", default: {}, null: false
+    t.index ["agent_id"], name: "index_simple_images_on_agent_id"
+    t.index ["biovision_component_id"], name: "index_simple_images_on_biovision_component_id"
+    t.index ["user_id"], name: "index_simple_images_on_user_id"
   end
 
   create_table "tokens", comment: "Authentication token", force: :cascade do |t|
@@ -453,6 +488,11 @@ ActiveRecord::Schema.define(version: 2019_08_28_194848) do
   add_foreign_key "privilege_group_privileges", "privilege_groups", on_update: :cascade, on_delete: :cascade
   add_foreign_key "privilege_group_privileges", "privileges", on_update: :cascade, on_delete: :cascade
   add_foreign_key "privileges", "privileges", column: "parent_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "simple_image_tag_images", "simple_image_tags", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "simple_image_tag_images", "simple_images", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "simple_images", "agents", on_update: :cascade, on_delete: :nullify
+  add_foreign_key "simple_images", "biovision_components", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "simple_images", "users", on_update: :cascade, on_delete: :nullify
   add_foreign_key "tokens", "agents", on_update: :cascade, on_delete: :nullify
   add_foreign_key "tokens", "users", on_update: :cascade, on_delete: :cascade
   add_foreign_key "user_languages", "languages", on_update: :cascade, on_delete: :cascade
