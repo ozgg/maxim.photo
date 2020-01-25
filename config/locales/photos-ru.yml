@@ -14,6 +14,7 @@ ru:
     models:
       album: "Альбом"
       featured_photo: "Фотография для главной страницы"
+      instagram_image: "Изображение из Инстаграма"
       photo: "Фотография"
       photo_photo_tag: "Метка у фотографии"
       photo_tag: "Метка для фотографии"
@@ -21,6 +22,10 @@ ru:
       album:
         highlight: "Показывать на главной"
         name: "Название"
+      instagram_image:
+        code: "Код картинки"
+        slug: "Идентификатор FB"
+        thumbnail_url: "URL миниатюры"
       photo:
         title: "Название"
       photo_photo_tag:
