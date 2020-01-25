@@ -8,6 +8,13 @@
       <div class="description"><%= raw(@entity.description) %></div>
     </header>
 
+    <% if component_handler.allow? %>
+      <ul class="actions">
+        <li><%= gear_icon(admin_album_path(id: @entity.id)) %></li>
+        <li><%= edit_icon(edit_album_path(id: @entity.id)) %></li>
+      </ul>
+    <% end %>
+
     <section class="photos">
       <%= render partial: 'photos/list', locals: { collection: @entity.photos.list_for_visitors } %>
     </section>

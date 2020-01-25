@@ -4,6 +4,13 @@
   <div class="content-wrapper">
     <h1><%= @editable_page.title %></h1>
 
+    <% if @editable_page.editable_by?(current_user) %>
+      <ul class="actions">
+        <li><%= gear_icon(admin_editable_page_path(id: @editable_page.id)) %></li>
+        <li><%= edit_icon(edit_editable_page_path(id: @editable_page.id)) %></li>
+      </ul>
+    <% end %>
+
     <figure><%= simple_image_large(@editable_page) %></figure>
 
     <div class="text">

@@ -12,6 +12,10 @@
   position: relative;
 }
 
+ul.actions {
+  z-index: 5;
+}
+
 #cookie-info {
   -webkit-backdrop-filter: blur(.5rem);
   backdrop-filter: blur(.5rem);

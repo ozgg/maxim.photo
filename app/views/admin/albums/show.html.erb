@@ -10,6 +10,7 @@
 
   <ul class="actions">
     <li><%= back_icon(admin_albums_path) %></li>
+    <li><%= world_icon(show_album_path(id: @entity.id, slug: @entity.slug)) %></li>
     <li><%= edit_icon(edit_album_path(id: @entity.id)) %></li>
   </ul>
 

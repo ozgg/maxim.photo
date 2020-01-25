@@ -13,6 +13,28 @@
 .photo-preview {
   a {
     display: block;
+    position: relative;
+
+    &::after {
+      bottom: 0;
+      box-shadow: inset 0 0 .8rem black;
+      content: '\A';
+      left: 0;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: .25s;
+      z-index: 3;
+    }
+
+    &:active,
+    &:focus {
+      &::after {
+        opacity: 1;
+      }
+    }
   }
 
   figure {
