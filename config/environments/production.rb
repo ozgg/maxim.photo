@@ -70,14 +70,14 @@ Rails.application.configure do
       port: 465,
       tls: true,
       domain: 'maxim.photo',
-      user_name: 'support@maxim.photo',
+      user_name: 'webmaster@maxim.photo',
       password: ENV['MAIL_PASSWORD'],
       authentication: :login,
       enable_starttls_auto: true
   }
   config.action_mailer.default_options = {
-      from: 'maxim.photo <support@maxim.photo>',
-      reply_to: 'support@maxim.photo'
+      from: 'maxim.photo <webmaster@maxim.photo>',
+      # reply_to: 'support@maxim.photo'
   }
   config.action_mailer.default_url_options = { host: 'maxim.photo' }
 
