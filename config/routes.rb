@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'sitemap' => 'index#sitemap', defaults: { format: :xml }
+
   resources :albums, :photos, :photo_tags, only: %i[update destroy]
 
   scope '(:locale)', constraints: { locale: /ru|en/ } do

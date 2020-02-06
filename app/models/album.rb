@@ -53,6 +53,10 @@ class Album < ApplicationRecord
     %i[description highlight image image_alt_text name priority slug visible]
   end
 
+  def url
+    "/albums/#{id}-#{slug}"
+  end
+
   private
 
   def normalize_slug
