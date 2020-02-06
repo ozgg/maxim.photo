@@ -29,9 +29,18 @@ ul.actions {
   z-index: 10;
 }
 
-.about {
+article {
+  header {
+    padding: var(--spacer-s);
+  }
+
   h1 {
     font-size: var(--font-size-xxl);
+  }
+}
+
+.about {
+  h1 {
     text-align: center;
   }
 
@@ -45,6 +54,30 @@ ul.actions {
     font-size: var(--font-size-increased);
     font-weight: 300;
     padding: var(--spacer-xs);
+  }
+}
+
+.frontpage-albums {
+  nav {
+    text-align: center;
+
+    a {
+      display: inline-block;
+      font-size: var(--font-size-increased);
+      transition: .5s;
+
+      &::after {
+        content: '→';
+      }
+
+      &:active,
+      &:focus,
+      &:hover {
+        color: hsl(212, 46%, 32%);
+        text-decoration: none;
+        text-shadow: $aberration-shadow-b;
+      }
+    }
   }
 }
 

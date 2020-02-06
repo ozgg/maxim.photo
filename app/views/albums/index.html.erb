@@ -2,6 +2,10 @@
 
 <article>
   <div class="content-wrapper">
+    <header>
+      <h1><%= t('.heading') %></h1>
+    </header>
+
     <% if component_handler.allow? %>
       <ul class="actions">
         <li><%= gear_icon(admin_albums_path) %></li>

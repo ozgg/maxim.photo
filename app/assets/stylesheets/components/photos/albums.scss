@@ -55,14 +55,6 @@
 }
 
 .album {
-  header {
-    padding: var(--spacer-s);
-  }
-
-  h1 {
-    font-size: var(--font-size-xxl);
-  }
-
   .description {
     color: $text-color-secondary;
     font-weight: 300;

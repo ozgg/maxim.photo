@@ -128,3 +128,6 @@ ru:
     components:
       photos:
         name: "Фотографии"
+  index:
+    index:
+      all_albums: "Все альбомы"
