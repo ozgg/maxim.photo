@@ -4,6 +4,8 @@ module Biovision
     class BaseComponent
       extend Base::ComponentSettings
 
+      attr_reader :component, :slug, :name
+
       # @param [Component] component
       def initialize(component)
         @component = component

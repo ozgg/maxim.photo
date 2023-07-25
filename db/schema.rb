@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_25_192405) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_25_200538) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "agents", comment: "User agents", force: :cascade do |t|
+    t.boolean "banned", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name", null: false
+    t.index ["name"], name: "index_agents_on_name", unique: true
+  end
 
   create_table "components", comment: "Biovision CMS components", force: :cascade do |t|
     t.integer "priority", limit: 2, default: 1, null: false
@@ -21,6 +29,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_192405) do
     t.datetime "updated_at", null: false
     t.jsonb "settings", default: {}, null: false
     t.index ["slug"], name: "index_components_on_slug", unique: true
+  end
+
+  create_table "ip_addresses", comment: "IP addresses", force: :cascade do |t|
+    t.inet "ip", null: false
+    t.boolean "banned", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ip"], name: "index_ip_addresses_on_ip", unique: true
   end
 
 end
