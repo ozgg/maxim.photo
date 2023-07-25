@@ -1,5 +1,10 @@
 {
-  "name": "maxim_photo",
-  "private": true,
-  "dependencies": {}
+  "name": "app",
+  "private": "true",
+  "dependencies": {
+    "esbuild": "^0.18.16"
+  },
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets"
+  }
 }

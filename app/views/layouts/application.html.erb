@@ -1,31 +1,16 @@
 <!DOCTYPE html>
-<html lang="<%= locale %>" prefix="og: http://ogp.me/ns#">
-<head>
-  <meta charset="UTF-8"/>
-  <title><%= yield :meta_title %></title>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="format-detection" content="telephone=no"/>
-  <meta name="yandex-verification" content="e24f17053d03d4bb"/>
-  <%= yield :alternate_links %>
-  <%= render 'shared/meta_texts' %>
-  <%= raw SimpleBlock['head_counters_js'] %>
-</head>
-<body>
-<%= raw SimpleBlock['head_counters_no_js'] %>
-<%= render 'layouts/application/header' %>
+<html>
+  <head>
+    <title>MaximPhoto</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-<main id="main">
-  <%= render 'shared/flash_messages' %>
-  <%= render 'shared/breadcrumbs' %>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
 
-  <%= yield %>
-</main>
-
-<%= render 'layouts/application/footer' %>
-<%#= render 'shared/cookie_notification' if cookies['f'].blank? %>
-<%= raw SimpleBlock['counters'] %>
-</body>
+  <body>
+    <%= yield %>
+  </body>
 </html>

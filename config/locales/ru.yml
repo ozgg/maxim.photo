@@ -1,13 +1,1 @@
 ru:
-  copyright: "2008–2020 Maxim Khan-Magomedov (maxim.photo)"
-  shared:
-    meta_texts:
-      site_name: "maxim.photo"
-  index:
-    index:
-      description: "Новый сайт на движке biovision"
-      heading: "Главная страница"
-      title: "Главная страница"
-  about:
-    index:
-      nav_text: "Обо мне"

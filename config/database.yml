@@ -2,10 +2,13 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  template: template0
+  collation: ru_RU.UTF-8
+  ctype: ru_RU.UTF-8
 
 development:
   <<: *default
-  database: maxim_photo3
+  database: maxim_photo4
   #username: maxim_photo
   #password:
   #host: localhost
@@ -15,11 +18,11 @@ development:
 
 test:
   <<: *default
-  database: maxim_photo3_test
+  database: maxim_photo4_test
 
 production:
   <<: *default
-  database: maxim_photo3
+  database: maxim_photo4
   username: maxim
   password: <%= ENV['DATABASE_PASSWORD'] %>
   host: localhost
