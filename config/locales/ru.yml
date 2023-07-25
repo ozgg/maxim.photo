@@ -1,3 +1,21 @@
 ru:
   copyright: 2008–2023 Максим Хан-Магомедов
-  anonymous: "Анонимно"
+  application:
+    errors:
+      bad_request: "Плохой запрос (400)."
+      forbidden: "Запрещено (403)."
+      internal_server_error: "Внутренняя ошибка сервера (500)."
+      not_found: "Страница не найдена (404)."
+      restricted_access: "Доступ к странице ограничен (401)."
+      service_unavailable: "Сервис временно недоступен (503)."
+      unauthorized: "Не хватает прав для просмотра страницы (401)."
+      unprocessable_entity: "Сущность нельзя обработать (422)."
+    unauthorized:
+      title: "Доступ ограничен"
+      heading: "Доступ ограничен"
+    not_found:
+      title: "Страница не найдена"
+      heading: "Страница не найдена"
+    forbidden:
+      title: "Доступ запрещён"
+      heading: "Доступ запрещён"

@@ -13,6 +13,10 @@ class User < ApplicationRecord
   has_many :tokens, dependent: :delete_all
   has_many :login_attempts, dependent: :delete_all
 
+  def self.[](login)
+    find_by(slug: login)
+  end
+
   def profile_name
     slug
   end

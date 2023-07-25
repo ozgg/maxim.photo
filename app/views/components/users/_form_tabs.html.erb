@@ -1,0 +1,15 @@
+<section class="users__form-tabs">
+  <header class="labels">
+      <%= label_tag("users__form-tab_login", t(".login"), class: 'login') %>
+  </header>
+  <div class="tabs">
+      <div class="tab login">
+        <%=
+          render(
+            partial: "components/users/login_form",
+            locals: local_assigns
+          )
+        %>
+      </div>
+  </div>
+</section>

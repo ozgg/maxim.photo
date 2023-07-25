@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_25_200538) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_25_202130) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,4 +39,44 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_200538) do
     t.index ["ip"], name: "index_ip_addresses_on_ip", unique: true
   end
 
+  create_table "login_attempts", comment: "Failed login attempts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "agent_id"
+    t.bigint "ip_address_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password", default: "", null: false
+    t.index ["agent_id"], name: "index_login_attempts_on_agent_id"
+    t.index ["ip_address_id"], name: "index_login_attempts_on_ip_address_id"
+    t.index ["user_id"], name: "index_login_attempts_on_user_id"
+  end
+
+  create_table "tokens", comment: "Authentication tokens", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "agent_id"
+    t.bigint "ip_address_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "last_used"
+    t.boolean "active", default: true, null: false
+    t.string "token", null: false
+    t.index ["agent_id"], name: "index_tokens_on_agent_id"
+    t.index ["ip_address_id"], name: "index_tokens_on_ip_address_id"
+    t.index ["last_used"], name: "index_tokens_on_last_used"
+    t.index ["token"], name: "index_tokens_on_token", unique: true
+    t.index ["user_id"], name: "index_tokens_on_user_id"
+  end
+
+  create_table "users", comment: "Users", force: :cascade do |t|
+    t.string "slug", null: false
+    t.string "password_digest", null: false
+    t.index ["slug"], name: "index_users_on_slug", unique: true
+  end
+
+  add_foreign_key "login_attempts", "agents", on_update: :cascade, on_delete: :nullify
+  add_foreign_key "login_attempts", "ip_addresses", on_update: :cascade, on_delete: :nullify
+  add_foreign_key "login_attempts", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "tokens", "agents", on_update: :cascade, on_delete: :nullify
+  add_foreign_key "tokens", "ip_addresses", on_update: :cascade, on_delete: :nullify
+  add_foreign_key "tokens", "users", on_update: :cascade, on_delete: :cascade
 end

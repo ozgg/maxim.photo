@@ -1,0 +1,26 @@
+ru:
+  anonymous: "Анонимно"
+  authentication:
+    form:
+      log_in: "Войти"
+      login: "Логин"
+    create:
+      failed: "Не удалось выполнить вход."
+    new:
+      title: "Вход"
+      nav_text: "Войти"
+      heading: "Вход на сайт"
+  components:
+    users:
+      form_tabs:
+        login: "Вход"
+      login_form:
+        login: "Логин"
+        log_in: "Войти"
+        guidelines:
+          login: "Логин"
+          password: "Пароль"
+  activerecord:
+    attributes:
+      user:
+        password: "Пароль"

@@ -5,11 +5,14 @@ module Biovision
       extend Base::ComponentSettings
 
       attr_reader :component, :slug, :name
+      attr_accessor :user
 
       # @param [Component] component
-      def initialize(component)
+      # @param [User|nil] user
+      def initialize(component, user = nil)
         @component = component
         @slug = component&.slug || 'base'
+        self.user = user
         @name = I18n.t("biovision.components.#{slug}.name", default: slug)
       end
 
@@ -22,8 +25,9 @@ module Biovision
       # Receive component-specific handler by component slug
       #
       # @param [String|Component] input
+      # @param [User|nil] user
       # @return [BaseComponent]
-      def self.handler(input)
+      def self.handler(input, user = nil)
         type = input.respond_to?(:slug) ? input.slug : input.to_s
         handler_class(type)[user]
       end
@@ -35,8 +39,10 @@ module Biovision
       # Receive component-specific handler by class name for component.
       #
       # e.g.: Biovision::Components::UsersComponent[]
-      def self.[]
-        new(Component[slug])
+      #
+      # @param [User|nil] user
+      def self.[](user = nil)
+        new(Component[slug], user)
       end
 
       # Model list for automatic component creation
