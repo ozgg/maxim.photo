@@ -12,7 +12,7 @@ set :application_name, 'maxim_photo'
 set :domain, '89.108.104.88'
 set :deploy_to, '/var/www/maxim.photo'
 set :repository, 'https://github.com/ozgg/maxim.photo'
-set :branch, 'master'
+set :branch, 'version-3'
 
 # Optional settings:
 set :user, 'developer'          # Username in the server to SSH to.
@@ -29,12 +29,21 @@ set :shared_files, fetch(:shared_files, []).push('config/master.key', '.env')
 # `mina deploy` or `mina rake`.
 task :remote_environment do
   invoke :'rbenv:load'
+  invoke :'nvm:load'
 end
 
 # Put any custom commands you need to run at setup
 # All paths in `shared_dirs` and `shared_paths` will be created on their own.
 task :setup do
   # command %{rbenv install 2.3.0 --skip-existing}
+end
+
+namespace :nvm do
+  task :load do
+    command 'echo "-----> Loading nvm"'
+    command %(source ~/.nvm/nvm.sh)
+    command 'echo "-----> Now using nvm v.`nvm --version`"'
+  end
 end
 
 desc "Deploys the current version to the server."
