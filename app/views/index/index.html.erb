@@ -16,13 +16,4 @@
 
     <nav><%= link_to(t('.all_albums'), albums_path) %></nav>
   </section>
-
-  <%=
-    render(
-        partial: 'index/index/instagram',
-        locals: {
-            collection: InstagramImage.list_for_visitors.first(12)
-        }
-    )
-  %>
 </article>

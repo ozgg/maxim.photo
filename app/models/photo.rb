@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Photo
-# 
+#
 # Attributes:
 #   album_id [Album], optional
 #   created_at [DateTime]
@@ -32,11 +32,15 @@ class Photo < ApplicationRecord
   validates_length_of :image_alt_text, maximum: META_LIMIT
   validates_length_of :title, maximum: TITLE_LIMIT
 
-  scope :visible, -> { where(visible: true) }
-  scope :recent, -> { order('id desc') }
+  scope :recent, -> { order(id: :desc) }
   scope :in_album, ->(v) { where(album: v) }
   scope :list_for_visitors, -> { ordered_by_priority }
   scope :list_for_administration, -> { ordered_by_priority }
+
+  # @param [Integer] page
+  def self.stream_page(page = 1)
+    recent.page(page)
+  end
 
   # @param [Photo] entity
   def self.siblings(entity)

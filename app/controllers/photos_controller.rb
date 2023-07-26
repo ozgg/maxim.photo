@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
   before_action :restrict_access, except: %i[index show]
   before_action :set_entity, only: %i[edit update destroy]
 
-  layout 'admin', except: %i[index show]
+  layout 'admin', except: %i[index show stream]
 
   # post /photos/check
   def check
@@ -58,6 +58,11 @@ class PhotosController < ApplicationController
     flash[:notice] = t('photos.destroy.success') if @entity.destroy
 
     redirect_to(admin_photos_path)
+  end
+
+  # get /stream
+  def stream
+    @collection = Photo.stream_page(current_page)
   end
 
   protected

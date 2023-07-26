@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
     resources :albums, :photos, :photo_tags, except: %i[update destroy show], concerns: :check
     get 'albums/:id-:slug' => 'albums#show', as: :show_album
+    get 'stream' => 'photos#stream'
 
     namespace :admin do
       resources :albums, only: %i[index show], concerns: :toggle

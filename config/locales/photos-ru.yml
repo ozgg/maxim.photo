@@ -124,6 +124,9 @@ ru:
       heading: "Добавить фотографию"
       nav_text: "Добавить"
       title: "Добавление фотографии"
+    stream:
+      title: "Поток, страница %{page}"
+      heading: "Поток фотографий"
   biovision:
     components:
       photos:

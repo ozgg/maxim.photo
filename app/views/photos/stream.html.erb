@@ -1,0 +1,15 @@
+<% content_for :meta_title, t('.title', page: current_page) %>
+
+<article class="album">
+  <div class="content-wrapper">
+    <header>
+      <h1><%= t('.heading') %></h1>
+    </header>
+
+    <section class="photos">
+      <%= render partial: 'photos/list', locals: { collection: @collection } %>
+    </section>
+    <%= paginate @collection %>
+  </div>
+
+</article>
