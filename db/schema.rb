@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_25_211429) do
+ActiveRecord::Schema.define(version: 2023_07_31_235817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -303,7 +303,9 @@ ActiveRecord::Schema.define(version: 2020_01_25_211429) do
     t.string "image_alt_text"
     t.string "title"
     t.text "description"
+    t.bigint "stories_id"
     t.index ["album_id"], name: "index_photos_on_album_id"
+    t.index ["stories_id"], name: "index_photos_on_stories_id"
     t.index ["uuid"], name: "index_photos_on_uuid", unique: true
   end
 
@@ -391,6 +393,15 @@ ActiveRecord::Schema.define(version: 2020_01_25_211429) do
     t.index ["agent_id"], name: "index_simple_images_on_agent_id"
     t.index ["biovision_component_id"], name: "index_simple_images_on_biovision_component_id"
     t.index ["user_id"], name: "index_simple_images_on_user_id"
+  end
+
+  create_table "stories", comment: "Photo stories", force: :cascade do |t|
+    t.date "date", null: false, comment: "Date of the story"
+    t.string "slug", null: false, comment: "Slug for URL"
+    t.string "name", null: false, comment: "Name of the story"
+    t.text "description", default: "", null: false, comment: "Long description"
+    t.string "image", comment: "Cover image"
+    t.string "image_alt_text", comment: "Alternative text for cover image"
   end
 
   create_table "tokens", comment: "Authentication token", force: :cascade do |t|
@@ -494,6 +505,7 @@ ActiveRecord::Schema.define(version: 2020_01_25_211429) do
   add_foreign_key "photo_photo_tags", "photo_tags", on_update: :cascade, on_delete: :cascade
   add_foreign_key "photo_photo_tags", "photos", on_update: :cascade, on_delete: :cascade
   add_foreign_key "photos", "albums", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "photos", "stories", column: "stories_id", on_update: :cascade, on_delete: :nullify
   add_foreign_key "privilege_group_privileges", "privilege_groups", on_update: :cascade, on_delete: :cascade
   add_foreign_key "privilege_group_privileges", "privileges", on_update: :cascade, on_delete: :cascade
   add_foreign_key "privileges", "privileges", column: "parent_id", on_update: :cascade, on_delete: :cascade

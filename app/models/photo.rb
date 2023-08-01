@@ -24,6 +24,7 @@ class Photo < ApplicationRecord
   mount_uploader :image, PhotoUploader
 
   belongs_to :album, counter_cache: true, optional: true, touch: true
+  belongs_to :story, optional: true
   has_many :photo_photo_tags, dependent: :destroy
   has_many :photo_tags, through: :photo_photo_tags
 
@@ -48,11 +49,11 @@ class Photo < ApplicationRecord
   end
 
   def self.entity_parameters
-    %i[description image image_alt_text priority title visible]
+    %i[album_id description image image_alt_text priority story_id title visible]
   end
 
   def self.creation_parameters
-    entity_parameters + %i[album_id]
+    entity_parameters
   end
 
   def title!
