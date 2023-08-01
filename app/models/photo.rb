@@ -34,6 +34,7 @@ class Photo < ApplicationRecord
   validates_length_of :title, maximum: TITLE_LIMIT
 
   scope :recent, -> { order(id: :desc) }
+  scope :sequential, -> { order(:id) }
   scope :in_album, ->(v) { where(album: v) }
   scope :list_for_visitors, -> { ordered_by_priority }
   scope :list_for_administration, -> { ordered_by_priority }

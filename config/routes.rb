@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   get 'sitemap' => 'index#sitemap', defaults: { format: :xml }
 
-  resources :albums, :photos, :photo_tags, only: %i[update destroy]
+  resources :albums, :photos, :photo_tags, :stories, only: %i[update destroy]
 
   scope '(:locale)', constraints: { locale: /ru|en/ } do
     root 'index#index'
@@ -37,6 +37,7 @@ Rails.application.routes.draw do
 
     namespace :admin do
       resources :albums, only: %i[index show], concerns: :toggle
+      resources :stories, only: %i[index show]
       resources :photos, only: %i[index show], concerns: %i[toggle priority] do
         member do
           put 'tags/:tag_id' => :add_tag, as: :tag

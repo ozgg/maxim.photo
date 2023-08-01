@@ -10,6 +10,8 @@
 #   name [string]
 #   slug [string]
 class Story < ApplicationRecord
+  include Checkable
+
   DESCRIPTION_LIMIT = 65_535
   META_LIMIT = 255
   NAME_LIMIT = 100
@@ -49,6 +51,14 @@ class Story < ApplicationRecord
 
   def url
     "/stories/#{id}-#{slug}"
+  end
+
+  def text_for_link
+    "#{name} (#{date})"
+  end
+
+  def photos_for_visitors
+    photos.sequential
   end
 
   private

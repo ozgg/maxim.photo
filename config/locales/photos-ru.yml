@@ -10,6 +10,8 @@ ru:
     album_id: "Альбом"
     photo: "Фотография"
     photo_id: "Фотография"
+    story: "История"
+    story_id: "История"
   activerecord:
     models:
       album: "Альбом"
@@ -18,6 +20,7 @@ ru:
       photo: "Фотография"
       photo_photo_tag: "Метка у фотографии"
       photo_tag: "Метка для фотографии"
+      story: "Фотоистория"
     attributes:
       album:
         highlight: "Показывать на главной"
@@ -32,6 +35,9 @@ ru:
         photo_tag: "Метка"
         photo_tag_id: "Метка"
       photo_tag:
+        name: "Название"
+      story:
+        date: "Дата"
         name: "Название"
   admin:
     albums:
@@ -64,6 +70,18 @@ ru:
       entity:
         tags:
           heading: "Метки"
+    stories:
+      nav_item:
+        description: "Управление историями"
+        text: "Фотоистории"
+      index:
+        heading: "Фотоистории"
+        title: "Фотоистории, страница %{page}"
+      show:
+        title: "Фотоистория «%{name}» (%{date})"
+      entity:
+        photos:
+          heading: "Фотографии"
     featured_photos:
       index:
         title: "Фотографии для главной"
@@ -127,6 +145,29 @@ ru:
     stream:
       title: "Поток, страница %{page}"
       heading: "Поток фотографий"
+  stories:
+    new:
+      title: "Новая история"
+      nav_text: "Создать"
+      heading: "Добавление фотоистории"
+    edit:
+      title: "Редактирование фотоистормм"
+      nav_text: "Редактировать"
+      heading: "Редактирование фотоистории"
+    destroy:
+      success: "История успешно удалена"
+    form:
+      guidelines:
+        description: "Максимум 64k символов."
+        image: "Максимальный размер — 3000×3000, формат — JPEG."
+        image_alt_text: "Краткое описание того, что происходит на картинке. До 250 символов."
+        name: "Максимум 100 символов."
+        slug: "Используется в URL. Только латинские буквы, цифры и дефис (кроме первого и последнего символа), максимум 100 символов."
+        date: "Дата в формате YYYY-MM-DD"
+    index:
+      nav_text: "Фотоистории"
+      title: "Фотоистории"
+      heading: "Фотоистории"
   biovision:
     components:
       photos:

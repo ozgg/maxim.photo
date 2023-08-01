@@ -1,0 +1,16 @@
+<div class="image">
+  <%= simple_image_preview(entity) %>
+</div>
+<div class="data">
+  <div><%= admin_story_link(entity) %></div>
+  <div class="info">
+    <%= entity.slug %>
+    <% unless entity.description.blank? %>
+      <div><%= entity.description %></div>
+    <% end %>
+  </div>
+
+  <ul class="actions">
+    <li><%= edit_icon(edit_story_path(id: entity.id)) %></li>
+  </ul>
+</div>

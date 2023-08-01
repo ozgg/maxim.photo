@@ -105,6 +105,7 @@
   <div class="buttons">
     <%= hidden_field_tag :entity_id, entity.id %>
     <%= f.hidden_field :album_id if entity.id.nil? %>
+    <%= f.hidden_field :story_id if story.id.nil? %>
     <%= f.button t(:save), class: 'button-save' %>
   </div>
 <% end %>

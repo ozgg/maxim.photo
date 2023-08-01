@@ -9,6 +9,13 @@ module PhotosHelper
     link_to(text, admin_album_path(id: entity.id), options)
   end
 
+  # @param [Story] entity
+  # @param [String] text
+  # @param [Hash] options
+  def admin_story_link(entity, text = entity.text_for_link, options = {})
+    link_to(text, admin_story_path(id: entity.id), options)
+  end
+
   # @param [Photo] entity
   # @param [String] text
   # @param [Hash] options
@@ -28,5 +35,12 @@ module PhotosHelper
   # @param [Hash] options
   def album_link(entity, text = entity.name, options = {})
     link_to(text, show_album_path(id: entity.id, slug: entity.slug), options)
+  end
+
+  # @param [Story] entity
+  # @param [String] text
+  # @param [Hash] options
+  def story_link(entity, text = entity.text_for_link, options = {})
+    link_to(text, show_story_path(id: entity.id, slug: entity.slug), options)
   end
 end

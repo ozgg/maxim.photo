@@ -1,0 +1,17 @@
+<% content_for :meta_title, t('.title', page: current_page) %>
+
+<article>
+  <div class="content-wrapper">
+    <header>
+      <h1><%= t('.heading') %></h1>
+    </header>
+
+    <% if component_handler.allow? %>
+      <ul class="actions">
+        <li><%= gear_icon(admin_stories_path) %></li>
+      </ul>
+    <% end %>
+
+    <%= render partial: 'stories/list', locals: { collection: @collection } %>
+  </div>
+</article>

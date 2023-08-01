@@ -1,0 +1,25 @@
+<% if collection.any? %>
+  <%= paginate collection %>
+
+  <ul class="stories-list">
+    <% collection.each do |entity| %>
+      <li class="story-preview">
+        <figure>
+          <%=
+            story_link(
+                entity,
+                simple_image_medium(entity),
+                class: 'proportional-container r-1x1 covered',
+                tabindex: '-1'
+            )
+          %>
+          <figcaption>
+            <%= story_link(entity) %>
+          </figcaption>
+        </figure>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= paginate collection %>
+<% end %>

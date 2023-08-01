@@ -28,7 +28,7 @@ class PhotosController < ApplicationController
   def create
     @entity = Photo.new(creation_parameters)
     if @entity.save
-      form_processed_ok(admin_photo_path(id: @entity.id))
+      form_processed_ok(next_path)
     else
       form_processed_with_error(:new)
     end
@@ -87,5 +87,15 @@ class PhotosController < ApplicationController
 
   def creation_parameters
     params.require(:photo).permit(Photo.creation_parameters)
+  end
+
+  def next_path
+    if @entity.story.present?
+      admin_story_path(id: @entity.story_id)
+    elsif @entity.album.present?
+      admin_album_path(id: @entity.album_id)
+    else
+      admin_photo_path(id: @entity.id)
+    end
   end
 end
