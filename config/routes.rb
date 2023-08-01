@@ -31,8 +31,9 @@ Rails.application.routes.draw do
   scope '(:locale)', constraints: { locale: /ru|en/ } do
     root 'index#index'
 
-    resources :albums, :photos, :photo_tags, except: %i[update destroy show], concerns: :check
+    resources :albums, :stories, :photos, :photo_tags, except: %i[update destroy show], concerns: :check
     get 'albums/:id-:slug' => 'albums#show', as: :show_album
+    get 'stories/:id-:slug' => 'stories#show', as: :show_story
     get 'stream' => 'photos#stream'
 
     namespace :admin do

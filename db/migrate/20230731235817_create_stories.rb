@@ -9,6 +9,7 @@ class CreateStories < ActiveRecord::Migration[5.2]
       t.string :image_alt_text, comment: 'Alternative text for cover image'
     end
 
+    add_column :photos, :story_id, :integer
     add_reference :photos, :stories, foreign_key: { on_update: :cascade, on_delete: :nullify }
   end
 end

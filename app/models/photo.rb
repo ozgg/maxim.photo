@@ -9,6 +9,7 @@
 #   image [SimpleImageUploader]
 #   image_alt_text [string], optional
 #   priority [integer]
+#   story_id [Story], optional
 #   title [string], optional
 #   updated_at [DateTime]
 #   uuid [UUID]
@@ -41,7 +42,7 @@ class Photo < ApplicationRecord
 
   # @param [Integer] page
   def self.stream_page(page = 1)
-    recent.page(page)
+    recent.page(page).per(12)
   end
 
   # @param [Photo] entity

@@ -42,7 +42,7 @@ class Story < ApplicationRecord
 
   # @param [Integer] page
   def self.page_for_visitors(page = 1)
-    list_for_visitors.page(page)
+    list_for_visitors.page(page).per(12)
   end
 
   def self.entity_parameters

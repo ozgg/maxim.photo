@@ -303,6 +303,7 @@ ActiveRecord::Schema.define(version: 2023_07_31_235817) do
     t.string "image_alt_text"
     t.string "title"
     t.text "description"
+    t.integer "story_id"
     t.bigint "stories_id"
     t.index ["album_id"], name: "index_photos_on_album_id"
     t.index ["stories_id"], name: "index_photos_on_stories_id"

@@ -1,9 +1,9 @@
 <% if collection.any? %>
   <%= paginate collection %>
 
-  <ul class="stories-list">
+  <ul class="albums-list">
     <% collection.each do |entity| %>
-      <li class="story-preview">
+      <li class="slbum-preview">
         <figure>
           <%=
             story_link(

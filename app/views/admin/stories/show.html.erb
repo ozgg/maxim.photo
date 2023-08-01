@@ -1,4 +1,4 @@
-<% content_for :meta_title, t('.title', name: @entity.name) %>
+<% content_for :meta_title, t('.title', name: @entity.name, date: @entity.date) %>
 <% content_for :breadcrumbs do %>
   <%= admin_biovision_component_link(component_handler.component) %>
   <%= link_to(t('admin.stories.nav_item.text'), admin_stories_path) %>
