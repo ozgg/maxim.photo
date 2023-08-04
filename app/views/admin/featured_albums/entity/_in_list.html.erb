@@ -1,0 +1,25 @@
+<div class="image">
+  <%= simple_image_preview(entity) %>
+</div>
+<div class="data">
+  <div><%= admin_album_link(entity.album) %></div>
+  <% unless entity.album.description.blank? %>
+    <div class="info">
+      <%= entity.album.description %>
+    </div>
+  <% end %>
+  <div class="secondary info">
+    <%= t(:photo_count, count: entity.album.photos_count) %>
+  </div>
+
+  <ul class="actions">
+    <%=
+      render(
+        partial: 'shared/actions/priority_changer',
+        locals: {
+          path: priority_admin_featured_album_path(id: entity.id)
+        }
+      )
+    %>
+  </ul>
+</div>

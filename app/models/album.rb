@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Album
-# 
+#
 # Attributes:
 #   created_at [DateTime]
 #   description [string], optional
@@ -34,6 +34,7 @@ class Album < ApplicationRecord
   mount_uploader :image, PhotoUploader
 
   has_many :photos, dependent: :destroy
+  has_many :featured_albums, dependent: :delete_all
 
   before_validation :normalize_slug
   validates_presence_of :image
@@ -55,6 +56,10 @@ class Album < ApplicationRecord
 
   def url
     "/albums/#{id}-#{slug}"
+  end
+
+  def text_for_link
+    name
   end
 
   private

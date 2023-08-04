@@ -13,17 +13,6 @@ Rails.application.routes.draw do
     post :priority, on: :member, defaults: { format: :json }
   end
 
-  concern :removable_image do
-    delete :image, action: :destroy_image, on: :member, defaults: { format: :json }
-  end
-
-  concern :lock do
-    member do
-      put :lock, defaults: { format: :json }
-      delete :lock, action: :unlock, defaults: { format: :json }
-    end
-  end
-
   get 'sitemap' => 'index#sitemap', defaults: { format: :xml }
 
   resources :albums, :photos, :photo_tags, :stories, only: %i[update destroy]
@@ -37,7 +26,7 @@ Rails.application.routes.draw do
     get 'stream' => 'photos#stream'
 
     namespace :admin do
-      resources :albums, only: %i[index show], concerns: :toggle
+      resources :albums, only: %i[index show]
       resources :stories, only: %i[index show]
       resources :photos, only: %i[index show], concerns: %i[toggle priority] do
         member do
@@ -46,7 +35,7 @@ Rails.application.routes.draw do
         end
       end
       resources :photo_tags, only: %i[index show]
-      resources :featured_photos, only: %i[index create destroy], concerns: %i[priority toggle]
+      resources :featured_photos, :featured_albums, only: %i[index create destroy], concerns: %i[priority toggle]
     end
   end
 end

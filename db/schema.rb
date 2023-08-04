@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_31_235817) do
+ActiveRecord::Schema.define(version: 2023_08_04_111751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,6 +138,12 @@ ActiveRecord::Schema.define(version: 2023_07_31_235817) do
     t.string "meta_description", default: "", null: false
     t.text "body", default: "", null: false
     t.index ["language_id"], name: "index_editable_pages_on_language_id"
+  end
+
+  create_table "featured_albums", force: :cascade do |t|
+    t.bigint "album_id", null: false
+    t.integer "priority", limit: 2, default: 1, null: false
+    t.index ["album_id"], name: "index_featured_albums_on_album_id"
   end
 
   create_table "featured_photos", comment: "Photo for front page", force: :cascade do |t|
@@ -486,6 +492,7 @@ ActiveRecord::Schema.define(version: 2023_07_31_235817) do
   add_foreign_key "codes", "code_types", on_update: :cascade, on_delete: :cascade
   add_foreign_key "codes", "users", on_update: :cascade, on_delete: :cascade
   add_foreign_key "editable_pages", "languages", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "featured_albums", "albums", on_update: :cascade, on_delete: :cascade
   add_foreign_key "featured_photos", "photos", on_update: :cascade, on_delete: :cascade
   add_foreign_key "feedback_requests", "agents", on_update: :cascade, on_delete: :nullify
   add_foreign_key "feedback_requests", "languages", on_update: :cascade, on_delete: :nullify

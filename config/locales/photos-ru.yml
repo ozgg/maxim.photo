@@ -15,6 +15,7 @@ ru:
   activerecord:
     models:
       album: "Альбом"
+      featured_album: "Альбом для главной страницы"
       featured_photo: "Фотография для главной страницы"
       instagram_image: "Изображение из Инстаграма"
       photo: "Фотография"
@@ -82,6 +83,13 @@ ru:
       entity:
         photos:
           heading: "Фотографии"
+    featured_albums:
+      index:
+        title: "Альбомы для главной"
+        heading: "Альбомы для главной страницы"
+      nav_item:
+        text: "Альбомы для главной"
+        description: "Управление списком альбомов для главной страницы"
     featured_photos:
       index:
         title: "Фотографии для главной"
