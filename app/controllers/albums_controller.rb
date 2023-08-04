@@ -36,7 +36,7 @@ class AlbumsController < ApplicationController
 
   # get /albums/:id-:slug
   def show
-    @entity = Album.find_by(id: params[:id])
+    @entity = Album.includes(:photos).find_by(id: params[:id])
     handle_http_404('Cannot find album') if @entity.nil?
   end
 

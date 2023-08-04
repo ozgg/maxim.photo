@@ -5,22 +5,17 @@
 # Attributes:
 #   created_at [DateTime]
 #   description [string], optional
-#   highlight [Boolean]
 #   image [SimpleImageUploader], optional
 #   image_alt_text [string], optional
 #   name [string]
 #   photos_count [integer]
-#   priority [integer]
 #   slug [string]
 #   updated_at [DateTime]
-#   visible [boolean]
 class Album < ApplicationRecord
   include Checkable
-  include FlatPriority
   include HasUuid
   include RequiredUniqueName
   include RequiredUniqueSlug
-  include Toggleable
 
   DESCRIPTION_LIMIT = 255
   META_LIMIT = 255
@@ -28,8 +23,6 @@ class Album < ApplicationRecord
   SLUG_LIMIT = 50
   SLUG_PATTERN = /\A[a-z0-9][-_a-z0-9]*[a-z0-9]\z/i.freeze
   SLUG_PATTERN_HTML = '^[a-zA-Z0-9][-_a-zA-Z0-9]*[a-zA-Z0-9]$'
-
-  toggleable :highlight, :visible
 
   mount_uploader :image, PhotoUploader
 
@@ -44,14 +37,12 @@ class Album < ApplicationRecord
   validates_length_of :slug, maximum: SLUG_LIMIT
   validates_format_of :slug, with: SLUG_PATTERN
 
-  scope :visible, -> { where(visible: true) }
-  scope :highlighted, -> { where(highlight: true) }
-  scope :list_for_visitors, -> { visible.ordered_by_priority }
-  scope :frontpage, -> { visible.highlighted.ordered_by_priority }
-  scope :list_for_administration, -> { ordered_by_priority }
+  scope :recent, -> { order(updated_at: :desc) }
+  scope :list_for_visitors, -> { recent }
+  scope :list_for_administration, -> { recent }
 
   def self.entity_parameters
-    %i[description highlight image image_alt_text name priority slug visible]
+    %i[description image image_alt_text name slug]
   end
 
   def url

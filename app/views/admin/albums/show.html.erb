@@ -15,7 +15,6 @@
   </ul>
 
   <dl>
-    <%= render partial: 'shared/entity/priority', locals: { entity: @entity } %>
     <%= render partial: 'shared/entity/image', locals: { entity: @entity } %>
 
     <div>
@@ -32,16 +31,6 @@
     <%= render partial: 'shared/entity/uuid', locals: { entity: @entity } %>
     <%= render partial: 'shared/entity/timestamps', locals: { entity: @entity } %>
   </dl>
-
-  <%=
-    render(
-        partial: 'shared/admin/toggleable',
-        locals:  {
-            entity: @entity,
-            url:    toggle_admin_album_path(id: @entity.id)
-        }
-    )
-  %>
 
   <%=
     render(

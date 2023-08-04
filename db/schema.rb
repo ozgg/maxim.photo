@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_04_111751) do
+ActiveRecord::Schema.define(version: 2023_08_04_120858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,10 +49,7 @@ ActiveRecord::Schema.define(version: 2023_08_04_111751) do
   end
 
   create_table "albums", comment: "Photo albums", force: :cascade do |t|
-    t.integer "priority", limit: 2, default: 1, null: false
     t.uuid "uuid", null: false
-    t.boolean "visible", default: true, null: false
-    t.boolean "highlight", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "photos_count", default: 0, null: false
