@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_04_120858) do
+ActiveRecord::Schema.define(version: 2023_08_05_092651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -299,17 +299,13 @@ ActiveRecord::Schema.define(version: 2023_08_04_120858) do
   create_table "photos", comment: "Photos", force: :cascade do |t|
     t.bigint "album_id"
     t.uuid "uuid", null: false
-    t.integer "priority", limit: 2, default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
     t.string "image_alt_text"
     t.string "title"
     t.text "description"
-    t.integer "story_id"
-    t.bigint "stories_id"
     t.index ["album_id"], name: "index_photos_on_album_id"
-    t.index ["stories_id"], name: "index_photos_on_stories_id"
     t.index ["uuid"], name: "index_photos_on_uuid", unique: true
   end
 
@@ -510,7 +506,6 @@ ActiveRecord::Schema.define(version: 2023_08_04_120858) do
   add_foreign_key "photo_photo_tags", "photo_tags", on_update: :cascade, on_delete: :cascade
   add_foreign_key "photo_photo_tags", "photos", on_update: :cascade, on_delete: :cascade
   add_foreign_key "photos", "albums", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "photos", "stories", column: "stories_id", on_update: :cascade, on_delete: :nullify
   add_foreign_key "privilege_group_privileges", "privilege_groups", on_update: :cascade, on_delete: :cascade
   add_foreign_key "privilege_group_privileges", "privileges", on_update: :cascade, on_delete: :cascade
   add_foreign_key "privileges", "privileges", column: "parent_id", on_update: :cascade, on_delete: :cascade

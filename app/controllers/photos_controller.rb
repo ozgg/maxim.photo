@@ -90,9 +90,7 @@ class PhotosController < ApplicationController
   end
 
   def next_path
-    if @entity.story.present?
-      admin_story_path(id: @entity.story_id)
-    elsif @entity.album.present?
+    if @entity.album.present?
       admin_album_path(id: @entity.album_id)
     else
       admin_photo_path(id: @entity.id)

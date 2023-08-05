@@ -19,8 +19,6 @@
         <dt><%= t('attributes.album') %></dt>
         <dd><%= admin_album_link(@entity.album) %></dd>
       </div>
-
-      <%= render partial: 'shared/entity/priority', locals: { entity: @entity } %>
     <% end %>
 
     <%= render partial: 'shared/entity/image', locals: { entity: @entity } %>

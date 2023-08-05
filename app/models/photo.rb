@@ -8,15 +8,12 @@
 #   description [Text], optional
 #   image [SimpleImageUploader]
 #   image_alt_text [string], optional
-#   priority [integer]
-#   story_id [Story], optional
 #   title [string], optional
 #   updated_at [DateTime]
 #   uuid [UUID]
 class Photo < ApplicationRecord
   include Checkable
   include HasUuid
-  include NestedPriority
 
   DESCRIPTION_LIMIT = 5000
   META_LIMIT = 255
@@ -25,7 +22,6 @@ class Photo < ApplicationRecord
   mount_uploader :image, PhotoUploader
 
   belongs_to :album, counter_cache: true, optional: true, touch: true
-  belongs_to :story, optional: true
   has_many :photo_photo_tags, dependent: :destroy
   has_many :photo_tags, through: :photo_photo_tags
 
@@ -37,8 +33,8 @@ class Photo < ApplicationRecord
   scope :recent, -> { order(id: :desc) }
   scope :sequential, -> { order(:id) }
   scope :in_album, ->(v) { where(album: v) }
-  scope :list_for_visitors, -> { ordered_by_priority }
-  scope :list_for_administration, -> { ordered_by_priority }
+  scope :list_for_visitors, -> { recent }
+  scope :list_for_administration, -> { recent }
 
   # @param [Integer] page
   def self.stream_page(page = 1)
@@ -51,7 +47,7 @@ class Photo < ApplicationRecord
   end
 
   def self.entity_parameters
-    %i[album_id description image image_alt_text priority story_id title visible]
+    %i[album_id description image image_alt_text title]
   end
 
   def self.creation_parameters
