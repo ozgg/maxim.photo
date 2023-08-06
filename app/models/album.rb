@@ -4,6 +4,7 @@
 #
 # Attributes:
 #   created_at [DateTime]
+#   date [Date], optional
 #   description [string], optional
 #   image [SimpleImageUploader], optional
 #   image_alt_text [string], optional
@@ -19,8 +20,8 @@ class Album < ApplicationRecord
 
   DESCRIPTION_LIMIT = 255
   META_LIMIT = 255
-  NAME_LIMIT = 50
-  SLUG_LIMIT = 50
+  NAME_LIMIT = 75
+  SLUG_LIMIT = 75
   SLUG_PATTERN = /\A[a-z0-9][-_a-z0-9]*[a-z0-9]\z/i.freeze
   SLUG_PATTERN_HTML = '^[a-zA-Z0-9][-_a-zA-Z0-9]*[a-zA-Z0-9]$'
 
@@ -42,7 +43,7 @@ class Album < ApplicationRecord
   scope :list_for_administration, -> { recent }
 
   def self.entity_parameters
-    %i[description image image_alt_text name slug]
+    %i[date description image image_alt_text name slug]
   end
 
   def url
@@ -50,7 +51,7 @@ class Album < ApplicationRecord
   end
 
   def text_for_link
-    name
+    date.nil? ? name : "#{name} (#{date})"
   end
 
   private

@@ -12,6 +12,20 @@
 
   <dl>
     <div>
+      <dt><%= f.label :date %></dt>
+      <dd>
+        <%=
+          f.date_field(
+              :date,
+              id: "#{model_name}_date",
+              size: 10
+          )
+        %>
+        <div class="check-result-error" data-field="date"></div>
+      </dd>
+    </div>
+
+    <div>
       <dt><%= f.label :name %></dt>
       <dd>
         <%=
@@ -116,8 +130,6 @@
         <div class="guideline"><%= t('.guidelines.image_alt_text') %></div>
       </dd>
     </div>
-
-    <%= render partial: 'shared/forms/entity_flags', locals: { f: f } %>
   </dl>
 
   <%= render 'shared/forms/state_container' %>

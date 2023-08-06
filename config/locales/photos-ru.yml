@@ -24,6 +24,7 @@ ru:
       story: "Фотоистория"
     attributes:
       album:
+        date: "Дата съёмки"
         highlight: "Показывать на главной"
         name: "Название"
       instagram_image:
