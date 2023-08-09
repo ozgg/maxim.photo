@@ -27,10 +27,7 @@ class CreatePhotosComponent < ActiveRecord::Migration[5.2]
 
   def create_albums
     create_table :albums, comment: 'Photo albums' do |t|
-      t.integer :priority, limit: 2, default: 1, null: false
       t.uuid :uuid, null: false
-      t.boolean :visible, default: true, null: false
-      t.boolean :highlight, default: true, null: false
       t.timestamps
       t.integer :photos_count, default: 0, null: false
       t.string :name
@@ -48,7 +45,6 @@ class CreatePhotosComponent < ActiveRecord::Migration[5.2]
     create_table :photos, comment: 'Photos' do |t|
       t.references :album, foreign_key: { on_update: :cascade, on_delete: :cascade }
       t.uuid :uuid, null: false
-      t.integer :priority, limit: 2, default: 1, null: false
       t.timestamps
       t.string :image
       t.string :image_alt_text

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_09_204751) do
+ActiveRecord::Schema.define(version: 2023_08_09_205220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -190,15 +190,6 @@ ActiveRecord::Schema.define(version: 2023_08_09_204751) do
     t.index ["agent_id"], name: "index_foreign_users_on_agent_id"
     t.index ["foreign_site_id"], name: "index_foreign_users_on_foreign_site_id"
     t.index ["user_id"], name: "index_foreign_users_on_user_id"
-  end
-
-  create_table "instagram_images", comment: "Images from instagram feed", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "slug", null: false
-    t.string "code", null: false
-    t.string "thumbnail_url", null: false
-    t.index ["slug"], name: "index_instagram_images_on_slug"
   end
 
   create_table "languages", comment: "Language l10n, i18n, etc.", force: :cascade do |t|
