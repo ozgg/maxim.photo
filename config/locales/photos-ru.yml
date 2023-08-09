@@ -120,6 +120,10 @@ ru:
       nav_text: "Альбомы"
       title: "Альбомы"
       heading: "Альбомы"
+      themed:
+        heading: "Тематические"
+      stories:
+        heading: "Истории"
   photo_tags:
     edit:
       title: "Редактирование метки фотографий"

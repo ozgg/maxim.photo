@@ -16,7 +16,10 @@ class AlbumsController < ApplicationController
 
   # get /albums
   def index
-    @collection = Album.list_for_visitors
+    @collection = {
+      themed: Album.themed.list_for_visitors,
+      stories: Album.stories
+    }
   end
 
   # get /albums/new

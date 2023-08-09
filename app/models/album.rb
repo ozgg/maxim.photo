@@ -39,6 +39,8 @@ class Album < ApplicationRecord
   validates_format_of :slug, with: SLUG_PATTERN
 
   scope :recent, -> { order(updated_at: :desc) }
+  scope :themed, -> { where(date: nil) }
+  scope :stories, -> { where('date is not null').order(date: :desc) }
   scope :list_for_visitors, -> { recent }
   scope :list_for_administration, -> { recent }
 

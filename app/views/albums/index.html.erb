@@ -12,6 +12,7 @@
       </ul>
     <% end %>
 
-    <%= render partial: 'albums/list', locals: { collection: @collection } %>
+    <%= render partial: 'albums/index/themed', locals: { collection: @collection[:themed] } %>
+    <%= render partial: 'albums/index/stories', locals: { collection: @collection[:stories] } %>
   </div>
 </article>
