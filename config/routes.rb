@@ -20,14 +20,12 @@ Rails.application.routes.draw do
   scope '(:locale)', constraints: { locale: /ru|en/ } do
     root 'index#index'
 
-    resources :albums, :stories, :photos, :photo_tags, except: %i[update destroy show], concerns: :check
+    resources :albums, :photos, :photo_tags, except: %i[update destroy show], concerns: :check
     get 'albums/:id-:slug' => 'albums#show', as: :show_album
-    get 'stories/:id-:slug' => 'stories#show', as: :show_story
     get 'stream' => 'photos#stream'
 
     namespace :admin do
       resources :albums, only: %i[index show]
-      resources :stories, only: %i[index show]
       resources :photos, only: %i[index show], concerns: %i[toggle priority] do
         member do
           put 'tags/:tag_id' => :add_tag, as: :tag

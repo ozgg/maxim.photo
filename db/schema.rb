@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_06_113828) do
+ActiveRecord::Schema.define(version: 2023_08_09_204751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -394,15 +394,6 @@ ActiveRecord::Schema.define(version: 2023_08_06_113828) do
     t.index ["agent_id"], name: "index_simple_images_on_agent_id"
     t.index ["biovision_component_id"], name: "index_simple_images_on_biovision_component_id"
     t.index ["user_id"], name: "index_simple_images_on_user_id"
-  end
-
-  create_table "stories", comment: "Photo stories", force: :cascade do |t|
-    t.date "date", null: false, comment: "Date of the story"
-    t.string "slug", null: false, comment: "Slug for URL"
-    t.string "name", null: false, comment: "Name of the story"
-    t.text "description", default: "", null: false, comment: "Long description"
-    t.string "image", comment: "Cover image"
-    t.string "image_alt_text", comment: "Alternative text for cover image"
   end
 
   create_table "tokens", comment: "Authentication token", force: :cascade do |t|
